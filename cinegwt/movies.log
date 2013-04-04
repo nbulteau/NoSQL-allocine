@@ -1,0 +1,1637 @@
+2012-10-06 07:57:47,742 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@178c4a7f] to prepare test instance [fr.sii.formation.gwt.server.repository.redis.RedisMovieRepositoryTest@7b6ee3ec]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:157) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mongoDBMovieMapReduceRepositoryImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.data.mongodb.core.MongoOperations fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieMapReduceRepositoryImpl.mongoOperations; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:225) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:291) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:585) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:913) ~[spring-context-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) ~[spring-context-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:103) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:1) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DelegatingSmartContextLoader.loadContext(DelegatingSmartContextLoader.java:228) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContext.loadApplicationContext(TestContext.java:124) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:148) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.data.mongodb.core.MongoOperations fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieMapReduceRepositoryImpl.mongoOperations; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 39 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 41 common frames omitted
+2012-10-07 16:56:26,993 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 16:56:27,038 INFO Hibernate 3.6.9.Final
+2012-10-07 16:56:27,041 INFO hibernate.properties not found
+2012-10-07 16:56:27,044 INFO Bytecode provider name : javassist
+2012-10-07 16:56:27,049 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 16:56:27,157 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 16:56:27,173 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 16:56:27,409 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 16:56:27,441 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 16:56:27,478 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 16:56:27,479 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 16:56:27,488 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 16:56:27,488 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 16:56:27,489 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 16:56:27,489 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 16:56:27,526 INFO Hibernate Validator not found: ignoring
+2012-10-07 16:56:27,558 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 16:56:28,073 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 16:56:28,077 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 16:56:28,081 INFO Using provided datasource
+2012-10-07 16:56:28,592 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 16:56:28,662 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 16:56:28,684 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 16:56:28,715 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 16:56:28,717 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 16:56:28,717 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 16:56:28,718 INFO Automatic session close at end of transaction: disabled
+2012-10-07 16:56:28,718 INFO JDBC batch size: 15
+2012-10-07 16:56:28,718 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 16:56:28,719 INFO Scrollable result sets: enabled
+2012-10-07 16:56:28,719 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 16:56:28,719 INFO Connection release mode: auto
+2012-10-07 16:56:28,720 INFO Maximum outer join fetch depth: 2
+2012-10-07 16:56:28,720 INFO Default batch fetch size: 1
+2012-10-07 16:56:28,720 INFO Generate SQL with comments: disabled
+2012-10-07 16:56:28,720 INFO Order SQL updates by primary key: disabled
+2012-10-07 16:56:28,720 INFO Order SQL inserts for batching: disabled
+2012-10-07 16:56:28,720 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 16:56:28,731 INFO Using ASTQueryTranslatorFactory
+2012-10-07 16:56:28,731 INFO Query language substitutions: {}
+2012-10-07 16:56:28,731 INFO JPA-QL strict compliance: enabled
+2012-10-07 16:56:28,731 INFO Second-level cache: enabled
+2012-10-07 16:56:28,731 INFO Query cache: disabled
+2012-10-07 16:56:28,731 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 16:56:28,732 INFO Optimize cache for minimal puts: disabled
+2012-10-07 16:56:28,732 INFO Structured second-level cache entries: disabled
+2012-10-07 16:56:28,743 INFO Statistics: disabled
+2012-10-07 16:56:28,743 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 16:56:28,743 INFO Default entity-mode: pojo
+2012-10-07 16:56:28,743 INFO Named query checking : enabled
+2012-10-07 16:56:28,743 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 16:56:28,780 INFO building session factory
+2012-10-07 16:56:28,787 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@1a83e35b
+2012-10-07 16:56:28,787 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@1a83e35b
+2012-10-07 16:56:28,787 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@48c378f6
+2012-10-07 16:56:28,787 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@193a83cc
+2012-10-07 16:56:28,788 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@50a2d304
+2012-10-07 16:56:28,788 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@50a2d304
+2012-10-07 16:56:28,788 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@71cbd4f7
+2012-10-07 16:56:28,788 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@7d0ade7e
+2012-10-07 16:56:28,788 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@54956254
+2012-10-07 16:56:29,050 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 16:56:29,056 INFO Running hbm2ddl schema update
+2012-10-07 16:56:29,056 INFO fetching database metadata
+2012-10-07 16:56:29,067 INFO updating schema
+2012-10-07 16:56:29,290 INFO table found: cinema.acteur
+2012-10-07 16:56:29,290 INFO columns: [personne_id, id, role]
+2012-10-07 16:56:29,290 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 16:56:29,290 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 16:56:29,493 INFO table found: cinema.film
+2012-10-07 16:56:29,494 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 16:56:29,494 INFO foreign keys: []
+2012-10-07 16:56:29,494 INFO indexes: [titreindex, primary]
+2012-10-07 16:56:29,517 INFO table found: cinema.genre
+2012-10-07 16:56:29,517 INFO columns: [label]
+2012-10-07 16:56:29,517 INFO foreign keys: []
+2012-10-07 16:56:29,517 INFO indexes: [primary]
+2012-10-07 16:56:29,882 INFO table found: cinema.personne
+2012-10-07 16:56:29,882 INFO columns: [id, biographie, photo, nom]
+2012-10-07 16:56:29,882 INFO foreign keys: []
+2012-10-07 16:56:29,882 INFO indexes: [nomindex, primary]
+2012-10-07 16:56:30,027 INFO table found: cinema.filmacteur
+2012-10-07 16:56:30,027 INFO columns: [acteurid, rolefk]
+2012-10-07 16:56:30,027 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 16:56:30,027 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 16:56:30,078 INFO table found: cinema.filmgenres
+2012-10-07 16:56:30,078 INFO columns: [genreid, genresfk]
+2012-10-07 16:56:30,078 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 16:56:30,079 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 16:56:30,159 INFO table found: cinema.filmrealisateur
+2012-10-07 16:56:30,160 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 16:56:30,160 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 16:56:30,160 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 16:56:30,161 INFO schema update complete
+2012-10-07 16:57:24,045 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 16:57:24,054 INFO Hibernate 3.6.9.Final
+2012-10-07 16:57:24,056 INFO hibernate.properties not found
+2012-10-07 16:57:24,058 INFO Bytecode provider name : javassist
+2012-10-07 16:57:24,062 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 16:57:24,122 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 16:57:24,136 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 16:57:24,330 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 16:57:24,362 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 16:57:24,401 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 16:57:24,401 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 16:57:24,441 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 16:57:24,441 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 16:57:24,443 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 16:57:24,443 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 16:57:24,458 INFO Hibernate Validator not found: ignoring
+2012-10-07 16:57:24,470 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 16:57:24,674 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 16:57:24,679 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 16:57:24,683 INFO Using provided datasource
+2012-10-07 16:57:24,871 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 16:57:24,880 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 16:57:24,880 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 16:57:24,882 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 16:57:24,884 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 16:57:24,884 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 16:57:24,884 INFO Automatic session close at end of transaction: disabled
+2012-10-07 16:57:24,884 INFO JDBC batch size: 15
+2012-10-07 16:57:24,884 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 16:57:24,885 INFO Scrollable result sets: enabled
+2012-10-07 16:57:24,885 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 16:57:24,885 INFO Connection release mode: auto
+2012-10-07 16:57:24,885 INFO Maximum outer join fetch depth: 2
+2012-10-07 16:57:24,886 INFO Default batch fetch size: 1
+2012-10-07 16:57:24,886 INFO Generate SQL with comments: disabled
+2012-10-07 16:57:24,886 INFO Order SQL updates by primary key: disabled
+2012-10-07 16:57:24,886 INFO Order SQL inserts for batching: disabled
+2012-10-07 16:57:24,886 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 16:57:24,887 INFO Using ASTQueryTranslatorFactory
+2012-10-07 16:57:24,888 INFO Query language substitutions: {}
+2012-10-07 16:57:24,888 INFO JPA-QL strict compliance: enabled
+2012-10-07 16:57:24,888 INFO Second-level cache: enabled
+2012-10-07 16:57:24,888 INFO Query cache: disabled
+2012-10-07 16:57:24,888 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 16:57:24,889 INFO Optimize cache for minimal puts: disabled
+2012-10-07 16:57:24,889 INFO Structured second-level cache entries: disabled
+2012-10-07 16:57:24,893 INFO Statistics: disabled
+2012-10-07 16:57:24,893 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 16:57:24,893 INFO Default entity-mode: pojo
+2012-10-07 16:57:24,893 INFO Named query checking : enabled
+2012-10-07 16:57:24,893 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 16:57:24,907 INFO building session factory
+2012-10-07 16:57:24,912 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@7c9ed5d6
+2012-10-07 16:57:24,912 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@1fe91485
+2012-10-07 16:57:24,912 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 16:57:24,912 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 16:57:24,912 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@5472fe25
+2012-10-07 16:57:24,913 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@498b5a73
+2012-10-07 16:57:24,913 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@5bdf59bd
+2012-10-07 16:57:24,913 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@247cb66a
+2012-10-07 16:57:24,913 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@247cb66a
+2012-10-07 16:57:25,083 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 16:57:25,088 INFO Running hbm2ddl schema update
+2012-10-07 16:57:25,088 INFO fetching database metadata
+2012-10-07 16:57:25,100 INFO updating schema
+2012-10-07 16:57:25,188 INFO table found: cinema.acteur
+2012-10-07 16:57:25,189 INFO columns: [personne_id, id, role]
+2012-10-07 16:57:25,189 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 16:57:25,189 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 16:57:25,312 INFO table found: cinema.film
+2012-10-07 16:57:25,312 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 16:57:25,312 INFO foreign keys: []
+2012-10-07 16:57:25,312 INFO indexes: [titreindex, primary]
+2012-10-07 16:57:25,320 INFO table found: cinema.genre
+2012-10-07 16:57:25,320 INFO columns: [label]
+2012-10-07 16:57:25,320 INFO foreign keys: []
+2012-10-07 16:57:25,320 INFO indexes: [primary]
+2012-10-07 16:57:25,450 INFO table found: cinema.personne
+2012-10-07 16:57:25,451 INFO columns: [id, biographie, photo, nom]
+2012-10-07 16:57:25,451 INFO foreign keys: []
+2012-10-07 16:57:25,451 INFO indexes: [nomindex, primary]
+2012-10-07 16:57:25,556 INFO table found: cinema.filmacteur
+2012-10-07 16:57:25,557 INFO columns: [acteurid, rolefk]
+2012-10-07 16:57:25,557 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 16:57:25,557 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 16:57:25,571 INFO table found: cinema.filmgenres
+2012-10-07 16:57:25,571 INFO columns: [genreid, genresfk]
+2012-10-07 16:57:25,571 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 16:57:25,571 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 16:57:25,582 INFO table found: cinema.filmrealisateur
+2012-10-07 16:57:25,582 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 16:57:25,582 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 16:57:25,582 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 16:57:25,583 INFO schema update complete
+2012-10-07 16:57:26,897 ERROR populateDBs : 
+java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’accès spécifié est introuvable)
+	at java.io.FileInputStream.open(Native Method) ~[na:1.6.0_25]
+	at java.io.FileInputStream.<init>(FileInputStream.java:120) ~[na:1.6.0_25]
+	at java.io.FileInputStream.<init>(FileInputStream.java:79) ~[na:1.6.0_25]
+	at fr.sii.formation.gwt.server.service.PopulateServiceImpl.populate(PopulateServiceImpl.java:35) ~[classes/:na]
+	at fr.sii.formation.gwt.server.service.jpa.JPAMovieServiceImplTest.populate(JPAMovieServiceImplTest.java:44) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.6.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) ~[na:1.6.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) ~[na:1.6.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:597) ~[na:1.6.0_25]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45) [junit-4.10.jar:na]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42) [junit-4.10.jar:na]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:74) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:83) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:72) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+2012-10-07 16:57:26,981 INFO closing
+2012-10-07 16:59:27,909 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 16:59:27,918 INFO Hibernate 3.6.9.Final
+2012-10-07 16:59:27,920 INFO hibernate.properties not found
+2012-10-07 16:59:27,923 INFO Bytecode provider name : javassist
+2012-10-07 16:59:27,927 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 16:59:27,983 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 16:59:27,999 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 16:59:28,183 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 16:59:28,215 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 16:59:28,248 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 16:59:28,248 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 16:59:28,286 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 16:59:28,287 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 16:59:28,292 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 16:59:28,292 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 16:59:28,303 INFO Hibernate Validator not found: ignoring
+2012-10-07 16:59:28,316 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 16:59:28,519 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 16:59:28,524 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 16:59:28,530 INFO Using provided datasource
+2012-10-07 16:59:28,740 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 16:59:28,750 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 16:59:28,750 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 16:59:28,751 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 16:59:28,752 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 16:59:28,752 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 16:59:28,753 INFO Automatic session close at end of transaction: disabled
+2012-10-07 16:59:28,753 INFO JDBC batch size: 15
+2012-10-07 16:59:28,753 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 16:59:28,753 INFO Scrollable result sets: enabled
+2012-10-07 16:59:28,753 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 16:59:28,753 INFO Connection release mode: auto
+2012-10-07 16:59:28,754 INFO Maximum outer join fetch depth: 2
+2012-10-07 16:59:28,754 INFO Default batch fetch size: 1
+2012-10-07 16:59:28,754 INFO Generate SQL with comments: disabled
+2012-10-07 16:59:28,754 INFO Order SQL updates by primary key: disabled
+2012-10-07 16:59:28,754 INFO Order SQL inserts for batching: disabled
+2012-10-07 16:59:28,754 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 16:59:28,756 INFO Using ASTQueryTranslatorFactory
+2012-10-07 16:59:28,756 INFO Query language substitutions: {}
+2012-10-07 16:59:28,756 INFO JPA-QL strict compliance: enabled
+2012-10-07 16:59:28,756 INFO Second-level cache: enabled
+2012-10-07 16:59:28,757 INFO Query cache: disabled
+2012-10-07 16:59:28,757 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 16:59:28,757 INFO Optimize cache for minimal puts: disabled
+2012-10-07 16:59:28,758 INFO Structured second-level cache entries: disabled
+2012-10-07 16:59:28,762 INFO Statistics: disabled
+2012-10-07 16:59:28,762 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 16:59:28,762 INFO Default entity-mode: pojo
+2012-10-07 16:59:28,762 INFO Named query checking : enabled
+2012-10-07 16:59:28,762 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 16:59:28,775 INFO building session factory
+2012-10-07 16:59:28,780 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@7c9ed5d6
+2012-10-07 16:59:28,781 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@1fe91485
+2012-10-07 16:59:28,781 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 16:59:28,781 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 16:59:28,781 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@5472fe25
+2012-10-07 16:59:28,781 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@498b5a73
+2012-10-07 16:59:28,781 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@5bdf59bd
+2012-10-07 16:59:28,781 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@247cb66a
+2012-10-07 16:59:28,781 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@247cb66a
+2012-10-07 16:59:28,953 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 16:59:28,958 INFO Running hbm2ddl schema update
+2012-10-07 16:59:28,958 INFO fetching database metadata
+2012-10-07 16:59:28,970 INFO updating schema
+2012-10-07 16:59:29,000 INFO table found: cinema.acteur
+2012-10-07 16:59:29,000 INFO columns: [personne_id, id, role]
+2012-10-07 16:59:29,000 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 16:59:29,000 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 16:59:29,010 INFO table found: cinema.film
+2012-10-07 16:59:29,010 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 16:59:29,010 INFO foreign keys: []
+2012-10-07 16:59:29,010 INFO indexes: [titreindex, primary]
+2012-10-07 16:59:29,017 INFO table found: cinema.genre
+2012-10-07 16:59:29,017 INFO columns: [label]
+2012-10-07 16:59:29,017 INFO foreign keys: []
+2012-10-07 16:59:29,017 INFO indexes: [primary]
+2012-10-07 16:59:29,156 INFO table found: cinema.personne
+2012-10-07 16:59:29,156 INFO columns: [id, biographie, photo, nom]
+2012-10-07 16:59:29,156 INFO foreign keys: []
+2012-10-07 16:59:29,156 INFO indexes: [nomindex, primary]
+2012-10-07 16:59:29,200 INFO table found: cinema.filmacteur
+2012-10-07 16:59:29,201 INFO columns: [acteurid, rolefk]
+2012-10-07 16:59:29,201 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 16:59:29,201 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 16:59:29,214 INFO table found: cinema.filmgenres
+2012-10-07 16:59:29,214 INFO columns: [genreid, genresfk]
+2012-10-07 16:59:29,214 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 16:59:29,214 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 16:59:29,226 INFO table found: cinema.filmrealisateur
+2012-10-07 16:59:29,226 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 16:59:29,226 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 16:59:29,226 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 16:59:29,227 INFO schema update complete
+2012-10-07 16:59:31,045 ERROR Retrieve movie problem with movie id 54639 : {} 
+2012-10-07 16:59:31,542 ERROR Retrieve movie problem with movie id 183099 : {} 
+2012-10-07 16:59:32,223 ERROR Retrieve movie problem with movie id 180179 : {} 
+2012-10-07 16:59:32,689 ERROR Retrieve movie problem with movie id 44903 : {} 
+2012-10-07 16:59:33,457 ERROR Retrieve movie problem with movie id 180314 : {} 
+2012-10-07 16:59:33,516 ERROR Retrieve movie problem with movie id 44903 : {} 
+2012-10-07 16:59:34,083 ERROR Retrieve movie problem with movie id 177805 : {} 
+2012-10-07 16:59:34,786 ERROR Retrieve movie problem with movie id 112337 : {} 
+2012-10-07 16:59:35,739 ERROR Retrieve movie problem with movie id 136181 : {} 
+2012-10-07 16:59:36,368 ERROR Retrieve movie problem with movie id 35102 : {} 
+2012-10-07 16:59:37,259 ERROR Retrieve movie problem with movie id 134931 : {} 
+2012-10-07 16:59:37,771 ERROR Retrieve movie problem with movie id 136248 : {} 
+2012-10-07 16:59:38,203 ERROR Retrieve movie problem with movie id 59082 : {} 
+2012-10-07 16:59:38,737 ERROR Retrieve movie problem with movie id 179438 : {} 
+2012-10-07 16:59:39,398 ERROR Retrieve movie problem with movie id 186586 : {} 
+2012-10-07 16:59:40,061 ERROR Retrieve movie problem with movie id 49757 : {} 
+2012-10-07 16:59:40,066 INFO closing
+2012-10-07 17:01:46,465 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 17:01:46,476 INFO Hibernate 3.6.9.Final
+2012-10-07 17:01:46,478 INFO hibernate.properties not found
+2012-10-07 17:01:46,480 INFO Bytecode provider name : javassist
+2012-10-07 17:01:46,483 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 17:01:46,538 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 17:01:46,554 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 17:01:46,750 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 17:01:46,782 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:01:46,822 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 17:01:46,822 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:01:46,830 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 17:01:46,830 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 17:01:46,831 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 17:01:46,831 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 17:01:46,874 INFO Hibernate Validator not found: ignoring
+2012-10-07 17:01:46,886 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 17:01:47,086 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 17:01:47,090 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 17:01:47,094 INFO Using provided datasource
+2012-10-07 17:01:47,289 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 17:01:47,298 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 17:01:47,298 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 17:01:47,301 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 17:01:47,302 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 17:01:47,302 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 17:01:47,302 INFO Automatic session close at end of transaction: disabled
+2012-10-07 17:01:47,302 INFO JDBC batch size: 15
+2012-10-07 17:01:47,302 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 17:01:47,303 INFO Scrollable result sets: enabled
+2012-10-07 17:01:47,303 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 17:01:47,303 INFO Connection release mode: auto
+2012-10-07 17:01:47,304 INFO Maximum outer join fetch depth: 2
+2012-10-07 17:01:47,304 INFO Default batch fetch size: 1
+2012-10-07 17:01:47,304 INFO Generate SQL with comments: disabled
+2012-10-07 17:01:47,304 INFO Order SQL updates by primary key: disabled
+2012-10-07 17:01:47,304 INFO Order SQL inserts for batching: disabled
+2012-10-07 17:01:47,304 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 17:01:47,306 INFO Using ASTQueryTranslatorFactory
+2012-10-07 17:01:47,306 INFO Query language substitutions: {}
+2012-10-07 17:01:47,306 INFO JPA-QL strict compliance: enabled
+2012-10-07 17:01:47,306 INFO Second-level cache: enabled
+2012-10-07 17:01:47,306 INFO Query cache: disabled
+2012-10-07 17:01:47,306 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 17:01:47,307 INFO Optimize cache for minimal puts: disabled
+2012-10-07 17:01:47,307 INFO Structured second-level cache entries: disabled
+2012-10-07 17:01:47,311 INFO Statistics: disabled
+2012-10-07 17:01:47,311 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 17:01:47,311 INFO Default entity-mode: pojo
+2012-10-07 17:01:47,312 INFO Named query checking : enabled
+2012-10-07 17:01:47,312 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 17:01:47,325 INFO building session factory
+2012-10-07 17:01:47,330 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@498b5a73
+2012-10-07 17:01:47,330 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@5bdf59bd
+2012-10-07 17:01:47,330 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@247cb66a
+2012-10-07 17:01:47,330 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@77abfbdc
+2012-10-07 17:01:47,331 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@3c2465e5
+2012-10-07 17:01:47,331 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@799dbc3b
+2012-10-07 17:01:47,331 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@799dbc3b
+2012-10-07 17:01:47,331 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@62b103dd
+2012-10-07 17:01:47,331 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@62b103dd
+2012-10-07 17:01:47,501 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 17:01:47,506 INFO Running hbm2ddl schema update
+2012-10-07 17:01:47,506 INFO fetching database metadata
+2012-10-07 17:01:47,518 INFO updating schema
+2012-10-07 17:01:47,579 INFO table found: cinema.acteur
+2012-10-07 17:01:47,579 INFO columns: [personne_id, id, role]
+2012-10-07 17:01:47,579 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 17:01:47,579 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 17:01:47,735 INFO table found: cinema.film
+2012-10-07 17:01:47,735 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 17:01:47,735 INFO foreign keys: []
+2012-10-07 17:01:47,735 INFO indexes: [titreindex, primary]
+2012-10-07 17:01:47,743 INFO table found: cinema.genre
+2012-10-07 17:01:47,743 INFO columns: [label]
+2012-10-07 17:01:47,743 INFO foreign keys: []
+2012-10-07 17:01:47,743 INFO indexes: [primary]
+2012-10-07 17:01:47,849 INFO table found: cinema.personne
+2012-10-07 17:01:47,849 INFO columns: [id, biographie, photo, nom]
+2012-10-07 17:01:47,849 INFO foreign keys: []
+2012-10-07 17:01:47,849 INFO indexes: [nomindex, primary]
+2012-10-07 17:01:47,889 INFO table found: cinema.filmacteur
+2012-10-07 17:01:47,890 INFO columns: [acteurid, rolefk]
+2012-10-07 17:01:47,890 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:01:47,890 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:01:47,904 INFO table found: cinema.filmgenres
+2012-10-07 17:01:47,904 INFO columns: [genreid, genresfk]
+2012-10-07 17:01:47,904 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:01:47,904 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:01:47,916 INFO table found: cinema.filmrealisateur
+2012-10-07 17:01:47,916 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 17:01:47,916 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:01:47,916 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:01:47,916 INFO schema update complete
+2012-10-07 17:03:09,312 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 17:03:09,322 INFO Hibernate 3.6.9.Final
+2012-10-07 17:03:09,324 INFO hibernate.properties not found
+2012-10-07 17:03:09,327 INFO Bytecode provider name : javassist
+2012-10-07 17:03:09,330 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 17:03:09,386 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 17:03:09,402 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 17:03:09,593 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 17:03:09,626 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 17:03:09,700 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 17:03:09,700 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 17:03:09,701 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 17:03:09,701 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:03:09,707 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 17:03:09,707 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:03:09,718 INFO Hibernate Validator not found: ignoring
+2012-10-07 17:03:09,731 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 17:03:09,928 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 17:03:09,933 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 17:03:09,937 INFO Using provided datasource
+2012-10-07 17:03:10,130 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 17:03:10,140 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 17:03:10,140 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 17:03:10,142 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 17:03:10,144 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 17:03:10,144 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 17:03:10,144 INFO Automatic session close at end of transaction: disabled
+2012-10-07 17:03:10,144 INFO JDBC batch size: 15
+2012-10-07 17:03:10,144 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 17:03:10,145 INFO Scrollable result sets: enabled
+2012-10-07 17:03:10,145 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 17:03:10,145 INFO Connection release mode: auto
+2012-10-07 17:03:10,145 INFO Maximum outer join fetch depth: 2
+2012-10-07 17:03:10,146 INFO Default batch fetch size: 1
+2012-10-07 17:03:10,146 INFO Generate SQL with comments: disabled
+2012-10-07 17:03:10,146 INFO Order SQL updates by primary key: disabled
+2012-10-07 17:03:10,146 INFO Order SQL inserts for batching: disabled
+2012-10-07 17:03:10,146 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 17:03:10,148 INFO Using ASTQueryTranslatorFactory
+2012-10-07 17:03:10,148 INFO Query language substitutions: {}
+2012-10-07 17:03:10,148 INFO JPA-QL strict compliance: enabled
+2012-10-07 17:03:10,148 INFO Second-level cache: enabled
+2012-10-07 17:03:10,149 INFO Query cache: disabled
+2012-10-07 17:03:10,149 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 17:03:10,149 INFO Optimize cache for minimal puts: disabled
+2012-10-07 17:03:10,150 INFO Structured second-level cache entries: disabled
+2012-10-07 17:03:10,154 INFO Statistics: disabled
+2012-10-07 17:03:10,154 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 17:03:10,154 INFO Default entity-mode: pojo
+2012-10-07 17:03:10,154 INFO Named query checking : enabled
+2012-10-07 17:03:10,154 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 17:03:10,167 INFO building session factory
+2012-10-07 17:03:10,172 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@7f423820
+2012-10-07 17:03:10,173 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@5472fe25
+2012-10-07 17:03:10,173 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@5472fe25
+2012-10-07 17:03:10,173 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@498b5a73
+2012-10-07 17:03:10,173 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@5bdf59bd
+2012-10-07 17:03:10,173 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@5bdf59bd
+2012-10-07 17:03:10,173 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@247cb66a
+2012-10-07 17:03:10,173 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@77abfbdc
+2012-10-07 17:03:10,174 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@3c2465e5
+2012-10-07 17:03:10,355 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 17:03:10,360 INFO Running hbm2ddl schema update
+2012-10-07 17:03:10,360 INFO fetching database metadata
+2012-10-07 17:03:10,372 INFO updating schema
+2012-10-07 17:03:10,402 INFO table found: cinema.acteur
+2012-10-07 17:03:10,402 INFO columns: [personne_id, id, role]
+2012-10-07 17:03:10,402 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 17:03:10,402 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 17:03:10,537 INFO table found: cinema.film
+2012-10-07 17:03:10,537 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 17:03:10,537 INFO foreign keys: []
+2012-10-07 17:03:10,537 INFO indexes: [titreindex, primary]
+2012-10-07 17:03:10,544 INFO table found: cinema.genre
+2012-10-07 17:03:10,544 INFO columns: [label]
+2012-10-07 17:03:10,544 INFO foreign keys: []
+2012-10-07 17:03:10,544 INFO indexes: [primary]
+2012-10-07 17:03:10,628 INFO table found: cinema.personne
+2012-10-07 17:03:10,628 INFO columns: [id, biographie, photo, nom]
+2012-10-07 17:03:10,628 INFO foreign keys: []
+2012-10-07 17:03:10,628 INFO indexes: [nomindex, primary]
+2012-10-07 17:03:10,654 INFO table found: cinema.filmacteur
+2012-10-07 17:03:10,654 INFO columns: [acteurid, rolefk]
+2012-10-07 17:03:10,654 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:03:10,654 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:03:10,670 INFO table found: cinema.filmgenres
+2012-10-07 17:03:10,708 INFO columns: [genreid, genresfk]
+2012-10-07 17:03:10,708 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:03:10,708 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:03:10,720 INFO table found: cinema.filmrealisateur
+2012-10-07 17:03:10,720 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 17:03:10,720 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:03:10,720 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:03:10,721 INFO schema update complete
+2012-10-07 17:03:15,362 ERROR Retrieve movie problem with movie id 54639 : {} 
+2012-10-07 17:08:44,065 ERROR Retrieve movie problem with movie id 183099 : {} 
+2012-10-07 17:12:37,369 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 17:12:37,377 INFO Hibernate 3.6.9.Final
+2012-10-07 17:12:37,379 INFO hibernate.properties not found
+2012-10-07 17:12:37,382 INFO Bytecode provider name : javassist
+2012-10-07 17:12:37,384 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 17:12:37,438 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 17:12:37,454 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 17:12:37,629 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 17:12:37,663 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 17:12:37,734 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 17:12:37,734 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:12:37,740 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 17:12:37,740 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 17:12:37,741 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 17:12:37,741 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:12:37,752 INFO Hibernate Validator not found: ignoring
+2012-10-07 17:12:37,765 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 17:12:37,958 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 17:12:37,961 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 17:12:37,965 INFO Using provided datasource
+2012-10-07 17:12:38,152 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 17:12:38,162 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 17:12:38,162 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 17:12:38,164 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 17:12:38,165 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 17:12:38,165 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 17:12:38,182 INFO Automatic session close at end of transaction: disabled
+2012-10-07 17:12:38,182 INFO JDBC batch size: 15
+2012-10-07 17:12:38,182 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 17:12:38,183 INFO Scrollable result sets: enabled
+2012-10-07 17:12:38,183 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 17:12:38,183 INFO Connection release mode: auto
+2012-10-07 17:12:38,184 INFO Maximum outer join fetch depth: 2
+2012-10-07 17:12:38,184 INFO Default batch fetch size: 1
+2012-10-07 17:12:38,184 INFO Generate SQL with comments: disabled
+2012-10-07 17:12:38,184 INFO Order SQL updates by primary key: disabled
+2012-10-07 17:12:38,184 INFO Order SQL inserts for batching: disabled
+2012-10-07 17:12:38,184 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 17:12:38,185 INFO Using ASTQueryTranslatorFactory
+2012-10-07 17:12:38,186 INFO Query language substitutions: {}
+2012-10-07 17:12:38,186 INFO JPA-QL strict compliance: enabled
+2012-10-07 17:12:38,186 INFO Second-level cache: enabled
+2012-10-07 17:12:38,186 INFO Query cache: disabled
+2012-10-07 17:12:38,186 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 17:12:38,187 INFO Optimize cache for minimal puts: disabled
+2012-10-07 17:12:38,187 INFO Structured second-level cache entries: disabled
+2012-10-07 17:12:38,191 INFO Statistics: disabled
+2012-10-07 17:12:38,191 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 17:12:38,191 INFO Default entity-mode: pojo
+2012-10-07 17:12:38,191 INFO Named query checking : enabled
+2012-10-07 17:12:38,192 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 17:12:38,206 INFO building session factory
+2012-10-07 17:12:38,210 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@6951a712
+2012-10-07 17:12:38,210 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@6fafc4c2
+2012-10-07 17:12:38,210 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@7c9ed5d6
+2012-10-07 17:12:38,210 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@1fe91485
+2012-10-07 17:12:38,210 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@1fe91485
+2012-10-07 17:12:38,210 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 17:12:38,210 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 17:12:38,210 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@5472fe25
+2012-10-07 17:12:38,211 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@498b5a73
+2012-10-07 17:12:38,376 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 17:12:38,380 INFO Running hbm2ddl schema update
+2012-10-07 17:12:38,381 INFO fetching database metadata
+2012-10-07 17:12:38,392 INFO updating schema
+2012-10-07 17:12:38,446 INFO table found: cinema.acteur
+2012-10-07 17:12:38,446 INFO columns: [personne_id, id, role]
+2012-10-07 17:12:38,446 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 17:12:38,446 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 17:12:38,538 INFO table found: cinema.film
+2012-10-07 17:12:38,538 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 17:12:38,538 INFO foreign keys: []
+2012-10-07 17:12:38,538 INFO indexes: [titreindex, primary]
+2012-10-07 17:12:38,544 INFO table found: cinema.genre
+2012-10-07 17:12:38,544 INFO columns: [label]
+2012-10-07 17:12:38,545 INFO foreign keys: []
+2012-10-07 17:12:38,545 INFO indexes: [primary]
+2012-10-07 17:12:38,848 INFO table found: cinema.personne
+2012-10-07 17:12:38,848 INFO columns: [id, biographie, photo, nom]
+2012-10-07 17:12:38,848 INFO foreign keys: []
+2012-10-07 17:12:38,849 INFO indexes: [nomindex, primary]
+2012-10-07 17:12:38,878 INFO table found: cinema.filmacteur
+2012-10-07 17:12:38,879 INFO columns: [acteurid, rolefk]
+2012-10-07 17:12:38,879 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:12:38,879 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:12:38,892 INFO table found: cinema.filmgenres
+2012-10-07 17:12:38,892 INFO columns: [genreid, genresfk]
+2012-10-07 17:12:38,892 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:12:38,893 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:12:38,904 INFO table found: cinema.filmrealisateur
+2012-10-07 17:12:38,904 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 17:12:38,904 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:12:38,904 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:12:38,905 INFO schema update complete
+2012-10-07 17:22:42,663 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 17:22:42,673 INFO Hibernate 3.6.9.Final
+2012-10-07 17:22:42,675 INFO hibernate.properties not found
+2012-10-07 17:22:42,677 INFO Bytecode provider name : javassist
+2012-10-07 17:22:42,680 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 17:22:42,736 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 17:22:42,752 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 17:22:42,940 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 17:22:42,980 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 17:22:43,011 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 17:22:43,011 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 17:22:43,050 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 17:22:43,051 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:22:43,052 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 17:22:43,052 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:22:43,068 INFO Hibernate Validator not found: ignoring
+2012-10-07 17:22:43,084 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 17:22:43,287 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 17:22:43,291 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 17:22:43,294 INFO Using provided datasource
+2012-10-07 17:22:43,481 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 17:22:43,490 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 17:22:43,491 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 17:22:43,493 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 17:22:43,494 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 17:22:43,494 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 17:22:43,494 INFO Automatic session close at end of transaction: disabled
+2012-10-07 17:22:43,494 INFO JDBC batch size: 15
+2012-10-07 17:22:43,494 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 17:22:43,495 INFO Scrollable result sets: enabled
+2012-10-07 17:22:43,495 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 17:22:43,495 INFO Connection release mode: auto
+2012-10-07 17:22:43,496 INFO Maximum outer join fetch depth: 2
+2012-10-07 17:22:43,496 INFO Default batch fetch size: 1
+2012-10-07 17:22:43,496 INFO Generate SQL with comments: disabled
+2012-10-07 17:22:43,496 INFO Order SQL updates by primary key: disabled
+2012-10-07 17:22:43,496 INFO Order SQL inserts for batching: disabled
+2012-10-07 17:22:43,496 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 17:22:43,498 INFO Using ASTQueryTranslatorFactory
+2012-10-07 17:22:43,498 INFO Query language substitutions: {}
+2012-10-07 17:22:43,498 INFO JPA-QL strict compliance: enabled
+2012-10-07 17:22:43,498 INFO Second-level cache: enabled
+2012-10-07 17:22:43,498 INFO Query cache: disabled
+2012-10-07 17:22:43,498 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 17:22:43,499 INFO Optimize cache for minimal puts: disabled
+2012-10-07 17:22:43,499 INFO Structured second-level cache entries: disabled
+2012-10-07 17:22:43,502 INFO Statistics: disabled
+2012-10-07 17:22:43,502 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 17:22:43,503 INFO Default entity-mode: pojo
+2012-10-07 17:22:43,503 INFO Named query checking : enabled
+2012-10-07 17:22:43,503 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 17:22:43,516 INFO building session factory
+2012-10-07 17:22:43,521 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@7c9ed5d6
+2012-10-07 17:22:43,521 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@1fe91485
+2012-10-07 17:22:43,521 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 17:22:43,521 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@7f423820
+2012-10-07 17:22:43,521 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@5472fe25
+2012-10-07 17:22:43,522 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@498b5a73
+2012-10-07 17:22:43,522 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@5bdf59bd
+2012-10-07 17:22:43,522 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@247cb66a
+2012-10-07 17:22:43,522 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@247cb66a
+2012-10-07 17:22:43,688 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 17:22:43,692 INFO Running hbm2ddl schema update
+2012-10-07 17:22:43,692 INFO fetching database metadata
+2012-10-07 17:22:43,704 INFO updating schema
+2012-10-07 17:22:43,752 INFO table found: cinema.acteur
+2012-10-07 17:22:43,752 INFO columns: [personne_id, id, role]
+2012-10-07 17:22:43,752 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 17:22:43,752 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 17:22:43,891 INFO table found: cinema.film
+2012-10-07 17:22:43,891 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 17:22:43,891 INFO foreign keys: []
+2012-10-07 17:22:43,891 INFO indexes: [titreindex, primary]
+2012-10-07 17:22:43,898 INFO table found: cinema.genre
+2012-10-07 17:22:43,898 INFO columns: [label]
+2012-10-07 17:22:43,898 INFO foreign keys: []
+2012-10-07 17:22:43,898 INFO indexes: [primary]
+2012-10-07 17:22:44,037 INFO table found: cinema.personne
+2012-10-07 17:22:44,037 INFO columns: [id, biographie, photo, nom]
+2012-10-07 17:22:44,037 INFO foreign keys: []
+2012-10-07 17:22:44,037 INFO indexes: [nomindex, primary]
+2012-10-07 17:22:44,046 INFO table found: cinema.filmacteur
+2012-10-07 17:22:44,046 INFO columns: [acteurid, rolefk]
+2012-10-07 17:22:44,046 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:22:44,046 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:22:44,060 INFO table found: cinema.filmgenres
+2012-10-07 17:22:44,060 INFO columns: [genreid, genresfk]
+2012-10-07 17:22:44,060 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:22:44,060 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:22:44,071 INFO table found: cinema.filmrealisateur
+2012-10-07 17:22:44,071 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 17:22:44,071 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:22:44,071 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:22:44,072 INFO schema update complete
+2012-10-07 17:23:29,247 INFO Hibernate Commons Annotations 3.2.0.Final
+2012-10-07 17:23:29,255 INFO Hibernate 3.6.9.Final
+2012-10-07 17:23:29,257 INFO hibernate.properties not found
+2012-10-07 17:23:29,260 INFO Bytecode provider name : javassist
+2012-10-07 17:23:29,263 INFO using JDK 1.4 java.sql.Timestamp handling
+2012-10-07 17:23:29,317 INFO Hibernate EntityManager 3.6.9.Final
+2012-10-07 17:23:29,337 INFO Processing PersistenceUnitInfo [
+	name: cinema
+	...]
+2012-10-07 17:23:29,531 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
+2012-10-07 17:23:29,564 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
+2012-10-07 17:23:29,601 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
+2012-10-07 17:23:29,601 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 17:23:29,643 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
+2012-10-07 17:23:29,643 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:23:29,645 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
+2012-10-07 17:23:29,645 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:23:29,723 INFO Hibernate Validator not found: ignoring
+2012-10-07 17:23:29,737 INFO Hibernate Validator 4.2.0.Final
+2012-10-07 17:23:29,943 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-10-07 17:23:29,948 INFO Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2012-10-07 17:23:29,953 INFO Using provided datasource
+2012-10-07 17:23:30,157 INFO Using dialect: org.hibernate.dialect.MySQLDialect
+2012-10-07 17:23:30,166 INFO Database ->
+       name : MySQL
+    version : 5.1.51-community
+      major : 5
+      minor : 1
+2012-10-07 17:23:30,166 INFO Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )
+      major : 5
+      minor : 1
+2012-10-07 17:23:30,168 INFO Using default transaction strategy (direct JDBC transactions)
+2012-10-07 17:23:30,170 INFO No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-10-07 17:23:30,170 INFO Automatic flush during beforeCompletion(): disabled
+2012-10-07 17:23:30,170 INFO Automatic session close at end of transaction: disabled
+2012-10-07 17:23:30,170 INFO JDBC batch size: 15
+2012-10-07 17:23:30,170 INFO JDBC batch updates for versioned data: disabled
+2012-10-07 17:23:30,171 INFO Scrollable result sets: enabled
+2012-10-07 17:23:30,171 INFO JDBC3 getGeneratedKeys(): enabled
+2012-10-07 17:23:30,171 INFO Connection release mode: auto
+2012-10-07 17:23:30,172 INFO Maximum outer join fetch depth: 2
+2012-10-07 17:23:30,172 INFO Default batch fetch size: 1
+2012-10-07 17:23:30,172 INFO Generate SQL with comments: disabled
+2012-10-07 17:23:30,172 INFO Order SQL updates by primary key: disabled
+2012-10-07 17:23:30,172 INFO Order SQL inserts for batching: disabled
+2012-10-07 17:23:30,172 INFO Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-10-07 17:23:30,173 INFO Using ASTQueryTranslatorFactory
+2012-10-07 17:23:30,174 INFO Query language substitutions: {}
+2012-10-07 17:23:30,174 INFO JPA-QL strict compliance: enabled
+2012-10-07 17:23:30,174 INFO Second-level cache: enabled
+2012-10-07 17:23:30,174 INFO Query cache: disabled
+2012-10-07 17:23:30,174 INFO Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-10-07 17:23:30,175 INFO Optimize cache for minimal puts: disabled
+2012-10-07 17:23:30,175 INFO Structured second-level cache entries: disabled
+2012-10-07 17:23:30,181 INFO Statistics: disabled
+2012-10-07 17:23:30,181 INFO Deleted entity synthetic identifier rollback: disabled
+2012-10-07 17:23:30,182 INFO Default entity-mode: pojo
+2012-10-07 17:23:30,182 INFO Named query checking : enabled
+2012-10-07 17:23:30,182 INFO Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+2012-10-07 17:23:30,196 INFO building session factory
+2012-10-07 17:23:30,201 INFO Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@6fafc4c2
+2012-10-07 17:23:30,201 INFO Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@7c9ed5d6
+2012-10-07 17:23:30,201 INFO Type registration [blob] overrides previous : org.hibernate.type.BlobType@1fe91485
+2012-10-07 17:23:30,201 INFO Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@1fe91485
+2012-10-07 17:23:30,201 INFO Type registration [clob] overrides previous : org.hibernate.type.ClobType@7f423820
+2012-10-07 17:23:30,201 INFO Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@7f423820
+2012-10-07 17:23:30,201 INFO Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@5472fe25
+2012-10-07 17:23:30,201 INFO Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@498b5a73
+2012-10-07 17:23:30,202 INFO Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@5bdf59bd
+2012-10-07 17:23:30,376 INFO Not binding factory to JNDI, no JNDI name configured
+2012-10-07 17:23:30,380 INFO Running hbm2ddl schema update
+2012-10-07 17:23:30,381 INFO fetching database metadata
+2012-10-07 17:23:30,395 INFO updating schema
+2012-10-07 17:23:30,427 INFO table found: cinema.acteur
+2012-10-07 17:23:30,428 INFO columns: [personne_id, id, role]
+2012-10-07 17:23:30,428 INFO foreign keys: [fk74945c102ba23d2a]
+2012-10-07 17:23:30,428 INFO indexes: [primary, fk74945c102ba23d2a]
+2012-10-07 17:23:30,537 INFO table found: cinema.film
+2012-10-07 17:23:30,538 INFO columns: [id, affiche, datesortie, synopsis, vu, duree, titreoriginal, titre]
+2012-10-07 17:23:30,538 INFO foreign keys: []
+2012-10-07 17:23:30,538 INFO indexes: [titreindex, primary]
+2012-10-07 17:23:30,544 INFO table found: cinema.genre
+2012-10-07 17:23:30,545 INFO columns: [label]
+2012-10-07 17:23:30,545 INFO foreign keys: []
+2012-10-07 17:23:30,545 INFO indexes: [primary]
+2012-10-07 17:23:30,649 INFO table found: cinema.personne
+2012-10-07 17:23:30,649 INFO columns: [id, biographie, photo, nom]
+2012-10-07 17:23:30,649 INFO foreign keys: []
+2012-10-07 17:23:30,649 INFO indexes: [nomindex, primary]
+2012-10-07 17:23:30,685 INFO table found: cinema.filmacteur
+2012-10-07 17:23:30,702 INFO columns: [acteurid, rolefk]
+2012-10-07 17:23:30,703 INFO foreign keys: [fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:23:30,703 INFO indexes: [primary, fk298a327427799d7f, fk298a32744a3f229b]
+2012-10-07 17:23:30,716 INFO table found: cinema.filmgenres
+2012-10-07 17:23:30,716 INFO columns: [genreid, genresfk]
+2012-10-07 17:23:30,716 INFO foreign keys: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:23:30,716 INFO indexes: [fk33e0e9d44dedf321, fk33e0e9d46fdce5b9, primary, fk33e0e9d4338b6d6d, fk33e0e9d4bce327a4, fk33e0e9d4717247d6, fk33e0e9d43335a4ed]
+2012-10-07 17:23:30,728 INFO table found: cinema.filmrealisateur
+2012-10-07 17:23:30,728 INFO columns: [realisateurid, realisateurfk]
+2012-10-07 17:23:30,728 INFO foreign keys: [fk83453263cab2d9af, fk83453263807397ba, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:23:30,728 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
+2012-10-07 17:23:30,729 INFO schema update complete
+2012-10-07 17:25:30,994 INFO closing
+2012-10-07 17:52:02,059 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@9c6a99d]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,068 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@773829d5]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,071 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@8429c19]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,075 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@4d16318b]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,079 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@6c0ec436]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,082 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@3d73eca6]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,084 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@5b5a5cf]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-10-07 17:52:02,087 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@5898bbf6]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:110) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:321) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:211) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:288) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:290) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:231) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50) [junit-4.10.jar:na]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300) [junit-4.10.jar:na]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:174) [spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
+	... 28 common frames omitted
+2012-11-11 01:47:16,808 DEBUG repo is D:/allocine/allogood
+2012-11-11 01:48:01,382 DEBUG repo is D:/allocine/allogood
+2012-11-11 01:48:04,369 DEBUG Emit Loop Time : 291
+2012-11-11 01:48:04,369 DEBUG Map Time : 92
+2012-11-11 01:48:04,369 DEBUG Total Time : 297
+2012-11-11 01:49:18,131 DEBUG Emit Loop Time : 119175
+2012-11-11 01:49:18,131 DEBUG Map Time : 2885
+2012-11-11 01:49:18,131 DEBUG Total Time : 119473
+2012-11-11 01:49:20,883 DEBUG Emit Loop Time : 75002
+2012-11-11 01:49:20,883 DEBUG Map Time : 2591
+2012-11-11 01:49:20,883 DEBUG Total Time : 75189
+2012-11-11 01:54:19,538 DEBUG repo is D:/allocine/allogood
+2012-11-11 01:54:20,814 DEBUG Input count : 3577
+2012-11-11 01:54:20,814 DEBUG Output count : 2910
+2012-11-11 01:54:20,814 DEBUG Emit count : 2910
+2012-11-11 01:54:20,814 DEBUG Emit Loop Time : 287
+2012-11-11 01:54:20,814 DEBUG Map Time : 88
+2012-11-11 01:54:20,814 DEBUG Total Time : 293
+2012-11-11 01:55:33,765 DEBUG Input count : 105472
+2012-11-11 01:55:33,765 DEBUG Output count : 69602
+2012-11-11 01:55:33,765 DEBUG Emit count : 69602
+2012-11-11 01:55:33,765 DEBUG Emit Loop Time : 72138
+2012-11-11 01:55:33,765 DEBUG Map Time : 2426
+2012-11-11 01:55:33,765 DEBUG Total Time : 72325
+2012-11-11 01:59:43,411 DEBUG repo is D:/allocine/allogood
+2012-11-11 01:59:44,760 DEBUG Input count : 3577
+2012-11-11 01:59:44,760 DEBUG Output count : 2910
+2012-11-11 01:59:44,760 DEBUG Emit count : 2910
+2012-11-11 01:59:44,760 DEBUG Output Collection : null
+2012-11-11 01:59:44,760 DEBUG Emit Loop Time : 319
+2012-11-11 01:59:44,760 DEBUG Map Time : 93
+2012-11-11 01:59:44,760 DEBUG Total Time : 325
+2012-11-11 02:01:00,716 DEBUG Input count : 105472
+2012-11-11 02:01:00,716 DEBUG Output count : 69602
+2012-11-11 02:01:00,716 DEBUG Emit count : 69602
+2012-11-11 02:01:00,716 DEBUG Output Collection : null
+2012-11-11 02:01:00,716 DEBUG Emit Loop Time : 75080
+2012-11-11 02:01:00,716 DEBUG Map Time : 2525
+2012-11-11 02:01:00,716 DEBUG Total Time : 75276
+2012-11-11 02:02:45,492 DEBUG repo is D:/allocine/allogood
+2012-11-11 02:02:47,052 DEBUG Input count : 3577
+2012-11-11 02:02:47,053 DEBUG Output count : 2910
+2012-11-11 02:02:47,053 DEBUG Emit count : 2910
+2012-11-11 02:17:22,104 DEBUG repo is D:/allocine/allogood
+2012-11-11 02:17:25,032 DEBUG Input count : 3577
+2012-11-11 02:17:25,033 DEBUG Output count : 2910
+2012-11-11 02:17:25,033 DEBUG Emit count : 2910
+2012-11-11 02:21:50,678 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@3cfbb808
+2012-11-11 02:21:50,678 DEBUG Emit Loop Time : 270
+2012-11-11 02:21:50,678 DEBUG Map Time : 85
+2012-11-11 02:21:50,678 DEBUG Total Time : 277
+2012-11-11 02:23:03,474 DEBUG Input count : 105472
+2012-11-11 02:23:03,475 DEBUG Output count : 69602
+2012-11-11 02:23:03,475 DEBUG Emit count : 69602
+2012-11-11 02:25:32,700 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@6bebe2a7
+2012-11-11 02:25:32,701 DEBUG Emit Loop Time : 71445
+2012-11-11 02:25:32,701 DEBUG Map Time : 2381
+2012-11-11 02:25:32,701 DEBUG Total Time : 71631
+2012-11-11 02:34:00,545 DEBUG repo is D:/allocine/allogood
+2012-11-11 02:34:01,909 DEBUG Input count : 3577
+2012-11-11 02:34:01,909 DEBUG Output count : 2910
+2012-11-11 02:34:01,909 DEBUG Emit count : 2910
+2012-11-11 02:36:19,502 DEBUG repo is D:/allocine/allogood
+2012-11-11 02:49:46,209 DEBUG Input count : 3577
+2012-11-11 02:49:46,210 DEBUG Output count : 2910
+2012-11-11 02:49:46,210 DEBUG Emit count : 2910
+2012-11-11 02:49:56,787 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@67243a58
+2012-11-11 02:56:13,413 DEBUG repo is D:/allocine/allogood
+2012-11-11 03:02:03,617 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:06:11,029 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:07:17,333 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:07:27,451 DEBUG Input count : 3577
+2012-11-11 09:07:27,451 DEBUG Output count : 1
+2012-11-11 09:07:27,451 DEBUG Emit count : 2910
+2012-11-11 09:08:22,082 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@52ea8917
+2012-11-11 09:08:22,082 DEBUG Emit Loop Time : 257
+2012-11-11 09:08:22,082 DEBUG Map Time : 63
+2012-11-11 09:08:22,082 DEBUG Total Time : 258
+2012-11-11 09:08:47,377 DEBUG Input count : 105472
+2012-11-11 09:08:47,377 DEBUG Output count : 1
+2012-11-11 09:08:47,377 DEBUG Emit count : 69602
+2012-11-11 09:09:31,034 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:09:57,611 DEBUG Input count : 3577
+2012-11-11 09:09:57,611 DEBUG Output count : 2910
+2012-11-11 09:09:57,611 DEBUG Emit count : 2910
+2012-11-11 09:10:02,025 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@4bdb635a
+2012-11-11 09:10:02,026 DEBUG Emit Loop Time : 288
+2012-11-11 09:10:02,026 DEBUG Map Time : 91
+2012-11-11 09:10:02,026 DEBUG Total Time : 294
+2012-11-11 09:16:27,091 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:17:06,265 DEBUG Input count : 3577
+2012-11-11 09:17:06,265 DEBUG Output count : 1
+2012-11-11 09:17:06,265 DEBUG Emit count : 2910
+2012-11-11 09:17:09,647 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@49513124
+2012-11-11 09:17:09,647 DEBUG Emit Loop Time : 279
+2012-11-11 09:17:09,647 DEBUG Map Time : 76
+2012-11-11 09:17:09,647 DEBUG Total Time : 279
+2012-11-11 09:18:03,710 DEBUG Input count : 105472
+2012-11-11 09:18:03,711 DEBUG Output count : 1
+2012-11-11 09:18:03,711 DEBUG Emit count : 69602
+2012-11-11 09:18:05,558 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@60edf070
+2012-11-11 09:18:05,559 DEBUG Emit Loop Time : 2037
+2012-11-11 09:18:05,559 DEBUG Map Time : 1770
+2012-11-11 09:18:05,559 DEBUG Total Time : 2037
+2012-11-11 09:18:36,484 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:18:52,646 DEBUG Input count : 3577
+2012-11-11 09:18:52,647 DEBUG Output count : 1
+2012-11-11 09:18:52,647 DEBUG Emit count : 2910
+2012-11-11 09:18:56,846 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@51eaeaa0
+2012-11-11 09:18:56,846 DEBUG Emit Loop Time : 253
+2012-11-11 09:18:56,846 DEBUG Map Time : 65
+2012-11-11 09:18:56,846 DEBUG Total Time : 253
+2012-11-11 09:20:27,614 DEBUG Input count : 105472
+2012-11-11 09:20:27,614 DEBUG Output count : 1
+2012-11-11 09:20:27,614 DEBUG Emit count : 69602
+2012-11-11 09:20:50,158 DEBUG Output Collection : org.springframework.data.mongodb.core.mapreduce.MapReduceResults@208b1a0a
+2012-11-11 09:20:50,158 DEBUG Emit Loop Time : 1982
+2012-11-11 09:20:50,158 DEBUG Map Time : 1721
+2012-11-11 09:20:50,158 DEBUG Total Time : 1983
+2012-11-11 09:21:45,509 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:26:45,940 DEBUG Input count : 3577
+2012-11-11 09:26:45,941 DEBUG Output count : 1
+2012-11-11 09:26:45,941 DEBUG Emit count : 2910
+2012-11-11 09:31:31,219 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:31:41,059 DEBUG Input count : 3577
+2012-11-11 09:31:41,059 DEBUG Output count : 1
+2012-11-11 09:31:41,059 DEBUG Emit count : 2910
+2012-11-11 09:31:41,059 DEBUG Emit Loop Time : 255
+2012-11-11 09:31:41,060 DEBUG Map Time : 66
+2012-11-11 09:31:41,060 DEBUG Total Time : 255
+2012-11-11 09:32:08,132 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:32:10,832 DEBUG Input count : 3577
+2012-11-11 09:32:10,833 DEBUG Output count : 1
+2012-11-11 09:32:10,833 DEBUG Emit count : 2910
+2012-11-11 09:32:10,833 DEBUG Emit Loop Time : 278
+2012-11-11 09:32:10,833 DEBUG Map Time : 65
+2012-11-11 09:32:10,833 DEBUG Total Time : 278
+2012-11-11 09:35:52,752 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:36:13,255 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:38:47,687 DEBUG Input count : 3577
+2012-11-11 09:38:47,688 DEBUG Output count : 1
+2012-11-11 09:38:47,688 DEBUG Emit count : 2910
+2012-11-11 09:38:47,688 DEBUG Emit Loop Time : 232
+2012-11-11 09:38:47,688 DEBUG Map Time : 65
+2012-11-11 09:38:47,688 DEBUG Total Time : 233
+2012-11-11 09:47:02,661 DEBUG Input count : 3577
+2012-11-11 09:47:02,661 DEBUG Output count : 1
+2012-11-11 09:47:02,661 DEBUG Emit count : 2910
+2012-11-11 09:47:02,661 DEBUG Emit Loop Time : 233
+2012-11-11 09:47:02,661 DEBUG Map Time : 65
+2012-11-11 09:47:02,661 DEBUG Total Time : 233
+2012-11-11 09:47:07,060 DEBUG Input count : 105472
+2012-11-11 09:47:07,060 DEBUG Output count : 1
+2012-11-11 09:47:07,060 DEBUG Emit count : 69602
+2012-11-11 09:47:07,060 DEBUG Emit Loop Time : 2023
+2012-11-11 09:47:07,060 DEBUG Map Time : 1758
+2012-11-11 09:47:07,061 DEBUG Total Time : 2023
+2012-11-11 09:47:18,005 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:47:21,710 DEBUG Input count : 3577
+2012-11-11 09:47:21,710 DEBUG Output count : 1
+2012-11-11 09:47:21,710 DEBUG Emit count : 2910
+2012-11-11 09:47:21,710 DEBUG Emit Loop Time : 277
+2012-11-11 09:47:21,710 DEBUG Map Time : 70
+2012-11-11 09:47:21,710 DEBUG Total Time : 277
+2012-11-11 09:47:59,060 DEBUG Input count : 3577
+2012-11-11 09:47:59,060 DEBUG Output count : 1
+2012-11-11 09:47:59,060 DEBUG Emit count : 2910
+2012-11-11 09:47:59,060 DEBUG Emit Loop Time : 238
+2012-11-11 09:47:59,061 DEBUG Map Time : 67
+2012-11-11 09:47:59,061 DEBUG Total Time : 238
+2012-11-11 09:49:32,641 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:50:15,534 DEBUG repo is D:/allocine/allogood
+2012-11-11 09:56:49,573 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:00:38,360 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:00:46,601 DEBUG Input count : 3577
+2012-11-11 10:00:46,601 DEBUG Output count : 1
+2012-11-11 10:00:46,601 DEBUG Emit count : 2910
+2012-11-11 10:00:46,601 DEBUG Emit Loop Time : 255
+2012-11-11 10:00:46,601 DEBUG Map Time : 66
+2012-11-11 10:00:46,601 DEBUG Total Time : 255
+2012-11-11 10:01:01,485 DEBUG Input count : 105472
+2012-11-11 10:01:01,485 DEBUG Output count : 1
+2012-11-11 10:01:01,485 DEBUG Emit count : 69602
+2012-11-11 10:01:01,485 DEBUG Emit Loop Time : 2004
+2012-11-11 10:01:01,485 DEBUG Map Time : 1742
+2012-11-11 10:01:01,485 DEBUG Total Time : 2004
+2012-11-11 10:09:29,858 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:09:30,960 DEBUG Input count : 3577
+2012-11-11 10:09:30,960 DEBUG Output count : 1
+2012-11-11 10:09:30,961 DEBUG Emit count : 2910
+2012-11-11 10:09:30,961 DEBUG Emit Loop Time : 288
+2012-11-11 10:09:30,961 DEBUG Map Time : 73
+2012-11-11 10:09:30,961 DEBUG Total Time : 288
+2012-11-11 10:09:33,068 DEBUG Input count : 105472
+2012-11-11 10:09:33,068 DEBUG Output count : 1
+2012-11-11 10:09:33,068 DEBUG Emit count : 69602
+2012-11-11 10:09:33,068 DEBUG Emit Loop Time : 2103
+2012-11-11 10:09:33,068 DEBUG Map Time : 1829
+2012-11-11 10:09:33,068 DEBUG Total Time : 2103
+2012-11-11 10:10:53,677 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:10:58,959 DEBUG Input count : 3577
+2012-11-11 10:10:58,959 DEBUG Output count : 1
+2012-11-11 10:10:58,960 DEBUG Emit count : 2910
+2012-11-11 10:10:58,960 DEBUG Emit Loop Time : 255
+2012-11-11 10:10:58,960 DEBUG Map Time : 64
+2012-11-11 10:10:58,960 DEBUG Total Time : 255
+2012-11-11 10:11:01,083 DEBUG Input count : 105472
+2012-11-11 10:11:01,083 DEBUG Output count : 1
+2012-11-11 10:11:01,083 DEBUG Emit count : 69602
+2012-11-11 10:11:01,083 DEBUG Emit Loop Time : 2120
+2012-11-11 10:11:01,083 DEBUG Map Time : 1846
+2012-11-11 10:11:01,083 DEBUG Total Time : 2120
+2012-11-11 10:12:35,376 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:12:40,628 DEBUG Input count : 3577
+2012-11-11 10:12:40,628 DEBUG Output count : 1
+2012-11-11 10:12:40,628 DEBUG Emit count : 2910
+2012-11-11 10:12:40,628 DEBUG Emit Loop Time : 271
+2012-11-11 10:12:40,628 DEBUG Map Time : 65
+2012-11-11 10:12:40,628 DEBUG Total Time : 271
+2012-11-11 10:12:42,749 DEBUG Input count : 105472
+2012-11-11 10:12:42,749 DEBUG Output count : 1
+2012-11-11 10:12:42,749 DEBUG Emit count : 69602
+2012-11-11 10:12:42,749 DEBUG Emit Loop Time : 2114
+2012-11-11 10:12:42,749 DEBUG Map Time : 1840
+2012-11-11 10:12:42,749 DEBUG Total Time : 2114
+2012-11-11 10:13:59,365 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:14:00,392 DEBUG Input count : 3577
+2012-11-11 10:14:00,392 DEBUG Output count : 1
+2012-11-11 10:14:00,392 DEBUG Emit count : 2910
+2012-11-11 10:14:00,392 DEBUG Emit Loop Time : 262
+2012-11-11 10:14:00,392 DEBUG Map Time : 68
+2012-11-11 10:14:00,392 DEBUG Total Time : 262
+2012-11-11 10:14:02,442 DEBUG Input count : 105472
+2012-11-11 10:14:02,443 DEBUG Output count : 1
+2012-11-11 10:14:02,443 DEBUG Emit count : 69602
+2012-11-11 10:14:02,443 DEBUG Emit Loop Time : 2047
+2012-11-11 10:14:02,443 DEBUG Map Time : 1779
+2012-11-11 10:14:02,443 DEBUG Total Time : 2047
+2012-11-11 10:15:37,517 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:15:42,798 DEBUG Input count : 3577
+2012-11-11 10:15:42,798 DEBUG Output count : 1
+2012-11-11 10:15:42,798 DEBUG Emit count : 2910
+2012-11-11 10:15:42,798 DEBUG Emit Loop Time : 259
+2012-11-11 10:15:42,798 DEBUG Map Time : 66
+2012-11-11 10:15:42,798 DEBUG Total Time : 259
+2012-11-11 10:15:44,951 DEBUG Input count : 105472
+2012-11-11 10:15:44,951 DEBUG Output count : 1
+2012-11-11 10:15:44,951 DEBUG Emit count : 69602
+2012-11-11 10:15:44,951 DEBUG Emit Loop Time : 2149
+2012-11-11 10:15:44,951 DEBUG Map Time : 1871
+2012-11-11 10:15:44,951 DEBUG Total Time : 2149
+2012-11-11 10:16:51,541 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:16:52,611 DEBUG Input count : 3577
+2012-11-11 10:16:52,611 DEBUG Output count : 1
+2012-11-11 10:16:52,611 DEBUG Emit count : 2910
+2012-11-11 10:16:52,611 DEBUG Emit Loop Time : 279
+2012-11-11 10:16:52,611 DEBUG Map Time : 71
+2012-11-11 10:16:52,611 DEBUG Total Time : 279
+2012-11-11 10:16:54,653 DEBUG Input count : 105472
+2012-11-11 10:16:54,653 DEBUG Output count : 1
+2012-11-11 10:16:54,653 DEBUG Emit count : 69602
+2012-11-11 10:16:54,653 DEBUG Emit Loop Time : 2038
+2012-11-11 10:16:54,653 DEBUG Map Time : 1773
+2012-11-11 10:16:54,653 DEBUG Total Time : 2039
+2012-11-11 10:18:43,006 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:18:44,066 DEBUG Input count : 3577
+2012-11-11 10:18:44,066 DEBUG Output count : 1
+2012-11-11 10:18:44,066 DEBUG Emit count : 2910
+2012-11-11 10:18:44,066 DEBUG Emit Loop Time : 270
+2012-11-11 10:18:44,066 DEBUG Map Time : 72
+2012-11-11 10:18:44,066 DEBUG Total Time : 271
+2012-11-11 10:18:46,068 DEBUG Input count : 105472
+2012-11-11 10:18:46,069 DEBUG Output count : 1
+2012-11-11 10:18:46,069 DEBUG Emit count : 69602
+2012-11-11 10:18:46,069 DEBUG Emit Loop Time : 1999
+2012-11-11 10:18:46,069 DEBUG Map Time : 1735
+2012-11-11 10:18:46,069 DEBUG Total Time : 1999
+2012-11-11 10:21:06,822 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:21:12,273 DEBUG Input count : 3577
+2012-11-11 10:21:12,273 DEBUG Output count : 1
+2012-11-11 10:21:12,273 DEBUG Emit count : 2910
+2012-11-11 10:21:12,273 DEBUG Emit Loop Time : 262
+2012-11-11 10:21:12,273 DEBUG Map Time : 65
+2012-11-11 10:21:12,274 DEBUG Total Time : 262
+2012-11-11 10:21:14,366 DEBUG Input count : 105472
+2012-11-11 10:21:14,367 DEBUG Output count : 1
+2012-11-11 10:21:14,367 DEBUG Emit count : 69602
+2012-11-11 10:21:14,367 DEBUG Emit Loop Time : 2087
+2012-11-11 10:21:14,367 DEBUG Map Time : 1817
+2012-11-11 10:21:14,367 DEBUG Total Time : 2087
+2012-11-11 10:21:54,143 DEBUG repo is D:/allocine/allogood
+2012-11-11 10:21:59,409 DEBUG Input count : 3577
+2012-11-11 10:21:59,410 DEBUG Output count : 1
+2012-11-11 10:21:59,410 DEBUG Emit count : 2910
+2012-11-11 10:21:59,410 DEBUG Emit Loop Time : 262
+2012-11-11 10:21:59,410 DEBUG Map Time : 65
+2012-11-11 10:21:59,410 DEBUG Total Time : 262
+2012-11-11 16:48:28,041 DEBUG repo is D:/allocine/allogood
+2012-11-11 16:48:29,009 DEBUG Input count : 3577
+2012-11-11 16:48:29,009 DEBUG Output count : 1
+2012-11-11 16:48:29,009 DEBUG Emit count : 2910
+2012-11-11 16:48:29,009 DEBUG Emit Loop Time : 286
+2012-11-11 16:48:29,009 DEBUG Map Time : 69
+2012-11-11 16:48:29,009 DEBUG Total Time : 286
+2012-11-11 16:48:35,591 DEBUG Input count : 105472
+2012-11-11 16:48:35,591 DEBUG Output count : 1
+2012-11-11 16:48:35,591 DEBUG Emit count : 69602
+2012-11-11 16:48:35,591 DEBUG Emit Loop Time : 1976
+2012-11-11 16:48:35,591 DEBUG Map Time : 1718
+2012-11-11 16:48:35,592 DEBUG Total Time : 1977
+2012-11-11 16:52:45,483 DEBUG repo is D:/allocine/allogood
+2012-11-11 16:52:46,426 DEBUG Input count : 3577
+2012-11-11 16:52:46,426 DEBUG Output count : 1
+2012-11-11 16:52:46,426 DEBUG Emit count : 2910
+2012-11-11 16:52:46,426 DEBUG Emit Loop Time : 263
+2012-11-11 16:52:46,426 DEBUG Map Time : 68
+2012-11-11 16:52:46,426 DEBUG Total Time : 263
+2012-11-11 16:52:48,402 DEBUG Input count : 105472
+2012-11-11 16:52:48,402 DEBUG Output count : 1
+2012-11-11 16:52:48,402 DEBUG Emit count : 69602
+2012-11-11 16:52:48,402 DEBUG Emit Loop Time : 1969
+2012-11-11 16:52:48,402 DEBUG Map Time : 1708
+2012-11-11 16:52:48,402 DEBUG Total Time : 1969
+2012-11-11 16:54:16,920 DEBUG repo is D:/allocine/allogood
+2012-11-11 16:54:17,931 DEBUG Input count : 3577
+2012-11-11 16:54:17,931 DEBUG Output count : 1
+2012-11-11 16:54:17,931 DEBUG Emit count : 2910
+2012-11-11 16:54:17,931 DEBUG Emit Loop Time : 271
+2012-11-11 16:54:17,931 DEBUG Map Time : 68
+2012-11-11 16:54:17,931 DEBUG Total Time : 271
+2012-11-11 16:54:24,758 DEBUG Input count : 105472
+2012-11-11 16:54:24,758 DEBUG Output count : 1
+2012-11-11 16:54:24,758 DEBUG Emit count : 69602
+2012-11-11 16:54:24,758 DEBUG Emit Loop Time : 2033
+2012-11-11 16:54:24,758 DEBUG Map Time : 1763
+2012-11-11 16:54:24,758 DEBUG Total Time : 2033
+2012-11-11 18:45:34,191 DEBUG repo is D:/allocine/allogood
+2012-11-11 18:45:35,146 DEBUG Input count : 3577
+2012-11-11 18:45:35,146 DEBUG Output count : 1
+2012-11-11 18:45:35,146 DEBUG Emit count : 2910
+2012-11-11 18:45:35,146 DEBUG Emit Loop Time : 288
+2012-11-11 18:45:35,146 DEBUG Map Time : 95
+2012-11-11 18:45:35,147 DEBUG Total Time : 289
+2012-11-11 18:45:46,021 DEBUG Input count : 105472
+2012-11-11 18:45:46,021 DEBUG Output count : 1
+2012-11-11 18:45:46,021 DEBUG Emit count : 69602
+2012-11-11 18:45:46,022 DEBUG Emit Loop Time : 1863
+2012-11-11 18:45:46,022 DEBUG Map Time : 1652
+2012-11-11 18:45:46,022 DEBUG Total Time : 1864
+2012-11-11 20:35:44,663 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:38:37,946 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:41:22,216 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:44:59,516 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:45:28,203 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:46:04,426 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:48:38,133 DEBUG repo is D:/allocine/allogood
+2012-11-11 20:49:43,768 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:03:07,453 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:05:23,148 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:11:02,802 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:12:37,220 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:21:28,560 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:25:11,577 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:27:55,639 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:29:27,201 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:31:15,289 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:32:23,692 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:34:30,457 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:48:32,573 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:53:09,819 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:53:40,960 DEBUG repo is D:/allocine/allogood
+2012-11-11 21:56:52,894 DEBUG repo is D:/allocine/allogood
+2012-11-11 22:00:29,629 DEBUG repo is D:/allocine/allogood

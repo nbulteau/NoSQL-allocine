@@ -1,0 +1,12 @@
+/Acteur.class
+/Film.class
+/FilmDAO.class
+/FilmDAOImpl.class
+/GenericDAO.class
+/GenericDAOWithJPA.class
+/Genre.class
+/GenreDAO.class
+/GenreDAOImpl.class
+/Personne.class
+/PersonneDAO.class
+/PersonneDAOImpl.class

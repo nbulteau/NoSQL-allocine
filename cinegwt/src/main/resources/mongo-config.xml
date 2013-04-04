@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+   			http://www.springframework.org/schema/data/mongo
+    		http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+
+	<beans profile="mongodb">
+		<!-- Default bean name is 'mongo' -->
+		<mongo:mongo host="localhost" port="27017" />
+
+		<!-- Offers convenience methods and automatic mapping between MongoDB JSON 
+			documents and your domain classes. -->
+		<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+			<constructor-arg ref="mongo" />
+			<constructor-arg name="databaseName" value="movies" />
+		</bean>
+
+		<!-- This namespace element will cause the base packages to be scanned 
+			for interfaces extending MongoRepository and create Spring beans for each 
+			of them found. These Spring beans are backed by a generic repository implementation 
+			that provides you a variety of useful methods to work with entities. -->
+		<mongo:repositories base-package="fr.sii.formation.gwt.server.repository.mongodb"
+			mongo-template-ref="mongoTemplate" />
+	</beans>
+</beans>

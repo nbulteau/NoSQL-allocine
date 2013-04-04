@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:schemaLocation='http://dozer.sourceforge.net beanmapping.xsd'>
+	<configuration>
+		<stop-on-errors>true</stop-on-errors>
+		<date-format>dd/MM/yyyy</date-format>
+		<wildcard>true</wildcard>
+
+		<custom-converters>
+			<converter
+				type="fr.sii.formation.gwt.server.service.mapper.GenreKindConverter">
+				<class-a>fr.sii.formation.gwt.server.repository.jpa.Genre</class-a>
+				<class-b>fr.sii.formation.gwt.shared.buisiness.Kind</class-b>
+			</converter>
+		</custom-converters>
+
+	</configuration>
+	<mapping>
+		<class-a>fr.sii.formation.gwt.server.repository.jpa.Film</class-a>
+		<class-b>fr.sii.formation.gwt.shared.buisiness.Movie</class-b>
+
+		<field>
+			<a>acteurs</a>
+			<b>actors</b>
+		</field>
+		<field>
+			<a>datesortie</a>
+			<b>releasedate</b>
+		</field>
+		<field>
+			<a>duree</a>
+			<b>duration</b>
+		</field>
+		<field>
+			<a>genres</a>
+			<b>kinds</b>
+		</field>
+		<field>
+			<a>realisateurs</a>
+			<b>directors</b>
+		</field>
+		<field>
+			<a>titre</a>
+			<b>title</b>
+		</field>
+		<field>
+			<a>titreoriginal</a>
+			<b>originaltitle</b>
+		</field>
+		<field>
+			<a>vu</a>
+			<b>viewed</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>fr.sii.formation.gwt.server.repository.jpa.Acteur</class-a>
+		<class-b>fr.sii.formation.gwt.shared.buisiness.Actor</class-b>
+		<field>
+			<a>personne</a>
+			<b>person</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>fr.sii.formation.gwt.server.repository.jpa.Personne</class-a>
+		<class-b>fr.sii.formation.gwt.shared.buisiness.Person</class-b>
+		<field>
+			<a>nom</a>
+			<b>name</b>
+		</field>
+	</mapping>
+</mappings>
