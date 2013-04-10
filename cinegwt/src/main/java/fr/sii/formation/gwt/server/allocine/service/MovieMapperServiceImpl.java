@@ -10,12 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import fr.sii.formation.gwt.server.allocine.buisiness.AlloCineMovie;
 import fr.sii.formation.gwt.server.allocine.buisiness.CastMember;
 import fr.sii.formation.gwt.server.allocine.buisiness.Genre;
+import fr.sii.formation.gwt.server.allocine.buisiness.Movie;
 import fr.sii.formation.gwt.shared.buisiness.Actor;
 import fr.sii.formation.gwt.shared.buisiness.Kind;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
 import fr.sii.formation.gwt.shared.buisiness.Person;
 
 @Service("movieMapperService")
@@ -31,17 +30,17 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 	}
 
 	@Override
-	public Movie convertToBuisinessObject(AlloCineMovie alloCineMovie) throws ConvertException {
-		LOGGER.debug("Convert movie : {}", alloCineMovie.getMovie().getTitle());
+	public fr.sii.formation.gwt.shared.buisiness.Movie convertToBuisinessObject(Movie alloCineMovie) throws ConvertException {
+		LOGGER.debug("Convert movie : {}", alloCineMovie.getTitle());
 
-		Movie movie = new Movie(alloCineMovie.getMovie().getCode(), alloCineMovie.getMovie().getTitle(), alloCineMovie
-				.getMovie().getOriginalTitle());
+		fr.sii.formation.gwt.shared.buisiness.Movie movie = new fr.sii.formation.gwt.shared.buisiness.Movie(alloCineMovie.getCode(), alloCineMovie.getTitle(),
+				alloCineMovie.getOriginalTitle());
 
 		// releasedate
 		Date releaseDate = null;
 		String releaseDateString = null;
-		if (alloCineMovie.getMovie().getRelease() != null) {
-			releaseDateString = alloCineMovie.getMovie().getRelease().getReleaseDate();
+		if (alloCineMovie.getRelease() != null) {
+			releaseDateString = alloCineMovie.getRelease().getReleaseDate();
 		}
 		if (releaseDateString != null) {
 			SimpleDateFormat sdf = null;
@@ -64,12 +63,12 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 		movie.setReleasedate(releaseDate);
 
 		// duration
-		movie.setDuration(alloCineMovie.getMovie().getRuntime());
+		movie.setDuration(alloCineMovie.getRuntime());
 
 		// directors
 		List<Person> directors = new ArrayList<Person>();
-		if (alloCineMovie.getMovie().getCastMember() != null) {
-			for (CastMember castMember : alloCineMovie.getMovie().getCastMember()) {
+		if (alloCineMovie.getCastMember() != null) {
+			for (CastMember castMember : alloCineMovie.getCastMember()) {
 				if (castMember.getActivity().getCode() == DIRECTOR) {
 					directors.add(retrievePerson(castMember));
 				}
@@ -80,8 +79,8 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 
 		// actors
 		List<Actor> actors = new ArrayList<Actor>();
-		if (alloCineMovie.getMovie().getCastMember() != null) {
-			for (CastMember castMember : alloCineMovie.getMovie().getCastMember()) {
+		if (alloCineMovie.getCastMember() != null) {
+			for (CastMember castMember : alloCineMovie.getCastMember()) {
 				if (castMember.getActivity().getCode() == ACTOR) {
 					actors.add(retrieveActor(castMember));
 				}
@@ -92,29 +91,29 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 
 		// kinds
 		List<Kind> kinds = new ArrayList<Kind>();
-		if (alloCineMovie.getMovie().getGenre() != null) {
-			for (Genre genre : alloCineMovie.getMovie().getGenre()) {
+		if (alloCineMovie.getGenre() != null) {
+			for (Genre genre : alloCineMovie.getGenre()) {
 				kinds.add(Kind.getKindByLabel(genre.get$()));
 			}
 		}
 		movie.getKinds().addAll(kinds);
 
 		// synopsis
-		movie.setSynopsis(alloCineMovie.getMovie().getSynopsis());
+		movie.setSynopsis(alloCineMovie.getSynopsis());
 
 		// poster
-		if (alloCineMovie.getMovie().getPoster() != null) {
-			String href = alloCineMovie.getMovie().getPoster().getHref();
+		if (alloCineMovie.getPoster() != null) {
+			String href = alloCineMovie.getPoster().getHref();
 			if (href != null) {
 				movie.setPosterHref(href);
 			}
 		}
 
 		// pressRating
-		movie.setPressRating(alloCineMovie.getMovie().getStatistics().getPressRating());
+		movie.setPressRating(alloCineMovie.getStatistics().getPressRating());
 
 		// userRating
-		movie.setUserRating(alloCineMovie.getMovie().getStatistics().getUserRating());
+		movie.setUserRating(alloCineMovie.getStatistics().getUserRating());
 
 		return movie;
 	}

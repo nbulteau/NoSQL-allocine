@@ -1,52 +1,58 @@
 package fr.sii.formation.gwt.server.service.jpa;
 
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import fr.sii.formation.gwt.server.allocine.service.AlloCineService;
+import fr.sii.formation.gwt.server.service.MovieService;
 import fr.sii.formation.gwt.server.service.MovieServiceException;
-import fr.sii.formation.gwt.server.service.PopulateService;
+import fr.sii.formation.gwt.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
 // @ActiveProfiles({ "jpa", "mongodb" })
-@ActiveProfiles({ "jpa" })
+// @ActiveProfiles({ "jpa" })
 public class JPAMovieServiceImplTest {
 
 	private static final int CONFETTI_108988 = 108988;
 
-	// @Autowired
-	// @Qualifier("jpaMovieService")
-	// private MovieService filmService;
-	//
-	// @Test
-	// @Ignore
-	// public void testFindById() {
-	// // "Alien, le huitième passager" id
-	// long idMovie = 62;
-	//
-	// Movie movie = filmService.findById(idMovie);
-	//
-	// Assert.assertEquals(idMovie, movie.getId());
-	// }
+	@Autowired
+	@Qualifier("jpaMovieService")
+	private MovieService filmService;
+
+	@Test
+	@Ignore
+	public void testFindById() {
+		// "Alien, le huitième passager" id
+		long idMovie = 62;
+
+		Movie movie = filmService.findById(idMovie);
+
+		Assert.assertEquals(idMovie, movie.getId());
+	}
 
 	@Autowired
-	private PopulateService populateService;
+	private AlloCineService alloCineService;
 
 	@Test
 	// @Ignore
 	public void populate() throws MovieServiceException {
 
 		String fileName = "D:\\Users\\Nicolas\\Documents\\My Dropbox\\vu.txt";
-		populateService.populate(fileName);
+		List<Movie> movies = alloCineService.retrieveMovies(fileName);
 	}
 
-	// @Autowired
-	// @Qualifier("mongoDBMovieService")
-	// MovieService movieService;
+	@Autowired
+	@Qualifier("mongoDBMovieService")
+	MovieService movieService;
 	//
 	// @Test
 	// @Ignore

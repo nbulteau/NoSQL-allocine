@@ -1,10 +1,13 @@
 package fr.sii.formation.gwt.server.allocine.repository;
 
-import fr.sii.formation.gwt.server.allocine.buisiness.AlloCineMovie;
+import java.util.List;
 
-public interface AlloCineRepository
-{
+import fr.sii.formation.gwt.server.allocine.buisiness.Movie;
 
-	public abstract AlloCineMovie retrieveMovie(long idMovie) throws RetrieveException;
+public interface AlloCineRepository {
+
+	Movie retrieveMovie(long idMovie) throws RetrieveException;
+
+	List<Movie> retrieveMovielist() throws RetrieveException;
 
 }

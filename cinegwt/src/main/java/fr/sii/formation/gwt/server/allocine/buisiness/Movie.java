@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-public class Movie
-{
+public class Movie {
 	private List<CastMember> castMember;
 
 	private CastingShort castingShort;
@@ -52,241 +51,235 @@ public class Movie
 
 	private Code movieCertificate;
 
-	public List<CastMember> getCastMember()
-	{
+	private Code color;
+
+	private FormatList formatList;
+
+	private List<Code> language;
+
+	private String budget;
+
+	public List<CastMember> getCastMember() {
 		return this.castMember;
 	}
 
-	public void setCastMember(List<CastMember> castMember)
-	{
+	public void setCastMember(List<CastMember> castMember) {
 		this.castMember = castMember;
 	}
 
-	public CastingShort getCastingShort()
-	{
+	public CastingShort getCastingShort() {
 		return this.castingShort;
 	}
 
-	public void setCastingShort(CastingShort castingShort)
-	{
+	public void setCastingShort(CastingShort castingShort) {
 		this.castingShort = castingShort;
 	}
 
-	public long getCode()
-	{
+	public long getCode() {
 		return this.code;
 	}
 
-	public void setCode(long code)
-	{
+	public void setCode(long code) {
 		this.code = code;
 	}
 
-	public List<Feature> getFeature()
-	{
+	public List<Feature> getFeature() {
 		return this.feature;
 	}
 
-	public void setFeature(List<Feature> feature)
-	{
+	public void setFeature(List<Feature> feature) {
 		this.feature = feature;
 	}
 
-	public List<Genre> getGenre()
-	{
+	public List<Genre> getGenre() {
 		return this.genre;
 	}
 
-	public void setGenre(List<Genre> genre)
-	{
+	public void setGenre(List<Genre> genre) {
 		this.genre = genre;
 	}
 
-	public String getKeywords()
-	{
+	public String getKeywords() {
 		return this.keywords;
 	}
 
-	public void setKeywords(String keywords)
-	{
+	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
 
-	public List<Link> getLink()
-	{
+	public List<Link> getLink() {
 		return this.link;
 	}
 
-	public void setLink(List<Link> link)
-	{
+	public void setLink(List<Link> link) {
 		this.link = link;
 	}
 
-	public MovieType getMovieType()
-	{
+	public MovieType getMovieType() {
 		return this.movieType;
 	}
 
-	public void setMovieType(MovieType movieType)
-	{
+	public void setMovieType(MovieType movieType) {
 		this.movieType = movieType;
 	}
 
-	public List<Nationality> getNationality()
-	{
+	public List<Nationality> getNationality() {
 		return this.nationality;
 	}
 
-	public void setNationality(List<Nationality> nationality)
-	{
+	public void setNationality(List<Nationality> nationality) {
 		this.nationality = nationality;
 	}
 
 	@JsonIgnore
-	public List<News> getNews()
-	{
+	public List<News> getNews() {
 		return this.news;
 	}
 
 	@JsonIgnore
-	public void setNews(List<News> news)
-	{
+	public void setNews(List<News> news) {
 		this.news = news;
 	}
 
-	public String getOriginalTitle()
-	{
+	public String getOriginalTitle() {
 		return this.originalTitle;
 	}
 
-	public void setOriginalTitle(String originalTitle)
-	{
+	public void setOriginalTitle(String originalTitle) {
 		this.originalTitle = originalTitle;
 	}
 
-	public Poster getPoster()
-	{
+	public Poster getPoster() {
 		return this.poster;
 	}
 
-	public void setPoster(Poster poster)
-	{
+	public void setPoster(Poster poster) {
 		this.poster = poster;
 	}
 
-	public Number getProductionYear()
-	{
+	public Number getProductionYear() {
 		return this.productionYear;
 	}
 
-	public void setProductionYear(Number productionYear)
-	{
+	public void setProductionYear(Number productionYear) {
 		this.productionYear = productionYear;
 	}
 
-	public Release getRelease()
-	{
+	public Release getRelease() {
 		return this.release;
 	}
 
-	public void setRelease(Release release)
-	{
+	public void setRelease(Release release) {
 		this.release = release;
 	}
 
-	public int getRuntime()
-	{
+	public int getRuntime() {
 		return this.runtime;
 	}
 
-	public void setRuntime(int runtime)
-	{
+	public void setRuntime(int runtime) {
 		this.runtime = runtime;
 	}
 
-	public Statistics getStatistics()
-	{
+	public Statistics getStatistics() {
 		return this.statistics;
 	}
 
-	public void setStatistics(Statistics statistics)
-	{
+	public void setStatistics(Statistics statistics) {
 		this.statistics = statistics;
 	}
 
-	public String getSynopsis()
-	{
+	public String getSynopsis() {
 		return this.synopsis;
 	}
 
-	public void setSynopsis(String synopsis)
-	{
+	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
 
-	public String getSynopsisShort()
-	{
+	public String getSynopsisShort() {
 		return this.synopsisShort;
 	}
 
-	public void setSynopsisShort(String synopsisShort)
-	{
+	public void setSynopsisShort(String synopsisShort) {
 		this.synopsisShort = synopsisShort;
 	}
 
 	@JsonIgnore
-	public List<Code> getTag()
-	{
+	public List<Code> getTag() {
 		return this.tag;
 	}
 
 	@JsonIgnore
-	public void setTag(List<Code> tag)
-	{
+	public void setTag(List<Code> tag) {
 		this.tag = tag;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return this.title;
 	}
 
-	public void setTitle(String title)
-	{
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	public Trailer getTrailer()
-	{
+	public Trailer getTrailer() {
 		return this.trailer;
 	}
 
-	public void setTrailer(Trailer trailer)
-	{
+	public void setTrailer(Trailer trailer) {
 		this.trailer = trailer;
 	}
 
 	@JsonIgnore
-	public List<Trivia> getTrivia()
-	{
+	public List<Trivia> getTrivia() {
 		return this.trivia;
 	}
 
 	@JsonIgnore
-	public void setTrivia(List<Trivia> trivia)
-	{
+	public void setTrivia(List<Trivia> trivia) {
 		this.trivia = trivia;
 	}
 
 	@JsonIgnore
-	public Code getMovieCertificate()
-	{
+	public Code getMovieCertificate() {
 		return movieCertificate;
 	}
 
 	@JsonIgnore
-	public void setMovieCertificate(Code movieCertificate)
-	{
+	public void setMovieCertificate(Code movieCertificate) {
 		this.movieCertificate = movieCertificate;
+	}
+
+	public Code getColor() {
+		return color;
+	}
+
+	public void setColor(Code color) {
+		this.color = color;
+	}
+
+	public FormatList getFormatList() {
+		return formatList;
+	}
+
+	public void setFormatList(FormatList formatList) {
+		this.formatList = formatList;
+	}
+
+	public List<Code> getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(List<Code> language) {
+		this.language = language;
+	}
+
+	public String getBudget() {
+		return budget;
+	}
+
+	public void setBudget(String budget) {
+		this.budget = budget;
 	}
 }

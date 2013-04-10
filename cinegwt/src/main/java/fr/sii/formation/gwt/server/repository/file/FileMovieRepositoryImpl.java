@@ -78,7 +78,7 @@ public class FileMovieRepositoryImpl implements FileMovieRepository {
 	public Movie load(File f, boolean cache) throws IOException, ConvertException {
 		try {
 			AlloCineMovie alloMovie = objectMapper.readValue(f, AlloCineMovie.class);
-			Movie movie = getMovieMapperService().convertToBuisinessObject(alloMovie);
+			Movie movie = getMovieMapperService().convertToBuisinessObject(alloMovie.getMovie());
 			if (cache) {
 				movies.put(movie.getId(), movie);
 			}

@@ -2,12 +2,14 @@ package fr.sii.formation.gwt.server.repository.hbase.complex;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import dataaccess.hbase.repository.HBaseComplexDataRepository;
 import fr.sii.formation.gwt.shared.buisiness.Actor;
 import fr.sii.formation.gwt.shared.buisiness.Movie;
 
+@Profile("hbase")
 @Repository
 public class HBaseActorRepo extends HBaseComplexDataRepository<Long, Object, MovieListRow> {
 	private CollectionView<Long, Long, Movie> movies;

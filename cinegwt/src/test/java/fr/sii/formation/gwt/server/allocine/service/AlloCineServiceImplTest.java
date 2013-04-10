@@ -1,5 +1,7 @@
 package fr.sii.formation.gwt.server.allocine.service;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -8,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import fr.sii.formation.gwt.server.service.MovieServiceException;
 import fr.sii.formation.gwt.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
-@Ignore
 public class AlloCineServiceImplTest {
 
 	@Autowired
@@ -22,6 +24,7 @@ public class AlloCineServiceImplTest {
 
 	private static final String CONDORMAN = "Movie [id=61281, title=Condorman, originaltitle=Condorman, releasedate=Wed Oct 28 00:00:00 CET 1981, duration=5400, directors=[Person [id=51388, name=Charles Jarrott]], actors=[Actor [role=Woody Wilkins, person=Person [id=50506, name=Michael Crawford]], Actor [role=Krokov, person=Person [id=2630, name=Oliver Reed]], Actor [role=Natalia, person=Person [id=3858, name=Barbara Carrera]], Actor [role=Harry Oslo, person=Person [id=3327, name=James Hampton]], Actor [role=Morovich, person=Person [id=916, name=Jean-Pierre Kalfon]], Actor [role=Russ Devlin, person=Person [id=40015, name=Dana Elcar]], Actor [role=Agent russe, person=Person [id=791, name=Vernon Dobtcheff]], Actor [role=Chef de la CIA, person=Person [id=73702, name=Robert Arden]], Actor [role=null, person=Person [id=128125, name=David Pontremoli]]], kinds=[Comedie, Aventure, Action], synopsis=Un auteur de bandes dessinées devient le super-héros qu'il a créé et se trouve mêlé à une affaire d'espionnage dans un pays de l'Est.]";
 
+	@Ignore
 	@Test
 	public void testRetrieveAvatar() {
 		// Avatar id
@@ -32,6 +35,7 @@ public class AlloCineServiceImplTest {
 		Assert.assertEquals(AVATAR, movie.toString());
 	}
 
+	@Ignore
 	@Test
 	public void testRetrieveCondorman() {
 		// Condorman id
@@ -42,4 +46,18 @@ public class AlloCineServiceImplTest {
 		Assert.assertEquals(CONDORMAN, movie.toString());
 	}
 
+	@Test
+	@Ignore
+	public void populate() throws MovieServiceException {
+
+		String fileName = "D:\\Users\\Nicolas\\Documents\\My Dropbox\\vu.txt";
+		List<Movie> movies = alloCineService.retrieveMovies(fileName);
+		System.out.println(movies.size());
+	}
+
+	@Test
+	public void retrieveMovieList() {
+		List<Movie> movies = alloCineService.retrieveMovieList();
+		System.out.println(movies.size());
+	}
 }

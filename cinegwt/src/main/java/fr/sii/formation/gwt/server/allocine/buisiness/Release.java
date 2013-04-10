@@ -1,7 +1,6 @@
 package fr.sii.formation.gwt.server.allocine.buisiness;
 
-public class Release
-{
+public class Release {
 
 	private String releaseDate;
 
@@ -11,56 +10,56 @@ public class Release
 
 	private Code releaseState;
 
+	private Code releaseVersion;
+
 	private Distributor distributor;
 
-	public String getReleaseDate()
-	{
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(String releaseDate)
-	{
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
-	public String getReissueDate()
-	{
+	public String getReissueDate() {
 		return reissueDate;
 	}
 
-	public void setReissueDate(String reissueDate)
-	{
+	public void setReissueDate(String reissueDate) {
 		this.reissueDate = reissueDate;
 	}
 
-	public Code getCountry()
-	{
+	public Code getCountry() {
 		return country;
 	}
 
-	public void setCountry(Code country)
-	{
+	public void setCountry(Code country) {
 		this.country = country;
 	}
 
-	public Code getReleaseState()
-	{
+	public Code getReleaseState() {
 		return releaseState;
 	}
 
-	public void setReleaseState(Code releaseState)
-	{
+	public void setReleaseState(Code releaseState) {
 		this.releaseState = releaseState;
 	}
 
-	public Distributor getDistributor()
-	{
+	public Distributor getDistributor() {
 		return distributor;
 	}
 
-	public void setDistributor(Distributor distributor)
-	{
+	public void setDistributor(Distributor distributor) {
 		this.distributor = distributor;
+	}
+
+	public Code getReleaseVersion() {
+		return releaseVersion;
+	}
+
+	public void setReleaseVersion(Code releaseVersion) {
+		this.releaseVersion = releaseVersion;
 	}
 
 }

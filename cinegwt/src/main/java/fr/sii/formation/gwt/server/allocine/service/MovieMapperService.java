@@ -1,10 +1,8 @@
 package fr.sii.formation.gwt.server.allocine.service;
 
-import fr.sii.formation.gwt.server.allocine.buisiness.AlloCineMovie;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
+import fr.sii.formation.gwt.server.allocine.buisiness.Movie;
 
-public interface MovieMapperService
-{
+public interface MovieMapperService {
 
 	/**
 	 * 
@@ -12,6 +10,6 @@ public interface MovieMapperService
 	 * @return
 	 * @throws ConvertException
 	 */
-	Movie convertToBuisinessObject(AlloCineMovie alloCineMovie) throws ConvertException;
+	fr.sii.formation.gwt.shared.buisiness.Movie convertToBuisinessObject(Movie alloCineMovie) throws ConvertException;
 
 }
