@@ -1,4 +1,4 @@
-2012-10-06 07:57:47,742 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@178c4a7f] to prepare test instance [fr.sii.formation.gwt.server.repository.redis.RedisMovieRepositoryTest@7b6ee3ec]
+2012-10-06 07:57:47,742 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@178c4a7f] to prepare test instance [fr.sii.nosql.server.repository.redis.RedisMovieRepositoryTest@7b6ee3ec]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:157) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -25,7 +25,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mongoDBMovieMapReduceRepositoryImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.data.mongodb.core.MongoOperations fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieMapReduceRepositoryImpl.mongoOperations; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mongoDBMovieMapReduceRepositoryImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.data.mongodb.core.MongoOperations fr.sii.nosql.server.repository.mongodb.MongoDBMovieMapReduceRepositoryImpl.mongoOperations; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -43,7 +43,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.test.context.TestContext.loadApplicationContext(TestContext.java:124) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:148) ~[spring-test-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 24 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.data.mongodb.core.MongoOperations fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieMapReduceRepositoryImpl.mongoOperations; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.data.mongodb.core.MongoOperations fr.sii.nosql.server.repository.mongodb.MongoDBMovieMapReduceRepositoryImpl.mongoOperations; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [org.springframework.data.mongodb.core.MongoOperations] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -63,14 +63,14 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No m
 2012-10-07 16:56:27,173 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 16:56:27,409 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 16:56:27,441 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
-2012-10-07 16:56:27,478 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 16:56:27,479 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
-2012-10-07 16:56:27,488 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 16:56:27,488 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 16:56:27,489 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 16:56:27,489 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 16:56:27,409 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 16:56:27,441 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
+2012-10-07 16:56:27,478 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 16:56:27,479 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
+2012-10-07 16:56:27,488 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 16:56:27,488 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 16:56:27,489 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 16:56:27,489 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
 2012-10-07 16:56:27,526 INFO Hibernate Validator not found: ignoring
 2012-10-07 16:56:27,558 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 16:56:28,073 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -167,14 +167,14 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No m
 2012-10-07 16:57:24,136 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 16:57:24,330 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 16:57:24,362 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 16:57:24,401 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 16:57:24,401 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
-2012-10-07 16:57:24,441 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 16:57:24,441 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
-2012-10-07 16:57:24,443 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 16:57:24,443 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 16:57:24,330 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 16:57:24,362 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 16:57:24,401 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 16:57:24,401 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
+2012-10-07 16:57:24,441 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 16:57:24,441 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
+2012-10-07 16:57:24,443 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 16:57:24,443 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
 2012-10-07 16:57:24,458 INFO Hibernate Validator not found: ignoring
 2012-10-07 16:57:24,470 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 16:57:24,674 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -267,8 +267,8 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 	at java.io.FileInputStream.open(Native Method) ~[na:1.6.0_25]
 	at java.io.FileInputStream.<init>(FileInputStream.java:120) ~[na:1.6.0_25]
 	at java.io.FileInputStream.<init>(FileInputStream.java:79) ~[na:1.6.0_25]
-	at fr.sii.formation.gwt.server.service.PopulateServiceImpl.populate(PopulateServiceImpl.java:35) ~[classes/:na]
-	at fr.sii.formation.gwt.server.service.jpa.JPAMovieServiceImplTest.populate(JPAMovieServiceImplTest.java:44) [test-classes/:na]
+	at fr.sii.nosql.server.service.PopulateServiceImpl.populate(PopulateServiceImpl.java:35) ~[classes/:na]
+	at fr.sii.nosql.server.service.jpa.JPAMovieServiceImplTest.populate(JPAMovieServiceImplTest.java:44) [test-classes/:na]
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.6.0_25]
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) ~[na:1.6.0_25]
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) ~[na:1.6.0_25]
@@ -307,14 +307,14 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 16:59:27,999 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 16:59:28,183 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 16:59:28,215 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 16:59:28,248 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 16:59:28,248 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
-2012-10-07 16:59:28,286 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 16:59:28,287 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
-2012-10-07 16:59:28,292 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 16:59:28,292 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 16:59:28,183 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 16:59:28,215 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 16:59:28,248 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 16:59:28,248 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
+2012-10-07 16:59:28,286 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 16:59:28,287 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
+2012-10-07 16:59:28,292 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 16:59:28,292 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
 2012-10-07 16:59:28,303 INFO Hibernate Validator not found: ignoring
 2012-10-07 16:59:28,316 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 16:59:28,519 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -428,14 +428,14 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 17:01:46,554 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 17:01:46,750 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 17:01:46,782 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
-2012-10-07 17:01:46,822 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 17:01:46,822 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
-2012-10-07 17:01:46,830 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 17:01:46,830 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 17:01:46,831 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 17:01:46,831 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
+2012-10-07 17:01:46,750 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 17:01:46,782 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:01:46,822 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 17:01:46,822 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
+2012-10-07 17:01:46,830 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 17:01:46,830 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 17:01:46,831 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 17:01:46,831 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
 2012-10-07 17:01:46,874 INFO Hibernate Validator not found: ignoring
 2012-10-07 17:01:46,886 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 17:01:47,086 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -532,14 +532,14 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 17:03:09,402 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 17:03:09,593 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 17:03:09,626 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
-2012-10-07 17:03:09,700 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 17:03:09,700 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 17:03:09,701 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 17:03:09,701 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
-2012-10-07 17:03:09,707 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 17:03:09,707 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:03:09,593 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 17:03:09,626 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
+2012-10-07 17:03:09,700 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 17:03:09,700 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 17:03:09,701 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 17:03:09,701 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:03:09,707 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 17:03:09,707 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
 2012-10-07 17:03:09,718 INFO Hibernate Validator not found: ignoring
 2012-10-07 17:03:09,731 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 17:03:09,928 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -638,14 +638,14 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 17:12:37,454 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 17:12:37,629 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 17:12:37,663 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
-2012-10-07 17:12:37,734 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 17:12:37,734 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
-2012-10-07 17:12:37,740 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 17:12:37,740 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 17:12:37,741 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 17:12:37,741 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
+2012-10-07 17:12:37,629 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 17:12:37,663 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
+2012-10-07 17:12:37,734 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 17:12:37,734 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:12:37,740 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 17:12:37,740 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 17:12:37,741 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 17:12:37,741 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
 2012-10-07 17:12:37,752 INFO Hibernate Validator not found: ignoring
 2012-10-07 17:12:37,765 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 17:12:37,958 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -742,14 +742,14 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 17:22:42,752 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 17:22:42,940 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 17:22:42,980 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 17:22:43,011 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 17:22:43,011 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
-2012-10-07 17:22:43,050 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 17:22:43,051 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
-2012-10-07 17:22:43,052 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 17:22:43,052 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:22:42,940 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 17:22:42,980 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 17:22:43,011 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 17:22:43,011 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
+2012-10-07 17:22:43,050 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 17:22:43,051 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
+2012-10-07 17:22:43,052 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 17:22:43,052 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
 2012-10-07 17:22:43,068 INFO Hibernate Validator not found: ignoring
 2012-10-07 17:22:43,084 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 17:22:43,287 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -846,14 +846,14 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 17:23:29,337 INFO Processing PersistenceUnitInfo [
 	name: cinema
 	...]
-2012-10-07 17:23:29,531 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Genre
-2012-10-07 17:23:29,564 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Genre on table Genre
-2012-10-07 17:23:29,601 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Film
-2012-10-07 17:23:29,601 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Film on table Film
-2012-10-07 17:23:29,643 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Personne
-2012-10-07 17:23:29,643 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Personne on table Personne
-2012-10-07 17:23:29,645 INFO Binding entity from annotated class: fr.sii.formation.gwt.server.repository.jpa.Acteur
-2012-10-07 17:23:29,645 INFO Bind entity fr.sii.formation.gwt.server.repository.jpa.Acteur on table Acteur
+2012-10-07 17:23:29,531 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Genre
+2012-10-07 17:23:29,564 INFO Bind entity fr.sii.nosql.server.repository.jpa.Genre on table Genre
+2012-10-07 17:23:29,601 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Film
+2012-10-07 17:23:29,601 INFO Bind entity fr.sii.nosql.server.repository.jpa.Film on table Film
+2012-10-07 17:23:29,643 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Personne
+2012-10-07 17:23:29,643 INFO Bind entity fr.sii.nosql.server.repository.jpa.Personne on table Personne
+2012-10-07 17:23:29,645 INFO Binding entity from annotated class: fr.sii.nosql.server.repository.jpa.Acteur
+2012-10-07 17:23:29,645 INFO Bind entity fr.sii.nosql.server.repository.jpa.Acteur on table Acteur
 2012-10-07 17:23:29,723 INFO Hibernate Validator not found: ignoring
 2012-10-07 17:23:29,737 INFO Hibernate Validator 4.2.0.Final
 2012-10-07 17:23:29,943 INFO Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
@@ -942,8 +942,8 @@ java.io.FileNotFoundException: C:\Users\nbulteau\Dropbox\vu.txt (Le chemin d’a
 2012-10-07 17:23:30,728 INFO indexes: [fk83453263cab2d9af, fk83453263807397ba, primary, fk834532635cef4305, fk83453263d4c86fac]
 2012-10-07 17:23:30,729 INFO schema update complete
 2012-10-07 17:25:30,994 INFO closing
-2012-10-07 17:52:02,059 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@9c6a99d]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,059 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@9c6a99d]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -971,19 +971,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,068 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@773829d5]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,068 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@773829d5]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1011,19 +1011,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,071 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@8429c19]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,071 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@8429c19]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1051,19 +1051,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,075 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@4d16318b]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,075 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@4d16318b]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1091,19 +1091,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,079 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@6c0ec436]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,079 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@6c0ec436]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1131,19 +1131,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,082 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@3d73eca6]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,082 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@3d73eca6]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1171,19 +1171,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,084 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@5b5a5cf]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,084 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@5b5a5cf]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1211,19 +1211,19 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:478) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 28 common frames omitted
-2012-10-07 17:52:02,087 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest@5898bbf6]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2012-10-07 17:52:02,087 ERROR Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@317b1d64] to prepare test instance [fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest@5898bbf6]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:287) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1106) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:374) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
@@ -1251,12 +1251,12 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390) [.cp/:na]
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197) [.cp/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository fr.sii.formation.gwt.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository fr.sii.nosql.server.repository.mongodb.MovieRepositoryImplTest.mongoDBMovieRepository; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:506) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:284) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	... 26 common frames omitted
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No matching bean of type [fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:924) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:793) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707) ~[spring-beans-3.1.1.RELEASE.jar:3.1.1.RELEASE]

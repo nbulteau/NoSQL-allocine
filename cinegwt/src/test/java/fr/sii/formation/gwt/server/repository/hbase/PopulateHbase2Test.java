@@ -10,9 +10,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.repository.file.FileMovieRepository;
-import fr.sii.formation.gwt.server.service.MovieServiceException;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
+import fr.sii.nosql.server.repository.file.FileMovieRepository;
+import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
+import fr.sii.nosql.server.service.MovieServiceException;
+import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")

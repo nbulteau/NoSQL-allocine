@@ -15,13 +15,14 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.repository.file.FileMovieRepository;
-import fr.sii.formation.gwt.server.service.MovieServiceException;
-import fr.sii.formation.gwt.shared.MovieFilter;
-import fr.sii.formation.gwt.shared.buisiness.Actor;
-import fr.sii.formation.gwt.shared.buisiness.Kind;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
-import fr.sii.formation.gwt.shared.buisiness.Person;
+import fr.sii.nosql.server.repository.file.FileMovieRepository;
+import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
+import fr.sii.nosql.server.service.MovieServiceException;
+import fr.sii.nosql.shared.MovieFilter;
+import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.Kind;
+import fr.sii.nosql.shared.buisiness.Movie;
+import fr.sii.nosql.shared.buisiness.Person;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")

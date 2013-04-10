@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.repository.jpa.Film;
-import fr.sii.formation.gwt.server.repository.jpa.FilmDAO;
+import fr.sii.nosql.server.repository.jpa.Film;
+import fr.sii.nosql.server.repository.jpa.FilmDAO;
 
 //@Ignore
 @Profile("jpa")

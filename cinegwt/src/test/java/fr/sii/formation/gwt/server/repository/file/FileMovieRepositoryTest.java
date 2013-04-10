@@ -15,9 +15,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.allocine.repository.AlloCineRepository;
-import fr.sii.formation.gwt.server.allocine.service.AlloCineService;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
+import fr.sii.nosql.server.allocine.repository.AlloCineRepository;
+import fr.sii.nosql.server.allocine.service.AlloCineService;
+import fr.sii.nosql.server.repository.file.FileMovieRepository;
+import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")

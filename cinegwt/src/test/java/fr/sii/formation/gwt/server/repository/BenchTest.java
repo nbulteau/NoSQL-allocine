@@ -13,22 +13,22 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.repository.hbase.HBaseMovieRepository;
-import fr.sii.formation.gwt.server.repository.jpa.Acteur;
-import fr.sii.formation.gwt.server.repository.jpa.Film;
-import fr.sii.formation.gwt.server.repository.jpa.FilmDAO;
-import fr.sii.formation.gwt.server.repository.jpa.Genre;
-import fr.sii.formation.gwt.server.repository.jpa.GenreDAO;
-import fr.sii.formation.gwt.server.repository.jpa.Personne;
-import fr.sii.formation.gwt.server.repository.jpa.PersonneDAO;
-import fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieMapReduceRepository;
-import fr.sii.formation.gwt.server.repository.mongodb.MongoDBMovieRepository;
-import fr.sii.formation.gwt.server.repository.redis.RedisMovieRepository;
-import fr.sii.formation.gwt.shared.MovieFilter;
-import fr.sii.formation.gwt.shared.buisiness.Actor;
-import fr.sii.formation.gwt.shared.buisiness.Kind;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
-import fr.sii.formation.gwt.shared.buisiness.Person;
+import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
+import fr.sii.nosql.server.repository.jpa.Acteur;
+import fr.sii.nosql.server.repository.jpa.Film;
+import fr.sii.nosql.server.repository.jpa.FilmDAO;
+import fr.sii.nosql.server.repository.jpa.Genre;
+import fr.sii.nosql.server.repository.jpa.GenreDAO;
+import fr.sii.nosql.server.repository.jpa.Personne;
+import fr.sii.nosql.server.repository.jpa.PersonneDAO;
+import fr.sii.nosql.server.repository.mongodb.MongoDBMovieMapReduceRepository;
+import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
+import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
+import fr.sii.nosql.shared.MovieFilter;
+import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.Kind;
+import fr.sii.nosql.shared.buisiness.Movie;
+import fr.sii.nosql.shared.buisiness.Person;
 
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)

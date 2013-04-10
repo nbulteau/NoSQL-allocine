@@ -23,7 +23,7 @@
 			for interfaces extending MongoRepository and create Spring beans for each 
 			of them found. These Spring beans are backed by a generic repository implementation 
 			that provides you a variety of useful methods to work with entities. -->
-		<mongo:repositories base-package="fr.sii.formation.gwt.server.repository.mongodb"
+		<mongo:repositories base-package="fr.sii.nosql.server.repository.mongodb"
 			mongo-template-ref="mongoTemplate" />
 	</beans>
 </beans>

@@ -10,7 +10,7 @@
 	<!-- Scans the classpath for annotated components that will be auto-registered 
 		as Spring beans. For example @Controller and @Service. Make sure to set the 
 		correct base-package -->
-	<context:component-scan base-package="fr.sii.formation.gwt.server.repository.jpa" />
+	<context:component-scan base-package="fr.sii.nosql.server.repository.jpa" />
 	
 	<!-- Loads MySQL/JPA/hibernate configuration -->
 	<import resource="mysql-config.xml" />

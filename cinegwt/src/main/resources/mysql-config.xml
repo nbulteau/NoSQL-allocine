@@ -44,12 +44,12 @@
 
 		<!-- Mappers -->
 		<bean id='filmMapper'
-			class='fr.sii.formation.gwt.server.service.mapper.FilmMapperImpl'>
+			class='fr.sii.nosql.server.service.mapper.FilmMapperImpl'>
 			<property name='dozerMapper' ref='dozerMapper' />
 		</bean>
 
 		<bean id='personneMapper'
-			class='fr.sii.formation.gwt.server.service.mapper.PersonneMapperImpl'>
+			class='fr.sii.nosql.server.service.mapper.PersonneMapperImpl'>
 			<property name='dozerMapper' ref='dozerMapper' />
 		</bean>
 

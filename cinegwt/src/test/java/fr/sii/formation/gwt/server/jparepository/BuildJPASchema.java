@@ -9,7 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.repository.jpa.FilmDAO;
+import fr.sii.nosql.server.repository.jpa.FilmDAO;
 
 @ActiveProfiles({ "jpa" })
 @RunWith(SpringJUnit4ClassRunner.class)

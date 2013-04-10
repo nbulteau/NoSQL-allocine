@@ -17,12 +17,12 @@
 	<!-- Servlets -->
 	<servlet>
 		<servlet-name>pictureServlet</servlet-name>
-		<servlet-class>fr.sii.formation.gwt.server.PictureServlet</servlet-class>
+		<servlet-class>fr.sii.nosql.server.PictureServlet</servlet-class>
 	</servlet>
 
 	<servlet>
 		<servlet-name>movieServiceServlet</servlet-name>
-		<servlet-class>fr.sii.formation.gwt.server.remoteservice.MovieRemoteServiceImpl</servlet-class>
+		<servlet-class>fr.sii.nosql.server.remoteservice.MovieRemoteServiceImpl</servlet-class>
 	</servlet>
 
 	<servlet>

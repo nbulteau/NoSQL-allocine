@@ -1,0 +1,8 @@
+package fr.sii.nosql.server.service.mapper;
+
+import fr.sii.nosql.server.repository.jpa.Personne;
+import fr.sii.nosql.shared.buisiness.Person;
+
+public class PersonneMapperImpl extends AbstractDozerMapper<Personne, Person>
+		implements PersonneMapper {
+}

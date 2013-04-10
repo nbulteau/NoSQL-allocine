@@ -10,9 +10,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.repository.file.FileMovieRepository;
-import fr.sii.formation.gwt.server.service.MovieService;
-import fr.sii.formation.gwt.server.service.MovieServiceException;
+import fr.sii.nosql.server.repository.file.FileMovieRepository;
+import fr.sii.nosql.server.service.MovieService;
+import fr.sii.nosql.server.service.MovieServiceException;
 
 //@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)

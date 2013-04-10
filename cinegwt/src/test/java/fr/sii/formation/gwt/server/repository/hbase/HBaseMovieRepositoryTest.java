@@ -14,11 +14,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.gwt.server.service.MovieServiceException;
-import fr.sii.formation.gwt.shared.buisiness.Actor;
-import fr.sii.formation.gwt.shared.buisiness.Kind;
-import fr.sii.formation.gwt.shared.buisiness.Movie;
-import fr.sii.formation.gwt.shared.buisiness.Person;
+import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
+import fr.sii.nosql.server.service.MovieServiceException;
+import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.Kind;
+import fr.sii.nosql.shared.buisiness.Movie;
+import fr.sii.nosql.shared.buisiness.Person;
 
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)

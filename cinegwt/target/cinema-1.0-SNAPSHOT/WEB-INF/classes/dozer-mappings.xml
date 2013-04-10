@@ -8,16 +8,16 @@
 
 		<custom-converters>
 			<converter
-				type="fr.sii.formation.gwt.server.service.mapper.GenreKindConverter">
-				<class-a>fr.sii.formation.gwt.server.repository.jpa.Genre</class-a>
-				<class-b>fr.sii.formation.gwt.shared.buisiness.Kind</class-b>
+				type="fr.sii.nosql.server.service.mapper.GenreKindConverter">
+				<class-a>fr.sii.nosql.server.repository.jpa.Genre</class-a>
+				<class-b>fr.sii.nosql.shared.buisiness.Kind</class-b>
 			</converter>
 		</custom-converters>
 
 	</configuration>
 	<mapping>
-		<class-a>fr.sii.formation.gwt.server.repository.jpa.Film</class-a>
-		<class-b>fr.sii.formation.gwt.shared.buisiness.Movie</class-b>
+		<class-a>fr.sii.nosql.server.repository.jpa.Film</class-a>
+		<class-b>fr.sii.nosql.shared.buisiness.Movie</class-b>
 
 		<field>
 			<a>acteurs</a>
@@ -53,16 +53,16 @@
 		</field>
 	</mapping>
 	<mapping>
-		<class-a>fr.sii.formation.gwt.server.repository.jpa.Acteur</class-a>
-		<class-b>fr.sii.formation.gwt.shared.buisiness.Actor</class-b>
+		<class-a>fr.sii.nosql.server.repository.jpa.Acteur</class-a>
+		<class-b>fr.sii.nosql.shared.buisiness.Actor</class-b>
 		<field>
 			<a>personne</a>
 			<b>person</b>
 		</field>
 	</mapping>
 	<mapping>
-		<class-a>fr.sii.formation.gwt.server.repository.jpa.Personne</class-a>
-		<class-b>fr.sii.formation.gwt.shared.buisiness.Person</class-b>
+		<class-a>fr.sii.nosql.server.repository.jpa.Personne</class-a>
+		<class-b>fr.sii.nosql.shared.buisiness.Person</class-b>
 		<field>
 			<a>nom</a>
 			<b>name</b>

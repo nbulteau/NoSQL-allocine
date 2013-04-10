@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.sii.formation.gwt.server.repository.jpa.Film;
-import fr.sii.formation.gwt.server.repository.jpa.FilmDAO;
-import fr.sii.formation.gwt.server.repository.jpa.Personne;
-import fr.sii.formation.gwt.server.repository.jpa.PersonneDAO;
+import fr.sii.nosql.server.repository.jpa.Film;
+import fr.sii.nosql.server.repository.jpa.FilmDAO;
+import fr.sii.nosql.server.repository.jpa.Personne;
+import fr.sii.nosql.server.repository.jpa.PersonneDAO;
 
 @Ignore
 @Profile("jpa")
