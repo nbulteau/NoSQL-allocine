@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
@@ -27,7 +27,7 @@ import fr.sii.nosql.shared.buisiness.Person;
 @ActiveProfiles("mongodb")
 public class MongoDBMovieServiceTest {
 
-	private static final String AVATAR = "Movie [id=61282, title=Avatar, originaltitle=Avatar, releasedate=Wed Dec 16 00:00:00 CET 2009, duration=9720, directors=[Person [id=1066, name=James Cameron]], actors=[Actor [role=Jake Sully, person=Person [id=41339, name=Sam Worthington]], Actor [role=Neytiri, person=Person [id=34515, name=Zoe Saldana]], Actor [role=Grace Augustine, person=Person [id=259, name=Sigourney Weaver]], Actor [role=le colonel Miles Quaritch, person=Person [id=6407, name=Stephen Lang]], Actor [role=Trudy Chacon, person=Person [id=60617, name=Michelle Rodriguez]], Actor [role=Parker Selfridge, person=Person [id=28985, name=Giovanni Ribisi]], Actor [role=Norm Spellman, person=Person [id=130952, name=Joel Moore]], Actor [role=Eytukan, person=Person [id=18050, name=Wes Studi]], Actor [role=Moat, person=Person [id=175724, name=CCH Pounder]], Actor [role=Tsu'Tey, person=Person [id=117875, name=Laz Alonso]], Actor [role=Dr. Max Patel, person=Person [id=218328, name=Dileep Rao]], Actor [role=Akwey, person=Person [id=77973, name=Peter Mensah]], Actor [role=le caporal Lyne Wainfleet, person=Person [id=61597, name=Matt Gerald]], Actor [role=le chef d'équipage du Venture Star, person=Person [id=104999, name=Scott Lawrence]]], kinds=[Science_fiction, Aventure], synopsis=Malgré sa paralysie, Jake Sully, un ancien marine immobilisé dans un fauteuil roulant, est resté un combattant au plus profond de son être. Il est recruté pour se rendre à des années-lumière de la Terre, sur Pandora, où de puissants groupes industriels exploitent un minerai rarissime destiné à résoudre la crise énergétique sur Terre. Parce que l'atmosphère de Pandora est toxique pour les humains, ceux-ci ont créé le Programme Avatar, qui permet à des \" pilotes \" humains de lier leur esprit à un avatar, un corps biologique commandé à distance, capable de survivre dans cette atmosphère létale. Ces avatars sont des hybrides créés génétiquement en croisant l'ADN humain avec celui des Na'vi, les autochtones de Pandora.Sous sa forme d'avatar, Jake peut de nouveau marcher. On lui confie une mission d'infiltration auprès des Na'vi, devenus un obstacle trop conséquent à l'exploitation du précieux minerai. Mais tout va changer lorsque Neytiri, une très belle Na'vi, sauve la vie de Jake...]";
+	private static final String AVATAR = "AlloCineMovie [id=61282, title=Avatar, originaltitle=Avatar, releasedate=Wed Dec 16 00:00:00 CET 2009, duration=9720, directors=[AlloCinePerson [id=1066, name=James Cameron]], actors=[AlloCineCastMember [role=Jake Sully, person=AlloCinePerson [id=41339, name=Sam Worthington]], AlloCineCastMember [role=Neytiri, person=AlloCinePerson [id=34515, name=Zoe Saldana]], AlloCineCastMember [role=Grace Augustine, person=AlloCinePerson [id=259, name=Sigourney Weaver]], AlloCineCastMember [role=le colonel Miles Quaritch, person=AlloCinePerson [id=6407, name=Stephen Lang]], AlloCineCastMember [role=Trudy Chacon, person=AlloCinePerson [id=60617, name=Michelle Rodriguez]], AlloCineCastMember [role=Parker Selfridge, person=AlloCinePerson [id=28985, name=Giovanni Ribisi]], AlloCineCastMember [role=Norm Spellman, person=AlloCinePerson [id=130952, name=Joel Moore]], AlloCineCastMember [role=Eytukan, person=AlloCinePerson [id=18050, name=Wes Studi]], AlloCineCastMember [role=Moat, person=AlloCinePerson [id=175724, name=CCH Pounder]], AlloCineCastMember [role=Tsu'Tey, person=AlloCinePerson [id=117875, name=Laz Alonso]], AlloCineCastMember [role=Dr. Max Patel, person=AlloCinePerson [id=218328, name=Dileep Rao]], AlloCineCastMember [role=Akwey, person=AlloCinePerson [id=77973, name=Peter Mensah]], AlloCineCastMember [role=le caporal Lyne Wainfleet, person=AlloCinePerson [id=61597, name=Matt Gerald]], AlloCineCastMember [role=le chef d'équipage du Venture Star, person=AlloCinePerson [id=104999, name=Scott Lawrence]]], kinds=[Science_fiction, Aventure], synopsis=Malgré sa paralysie, Jake Sully, un ancien marine immobilisé dans un fauteuil roulant, est resté un combattant au plus profond de son être. Il est recruté pour se rendre à des années-lumière de la Terre, sur Pandora, où de puissants groupes industriels exploitent un minerai rarissime destiné à résoudre la crise énergétique sur Terre. Parce que l'atmosphère de Pandora est toxique pour les humains, ceux-ci ont créé le Programme Avatar, qui permet à des \" pilotes \" humains de lier leur esprit à un avatar, un corps biologique commandé à distance, capable de survivre dans cette atmosphère létale. Ces avatars sont des hybrides créés génétiquement en croisant l'ADN humain avec celui des Na'vi, les autochtones de Pandora.Sous sa forme d'avatar, Jake peut de nouveau marcher. On lui confie une mission d'infiltration auprès des Na'vi, devenus un obstacle trop conséquent à l'exploitation du précieux minerai. Mais tout va changer lorsque Neytiri, une très belle Na'vi, sauve la vie de Jake...]";
 
 	@Autowired
 	@Qualifier("mongoDBmovieService")
@@ -54,12 +54,12 @@ public class MongoDBMovieServiceTest {
 
 		Movie movie = new Movie(1, movieTitle, "");
 
-		List<Actor> actors = new ArrayList<Actor>();
-		Actor actor1 = new Actor(person1, "role1");
-		actors.add(actor1);
-		Actor actor2 = new Actor(person3, "role2");
-		actors.add(actor2);
-		movie.getActors().addAll(actors);
+		List<CastMember> castMembers = new ArrayList<CastMember>();
+		CastMember actor1 = new CastMember(person1, "role1");
+		castMembers.add(actor1);
+		CastMember actor2 = new CastMember(person3, "role2");
+		castMembers.add(actor2);
+		movie.getCastMembers().addAll(castMembers);
 
 		List<Person> directors = new ArrayList<Person>();
 		directors.add(person2);

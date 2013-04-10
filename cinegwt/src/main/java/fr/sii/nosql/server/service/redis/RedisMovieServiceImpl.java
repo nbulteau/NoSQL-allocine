@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.shared.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Profile("redis")
@@ -96,7 +96,7 @@ public class RedisMovieServiceImpl implements MovieService {
 		// if (!redisPosterRepository.exists(posterId) && movie.getPosterHref()
 		// != null) {
 		// byte[] poster = MovieHelper.downloadPicture(movie.getPosterHref());
-		// redisPosterRepository.save(new Poster(posterId, poster));
+		// redisPosterRepository.save(new AlloCinePoster(posterId, poster));
 		// }
 		// } catch (IOException e) {
 		// LOGGER.error("Unable to retrieve poster for {} : {}",
@@ -105,8 +105,8 @@ public class RedisMovieServiceImpl implements MovieService {
 		//
 		// List<Photo> photoListToSave = new ArrayList<Photo>();
 		// // actors picture
-		// for (Actor actor : movie.getActors()) {
-		// Person person = actor.getPerson();
+		// for (AlloCineCastMember actor : movie.getActors()) {
+		// AlloCinePerson person = actor.getPerson();
 		// Long pictureId = person.getId();
 		// if (!redisPhotoRepository.exists(pictureId) &&
 		// person.getPictureHref() != null) {
@@ -120,7 +120,7 @@ public class RedisMovieServiceImpl implements MovieService {
 		// }
 		// }
 		// // directors picture
-		// for (Person director : movie.getDirectors()) {
+		// for (AlloCinePerson director : movie.getDirectors()) {
 		// long pictureId = director.getId();
 		// if (!redisPhotoRepository.exists(pictureId) &&
 		// director.getPictureHref() != null) {

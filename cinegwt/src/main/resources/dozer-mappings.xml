@@ -54,7 +54,7 @@
 	</mapping>
 	<mapping>
 		<class-a>fr.sii.nosql.server.repository.jpa.Acteur</class-a>
-		<class-b>fr.sii.nosql.shared.buisiness.Actor</class-b>
+		<class-b>fr.sii.nosql.shared.buisiness.CastMember</class-b>
 		<field>
 			<a>personne</a>
 			<b>person</b>

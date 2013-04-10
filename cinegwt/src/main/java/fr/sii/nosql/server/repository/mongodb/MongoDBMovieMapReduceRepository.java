@@ -2,7 +2,7 @@ package fr.sii.nosql.server.repository.mongodb;
 
 import java.util.List;
 
-import fr.sii.nosql.shared.MovieFilter;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface MongoDBMovieMapReduceRepository {

@@ -18,11 +18,11 @@ import fr.sii.nosql.server.repository.jpa.Genre;
 import fr.sii.nosql.server.repository.jpa.GenreDAO;
 import fr.sii.nosql.server.repository.jpa.Personne;
 import fr.sii.nosql.server.repository.jpa.PersonneDAO;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.server.service.mapper.FilmMapper;
-import fr.sii.nosql.shared.MovieFilter;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 
@@ -43,8 +43,7 @@ public class JPAMovieServiceImpl implements MovieService {
 	private final AlloCineService alloCineService;
 
 	@Autowired(required = true)
-	public JPAMovieServiceImpl(FilmDAO filmDAO, GenreDAO genreDAO, PersonneDAO personneDAO, FilmMapper filmMapper,
-			AlloCineService alloCineService) {
+	public JPAMovieServiceImpl(FilmDAO filmDAO, GenreDAO genreDAO, PersonneDAO personneDAO, FilmMapper filmMapper, AlloCineService alloCineService) {
 		super();
 		this.filmDAO = filmDAO;
 		this.genreDAO = genreDAO;
@@ -143,8 +142,8 @@ public class JPAMovieServiceImpl implements MovieService {
 			LOGGER.error("Unable to retrieve poster for {} : {}", movie.getTitle(), e.getMessage());
 		}
 		// actors picture
-		for (Actor actor : movie.getActors()) {
-			Person person = actor.getPerson();
+		for (CastMember castMember : movie.getCastMembers()) {
+			Person person = castMember.getPerson();
 			Long personId = person.getId();
 			Personne personne = personneDAO.loadById(personId);
 			if (personne != null && person.getPictureHref() != null) {
@@ -182,8 +181,7 @@ public class JPAMovieServiceImpl implements MovieService {
 			genreLabel = movieFilter.getKind().getLabel();
 		}
 
-		List<Film> films = filmDAO.findAllSorted(start, length, movieFilter.isViewed(), genreLabel,
-				movieFilter.getTitle());
+		List<Film> films = filmDAO.findAllSorted(start, length, movieFilter.isViewed(), genreLabel, movieFilter.getTitle());
 
 		return filmMapper.toDto(films);
 	}

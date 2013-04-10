@@ -2,7 +2,6 @@ package fr.sii.nosql.server.service;
 
 import java.util.List;
 
-import fr.sii.nosql.shared.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface MovieService {

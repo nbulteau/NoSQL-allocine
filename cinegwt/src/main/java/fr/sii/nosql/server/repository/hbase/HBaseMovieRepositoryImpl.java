@@ -23,8 +23,8 @@ import dataaccess.hbase.simple.serializers.HBaseSerializer;
 import dataaccess.hbase.simple.serializers.JacksonJsonHBaseSerializer;
 import dataaccess.hbase.simple.serializers.LongKeySerializer;
 import dataaccess.hbase.simple.serializers.String8Serializer;
-import fr.sii.nosql.shared.MovieFilter;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
@@ -34,8 +34,7 @@ import fr.sii.nosql.shared.buisiness.Person;
 public class HBaseMovieRepositoryImpl implements HBaseMovieRepository {
 	private HBaseTemplate template;
 	private HBaseTable<Long, Movie> moviesById;
-	private HBaseTable1N.SL<Movie> moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName,
-			moviesByKind;
+	private HBaseTable1N.SL<Movie> moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName, moviesByKind;
 	private HBaseTable1N.L2<Movie> moviesByActor, moviesByDirector;
 	@Autowired
 	private Configuration configuration;
@@ -48,8 +47,7 @@ public class HBaseMovieRepositoryImpl implements HBaseMovieRepository {
 		moviesById = new HBaseTable<Long, Movie>(template, "Movies", Long.class, Movie.class);
 		moviesByTitle = new HBaseTable1N.SL<Movie>(template, "MoviesByTitle", Movie.class);
 		moviesByTitleLike = new HBaseTable1N.SL<Movie>(template, "MoviesByTitleLike", Movie.class);
-		moviesByTitleLike.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(new String8Serializer(),
-				new LongKeySerializer()));
+		moviesByTitleLike.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(new String8Serializer(), new LongKeySerializer()));
 		moviesByActorName = new HBaseTable1N.SL<Movie>(template, "MoviesByActorName", Movie.class);
 		moviesByDirectorName = new HBaseTable1N.SL<Movie>(template, "MoviesByDirectorName", Movie.class);
 		moviesByActor = new HBaseTable1N.L2<Movie>(template, "MoviesByActor", Movie.class);
@@ -57,8 +55,8 @@ public class HBaseMovieRepositoryImpl implements HBaseMovieRepository {
 		moviesByKind = new HBaseTable1N.SL<Movie>(template, "MoviesByKind", Movie.class);
 		HBaseSerializer<Movie> ser = new JacksonJsonHBaseSerializer<Movie>(Movie.class);
 		// ser = new MovieSerializer();
-		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById, moviesByTitle, moviesByTitleLike,
-				moviesByActorName, moviesByDirectorName, moviesByActor, moviesByDirector, moviesByKind })
+		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById, moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName, moviesByActor,
+				moviesByDirector, moviesByKind })
 			t.setValueSerializer(ser);
 	}
 
@@ -81,9 +79,9 @@ public class HBaseMovieRepositoryImpl implements HBaseMovieRepository {
 		moviesById.put(id, movie);
 		moviesByTitle.add(movie.getTitle(), id, movie);
 		moviesByTitleLike.add(movie.getTitle(), id, movie);
-		for (Actor actor : movie.getActors()) {
-			moviesByActorName.add(actor.getPerson().getName(), id, movie);
-			moviesByActor.add(actor.getPerson().getId(), id, movie);
+		for (CastMember castMember : movie.getCastMembers()) {
+			moviesByActorName.add(castMember.getPerson().getName(), id, movie);
+			moviesByActor.add(castMember.getPerson().getId(), id, movie);
 		}
 		for (Person person : movie.getDirectors()) {
 			moviesByDirectorName.add(person.getName(), id, movie);
@@ -135,9 +133,9 @@ public class HBaseMovieRepositoryImpl implements HBaseMovieRepository {
 		Movie movie = findOne(id);
 		moviesById.delete(id);
 		moviesByTitle.remove(movie.getTitle(), id);
-		for (Actor actor : movie.getActors()) {
-			moviesByActorName.remove(actor.getPerson().getName(), id);
-			moviesByActor.remove(actor.getPerson().getId(), id);
+		for (CastMember castMember : movie.getCastMembers()) {
+			moviesByActorName.remove(castMember.getPerson().getName(), id);
+			moviesByActor.remove(castMember.getPerson().getId(), id);
 		}
 		for (Person person : movie.getDirectors()) {
 			moviesByDirectorName.remove(person.getName(), id);

@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import fr.sii.nosql.shared.MovieFilter;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 

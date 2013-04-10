@@ -2,6 +2,11 @@ package fr.sii.nosql.shared.buisiness;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+
 import org.springframework.data.annotation.Id;
 
 public abstract class Picture implements Serializable {
@@ -11,6 +16,9 @@ public abstract class Picture implements Serializable {
 	@Id
 	private long id;
 
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(length = 100000)
 	private byte[] picture;
 
 	public Picture() {

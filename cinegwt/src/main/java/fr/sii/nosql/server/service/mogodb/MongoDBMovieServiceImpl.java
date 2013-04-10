@@ -18,10 +18,10 @@ import fr.sii.nosql.server.allocine.service.AlloCineService;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBPhotoRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBPosterRepository;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.shared.MovieFilter;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 import fr.sii.nosql.shared.buisiness.Photo;
@@ -72,8 +72,8 @@ public class MongoDBMovieServiceImpl implements MovieService {
 
 		List<Photo> photoListToSave = new ArrayList<Photo>();
 		// actors picture
-		for (Actor actor : movie.getActors()) {
-			Person person = actor.getPerson();
+		for (CastMember castMember : movie.getCastMembers()) {
+			Person person = castMember.getPerson();
 			Long pictureId = person.getId();
 			if (!mongoDBPhotoRepository.exists(pictureId) && person.getPictureHref() != null) {
 				try {

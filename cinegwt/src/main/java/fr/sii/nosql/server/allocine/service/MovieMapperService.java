@@ -1,6 +1,6 @@
 package fr.sii.nosql.server.allocine.service;
 
-import fr.sii.nosql.server.allocine.buisiness.Movie;
+import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
 
 public interface MovieMapperService {
 
@@ -10,6 +10,6 @@ public interface MovieMapperService {
 	 * @return
 	 * @throws ConvertException
 	 */
-	fr.sii.nosql.shared.buisiness.Movie convertToBuisinessObject(Movie alloCineMovie) throws ConvertException;
+	fr.sii.nosql.shared.buisiness.Movie convertToBuisinessObject(AlloCineMovie alloCineMovie) throws ConvertException;
 
 }

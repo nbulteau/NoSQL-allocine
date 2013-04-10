@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,7 +20,7 @@ import fr.sii.nosql.shared.buisiness.Movie;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
 // @ActiveProfiles({ "jpa", "mongodb" })
-// @ActiveProfiles({ "jpa" })
+@ActiveProfiles({ "jpa" })
 public class JPAMovieServiceImplTest {
 
 	private static final int CONFETTI_108988 = 108988;
@@ -65,8 +66,8 @@ public class JPAMovieServiceImplTest {
 	// int count = 0;
 	// int index = count * step;
 	// while (count < nbMovies) {
-	// List<Movie> movies = movieService.fetchMovies(count, step, null);
-	// for (Movie movie : movies) {
+	// List<AlloCineMovie> movies = movieService.fetchMovies(count, step, null);
+	// for (AlloCineMovie movie : movies) {
 	// System.out.println("=> " + index++ + " : movie : " + movie.getTitle());
 	// filmService.save(movie);
 	// }
@@ -80,7 +81,7 @@ public class JPAMovieServiceImplTest {
 	// MovieServiceException {
 	// // the movie Confetti has some weird characters in the synopsis
 	// // this test makes sure that all is perfectly utf8-compatible
-	// Movie movie = movieService.findById(CONFETTI_108988);
+	// AlloCineMovie movie = movieService.findById(CONFETTI_108988);
 	// System.out.println("=> movie : " + movie.getTitle());
 	// filmService.save(movie);
 	// }

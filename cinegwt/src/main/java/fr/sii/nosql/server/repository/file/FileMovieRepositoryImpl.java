@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
+import fr.sii.nosql.server.allocine.buisiness.MovieResult;
 import fr.sii.nosql.server.allocine.service.ConvertException;
 import fr.sii.nosql.server.allocine.service.MovieMapperService;
 import fr.sii.nosql.shared.buisiness.Movie;
@@ -77,7 +77,7 @@ public class FileMovieRepositoryImpl implements FileMovieRepository {
 
 	public Movie load(File f, boolean cache) throws IOException, ConvertException {
 		try {
-			AlloCineMovie alloMovie = objectMapper.readValue(f, AlloCineMovie.class);
+			MovieResult alloMovie = objectMapper.readValue(f, MovieResult.class);
 			Movie movie = getMovieMapperService().convertToBuisinessObject(alloMovie.getMovie());
 			if (cache) {
 				movies.put(movie.getId(), movie);
@@ -153,7 +153,7 @@ public class FileMovieRepositoryImpl implements FileMovieRepository {
 	}
 
 	@Override
-	public void add(long id, AlloCineMovie movie) {
+	public void add(long id, MovieResult movie) {
 
 		File file = new File(getRepositoryPath() + File.separator + (id / 100000) + File.separator + id + JSON_SUFFIX);
 		try {

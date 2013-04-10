@@ -4,17 +4,20 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import fr.sii.nosql.server.allocine.buisiness.CastMember;
-import fr.sii.nosql.server.allocine.buisiness.Genre;
-import fr.sii.nosql.server.allocine.buisiness.Movie;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.server.allocine.buisiness.AlloCineCastMember;
+import fr.sii.nosql.server.allocine.buisiness.AlloCineGenre;
+import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
+import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 
 @Service("movieMapperService")
@@ -30,11 +33,10 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 	}
 
 	@Override
-	public fr.sii.nosql.shared.buisiness.Movie convertToBuisinessObject(Movie alloCineMovie) throws ConvertException {
+	public Movie convertToBuisinessObject(AlloCineMovie alloCineMovie) throws ConvertException {
 		LOGGER.debug("Convert movie : {}", alloCineMovie.getTitle());
 
-		fr.sii.nosql.shared.buisiness.Movie movie = new fr.sii.nosql.shared.buisiness.Movie(alloCineMovie.getCode(), alloCineMovie.getTitle(),
-				alloCineMovie.getOriginalTitle());
+		Movie movie = new Movie(alloCineMovie.getCode(), alloCineMovie.getTitle(), alloCineMovie.getOriginalTitle());
 
 		// releasedate
 		Date releaseDate = null;
@@ -66,11 +68,11 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 		movie.setDuration(alloCineMovie.getRuntime());
 
 		// directors
-		List<Person> directors = new ArrayList<Person>();
+		Set<Person> directors = new HashSet<Person>();
 		if (alloCineMovie.getCastMember() != null) {
-			for (CastMember castMember : alloCineMovie.getCastMember()) {
-				if (castMember.getActivity().getCode() == DIRECTOR) {
-					directors.add(retrievePerson(castMember));
+			for (AlloCineCastMember alloCineCastMember : alloCineMovie.getCastMember()) {
+				if (alloCineCastMember.getActivity().getCode() == DIRECTOR) {
+					directors.add(retrievePerson(alloCineCastMember));
 				}
 			}
 		}
@@ -78,22 +80,22 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 		movie.getDirectors().addAll(directors);
 
 		// actors
-		List<Actor> actors = new ArrayList<Actor>();
+		Set<CastMember> castMembers = new HashSet<>();
 		if (alloCineMovie.getCastMember() != null) {
-			for (CastMember castMember : alloCineMovie.getCastMember()) {
-				if (castMember.getActivity().getCode() == ACTOR) {
-					actors.add(retrieveActor(castMember));
+			for (AlloCineCastMember alloCineCastMember : alloCineMovie.getCastMember()) {
+				if (alloCineCastMember.getActivity().getCode() == ACTOR) {
+					castMembers.add(retrieveCastMember(alloCineCastMember));
 				}
 			}
 		}
-		movie.getActors().clear();
-		movie.getActors().addAll(actors);
+		movie.getCastMembers().clear();
+		movie.getCastMembers().addAll(castMembers);
 
 		// kinds
 		List<Kind> kinds = new ArrayList<Kind>();
 		if (alloCineMovie.getGenre() != null) {
-			for (Genre genre : alloCineMovie.getGenre()) {
-				kinds.add(Kind.getKindByLabel(genre.get$()));
+			for (AlloCineGenre alloCineGenre : alloCineMovie.getGenre()) {
+				kinds.add(Kind.getKindByLabel(alloCineGenre.get$()));
 			}
 		}
 		movie.getKinds().addAll(kinds);
@@ -120,28 +122,28 @@ public class MovieMapperServiceImpl implements MovieMapperService {
 
 	/**
 	 * 
-	 * @param castMember
+	 * @param alloCineCastMember
 	 * @return
 	 */
-	private Actor retrieveActor(CastMember castMember) {
-		Actor actor = null;
-		Person person = retrievePerson(castMember);
+	private CastMember retrieveCastMember(AlloCineCastMember alloCineCastMember) {
+		CastMember castMember = null;
+		Person person = retrievePerson(alloCineCastMember);
 		if (person != null) {
-			actor = new Actor(person, castMember.getRole());
+			castMember = new CastMember(person, alloCineCastMember.getRole());
 		}
-		return actor;
+		return castMember;
 	}
 
 	/**
 	 * 
-	 * @param castMember
+	 * @param alloCineCastMember
 	 * @return
 	 */
-	private Person retrievePerson(CastMember castMember) {
-		Person person = new Person(castMember.getPerson().getCode(), castMember.getPerson().getName());
+	private Person retrievePerson(AlloCineCastMember alloCineCastMember) {
+		Person person = new Person(alloCineCastMember.getPerson().getCode(), alloCineCastMember.getPerson().getName());
 		// picture
-		if (castMember.getPicture() != null) {
-			String href = castMember.getPicture().getHref();
+		if (alloCineCastMember.getPicture() != null) {
+			String href = alloCineCastMember.getPicture().getHref();
 			if (href != null) {
 				person.setPictureHref(href);
 			}

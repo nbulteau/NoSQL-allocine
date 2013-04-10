@@ -12,10 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.sii.nosql.server.allocine.buisiness.Movie;
+import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
 import fr.sii.nosql.server.allocine.repository.AlloCineRepository;
 import fr.sii.nosql.server.allocine.repository.RetrieveException;
 import fr.sii.nosql.server.service.MovieServiceException;
+import fr.sii.nosql.shared.buisiness.Movie;
 
 @Service
 public class AlloCineServiceImpl implements AlloCineService {
@@ -35,10 +36,10 @@ public class AlloCineServiceImpl implements AlloCineService {
 	}
 
 	@Override
-	public fr.sii.nosql.shared.buisiness.Movie retrieveMovie(long idMovie) {
-		fr.sii.nosql.shared.buisiness.Movie movie = null;
+	public Movie retrieveMovie(long idMovie) {
+		Movie movie = null;
 		try {
-			Movie alloCineMovie = alloCineRepository.retrieveMovie(idMovie);
+			AlloCineMovie alloCineMovie = alloCineRepository.retrieveMovie(idMovie);
 			LOGGER.info("retrieveMovie id : {} => {} ", alloCineMovie.getCode(), alloCineMovie.getTitle());
 			movie = movieMapperService.convertToBuisinessObject(alloCineMovie);
 		} catch (RetrieveException e) {
@@ -51,13 +52,13 @@ public class AlloCineServiceImpl implements AlloCineService {
 	}
 
 	@Override
-	public List<fr.sii.nosql.shared.buisiness.Movie> retrieveMovieList() {
-		List<fr.sii.nosql.shared.buisiness.Movie> movies = new ArrayList<>();
+	public List<Movie> retrieveMovieList() {
+		List<Movie> movies = new ArrayList<>();
 		try {
-			List<Movie> alloCineMovies = alloCineRepository.retrieveMovielist();
+			List<AlloCineMovie> alloCineMovies = alloCineRepository.retrieveMovielist();
 
-			fr.sii.nosql.shared.buisiness.Movie movie = null;
-			for (Movie alloCineMovie : alloCineMovies) {
+			Movie movie = null;
+			for (AlloCineMovie alloCineMovie : alloCineMovies) {
 				movie = retrieveMovie(alloCineMovie.getCode());
 				if (movie != null) {
 					movies.add(movie);
@@ -76,8 +77,8 @@ public class AlloCineServiceImpl implements AlloCineService {
 	}
 
 	@Override
-	public List<fr.sii.nosql.shared.buisiness.Movie> retrieveMovies(String inputFileName) throws MovieServiceException {
-		List<fr.sii.nosql.shared.buisiness.Movie> movies = new ArrayList<>();
+	public List<Movie> retrieveMovies(String inputFileName) throws MovieServiceException {
+		List<Movie> movies = new ArrayList<>();
 
 		FileInputStream fileInputStream = null;
 		BufferedReader br = null;
@@ -89,7 +90,7 @@ public class AlloCineServiceImpl implements AlloCineService {
 			while ((alloCineString = br.readLine()) != null) {
 				if (alloCineString.contains(HTTP_WWW_ALLOCINE_FR)) {
 					String id = alloCineString.replace(HTTP_WWW_ALLOCINE_FR, "").replace(".html", "");
-					fr.sii.nosql.shared.buisiness.Movie movie = retrieveMovie(Long.parseLong(id));
+					Movie movie = retrieveMovie(Long.parseLong(id));
 					if (movie != null) {
 						movies.add(movie);
 					}

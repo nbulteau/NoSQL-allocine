@@ -14,9 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
+import fr.sii.nosql.server.allocine.buisiness.MovieResult;
+import fr.sii.nosql.server.allocine.buisiness.MovieListResult;
 import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
-import fr.sii.nosql.server.allocine.buisiness.AlloCineMovieList;
-import fr.sii.nosql.server.allocine.buisiness.Movie;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 
 @Repository
@@ -40,32 +40,32 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 	}
 
 	@Override
-	public Movie retrieveMovie(long idMovie) throws RetrieveException {
+	public AlloCineMovie retrieveMovie(long idMovie) throws RetrieveException {
 		String query = MOVIE_QUERY + idMovie;
 
 		LOGGER.debug("Query : {}", query);
 
-		AlloCineMovie alloCineMovie = null;
+		MovieResult movieResult = null;
 		try {
-			ResponseEntity<AlloCineMovie> response = restTemplate.exchange(query, HttpMethod.GET, getHttpEntity(), AlloCineMovie.class);
+			ResponseEntity<MovieResult> response = restTemplate.exchange(query, HttpMethod.GET, getHttpEntity(), MovieResult.class);
 
-			alloCineMovie = response.getBody();
+			movieResult = response.getBody();
 
-			if (alloCineMovie != null) {
-				fileRepository.add(idMovie, alloCineMovie);
+			if (movieResult != null) {
+				fileRepository.add(idMovie, movieResult);
 			}
 
 		} catch (Exception e) {
 			throw new RetrieveException("Retrieve problem for movie id : " + idMovie, e);
 		}
 
-		return alloCineMovie.getMovie();
+		return movieResult.getMovie();
 	}
 
 	@Override
-	public List<Movie> retrieveMovielist() throws RetrieveException {
+	public List<AlloCineMovie> retrieveMovielist() throws RetrieveException {
 
-		List<Movie> movies = new ArrayList<>();
+		List<AlloCineMovie> alloCineMovies = new ArrayList<>();
 
 		int totalResults = Integer.MAX_VALUE;
 		int count = 50;
@@ -76,20 +76,20 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 			LOGGER.info("Query : {}", query);
 
 			try {
-				ResponseEntity<AlloCineMovieList> response = restTemplate.exchange(query, HttpMethod.GET, getHttpEntity(), AlloCineMovieList.class);
+				ResponseEntity<MovieListResult> response = restTemplate.exchange(query, HttpMethod.GET, getHttpEntity(), MovieListResult.class);
 
-				AlloCineMovieList alloCineMovieList = response.getBody();
-				movies.addAll(alloCineMovieList.getFeed().getMovie());
+				MovieListResult movieListResult = response.getBody();
+				alloCineMovies.addAll(movieListResult.getFeed().getMovie());
 
-				totalResults = alloCineMovieList.getFeed().getTotalResults();
-				page = alloCineMovieList.getFeed().getPage() + 1;
+				totalResults = movieListResult.getFeed().getTotalResults();
+				page = movieListResult.getFeed().getPage() + 1;
 				Thread.sleep(2000); // Tempo for AlloCine
 			} catch (Exception e) {
 				throw new RetrieveException(e);
 			}
 		}
 
-		return movies;
+		return alloCineMovies;
 	}
 
 	private HttpEntity<String> getHttpEntity() {

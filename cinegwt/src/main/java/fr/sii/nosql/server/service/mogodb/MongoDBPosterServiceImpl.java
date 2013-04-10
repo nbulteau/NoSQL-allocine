@@ -25,7 +25,7 @@ public class MongoDBPosterServiceImpl implements PosterService {
 		Poster poster = mongoDBPosterRepository.findOne(id);
 
 		// DEBUG
-		// Picture picture = pictureRepository.findOne("pos" + id);
+		// AlloCinePicture picture = pictureRepository.findOne("pos" + id);
 		// if (picture != null) {
 		// return picture.getPicture();
 		// } else {

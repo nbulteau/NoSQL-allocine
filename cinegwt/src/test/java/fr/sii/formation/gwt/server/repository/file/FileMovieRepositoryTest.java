@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.allocine.repository.AlloCineRepository;
 import fr.sii.nosql.server.allocine.service.AlloCineService;
-import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,9 +29,6 @@ public class FileMovieRepositoryTest {
 	@Autowired
 	AlloCineRepository alloCineRepository;
 
-	@Autowired
-	FileMovieRepository movieRepository;
-
 	@Value("${filerepo.path}")
 	private String repositoryPath;
 
@@ -38,7 +36,13 @@ public class FileMovieRepositoryTest {
 	AlloCineService alloCineService;
 
 	@Test
-	// @Ignore
+	public void myTest() {
+		Movie movie = alloCineService.retrieveMovie(140881l);
+		Assert.assertEquals("Under the Sea", movie.getTitle());
+	}
+
+	@Test
+	@Ignore
 	public void populate() throws InterruptedException {
 
 		Movie movie = null;
@@ -62,13 +66,13 @@ public class FileMovieRepositoryTest {
 			if (movie != null) {
 				System.out.println(movie.getTitle());
 			}
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		}
 
 	}
 
 	private List<String> listMissingMovies() {
-		String allocinePath = "D:/allocine/";
+		String allocinePath = "D:/allocine/jsons/";
 		File jsonFile = null;
 		String fileName;
 		List<String> ids = new ArrayList<>();

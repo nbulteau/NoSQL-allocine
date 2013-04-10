@@ -23,7 +23,7 @@ import dataaccess.hbase.simple.serializers.JacksonJsonHBaseSerializer;
 import dataaccess.hbase.simple.serializers.LongKeySerializer;
 import dataaccess.hbase.simple.serializers.String8Serializer;
 import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
-import fr.sii.nosql.shared.MovieFilter;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Profile("hbase")

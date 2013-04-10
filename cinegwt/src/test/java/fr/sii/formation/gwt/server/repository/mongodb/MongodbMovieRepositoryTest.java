@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieMapReduceRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
+import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.shared.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 

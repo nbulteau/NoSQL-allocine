@@ -2,12 +2,12 @@ package fr.sii.nosql.server.allocine.repository;
 
 import java.util.List;
 
-import fr.sii.nosql.server.allocine.buisiness.Movie;
+import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
 
 public interface AlloCineRepository {
 
-	Movie retrieveMovie(long idMovie) throws RetrieveException;
+	AlloCineMovie retrieveMovie(long idMovie) throws RetrieveException;
 
-	List<Movie> retrieveMovielist() throws RetrieveException;
+	List<AlloCineMovie> retrieveMovielist() throws RetrieveException;
 
 }

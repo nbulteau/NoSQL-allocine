@@ -1,31 +1,41 @@
 package fr.sii.nosql.shared.buisiness;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Index;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Movie
+ * AlloCineMovie
  * 
  * @author nbulteau
  * 
  */
 @Document(collection = "movies")
+@Entity
 public class Movie implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@org.springframework.data.annotation.Id
+	@javax.persistence.Id
 	private long id;
 
 	@Indexed(direction = IndexDirection.ASCENDING)
+	@Index(name = "titreIndex")
 	private String title;
 
 	private String originaltitle;
@@ -37,12 +47,18 @@ public class Movie implements Serializable {
 	 */
 	private int duration;
 
-	private List<Person> directors = new ArrayList<Person>();
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@JoinTable(name = "moviedirector", joinColumns = @JoinColumn(name = "directorId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "directorFk", referencedColumnName = "id"))
+	private Set<Person> directors = new HashSet<>();
 
-	private List<Actor> actors = new ArrayList<Actor>();
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.REMOVE })
+	private Set<CastMember> castMembers = new HashSet<>();
 
-	private List<Kind> kinds = new ArrayList<Kind>();
+	@ManyToMany
+	@JoinTable(name = "moviekind", joinColumns = @JoinColumn(name = "kindId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "kindFk", referencedColumnName = "label"))
+	private Set<Kind> kinds = new HashSet<>();
 
+	@Column(length = 2000)
 	private String synopsis;
 
 	private float pressRating;
@@ -51,7 +67,6 @@ public class Movie implements Serializable {
 
 	private boolean viewed = false;
 
-	@Transient
 	private String posterHref;
 
 	public Movie() {
@@ -68,7 +83,7 @@ public class Movie implements Serializable {
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", originaltitle=" + originaltitle + ", releasedate=" + releasedate + ", duration=" + duration
-				+ ", directors=" + directors + ", actors=" + actors + ", kinds=" + kinds + ", synopsis=" + synopsis + "]";
+				+ ", directors=" + directors + ", castMembers=" + castMembers + ", kinds=" + kinds + ", synopsis=" + synopsis + "]";
 	}
 
 	@Override
@@ -142,12 +157,12 @@ public class Movie implements Serializable {
 		this.duration = duration;
 	}
 
-	public List<Person> getDirectors() {
+	public Set<Person> getDirectors() {
 		return directors;
 	}
 
-	public List<Actor> getActors() {
-		return actors;
+	public Set<CastMember> getCastMembers() {
+		return castMembers;
 	}
 
 	public String getSynopsis() {
@@ -158,7 +173,7 @@ public class Movie implements Serializable {
 		this.synopsis = synopsis;
 	}
 
-	public List<Kind> getKinds() {
+	public Set<Kind> getKinds() {
 		return kinds;
 	}
 
@@ -194,15 +209,15 @@ public class Movie implements Serializable {
 		this.posterHref = posterHref;
 	}
 
-	public void setDirectors(List<Person> directors) {
+	public void setDirectors(Set<Person> directors) {
 		this.directors = directors;
 	}
 
-	public void setActors(List<Actor> actors) {
-		this.actors = actors;
+	public void setCastMembers(Set<CastMember> castMembers) {
+		this.castMembers = castMembers;
 	}
 
-	public void setKinds(List<Kind> kinds) {
+	public void setKinds(Set<Kind> kinds) {
 		this.kinds = kinds;
 	}
 

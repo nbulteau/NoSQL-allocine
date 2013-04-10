@@ -1,9 +1,9 @@
 package fr.sii.formation.gwt.server.repository.hbase;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
@@ -43,24 +43,24 @@ public class HBaseMovieRepositoryTest {
 		movie.setSynopsis("synopsis");
 		movie.setViewed(false);
 
-		Actor actor = new Actor();
-		actor.setRole("role");
+		CastMember castMember = new CastMember();
+		castMember.setRole("role");
 		Person person1 = new Person();
 		person1.setId(100000000000l);
 		person1.setName("nom");
-		actor.setPerson(person1);
-		List<Actor> actors = new ArrayList<Actor>();
-		actors.add(actor);
-		movie.setActors(actors);
+		castMember.setPerson(person1);
+		Set<CastMember> castMembers = new HashSet<>();
+		castMembers.add(castMember);
+		movie.setCastMembers(castMembers);
 
 		Person person2 = new Person();
 		person2.setId(100000000001l);
 		person2.setName("nom");
-		List<Person> directors = new ArrayList<Person>();
+		Set<Person> directors = new HashSet<>();
 		directors.add(person2);
 		movie.setDirectors(directors);
 
-		List<Kind> kinds = new ArrayList<Kind>();
+		Set<Kind> kinds = new HashSet<>();
 		kinds.add(Kind.Action);
 		movie.setKinds(kinds);
 

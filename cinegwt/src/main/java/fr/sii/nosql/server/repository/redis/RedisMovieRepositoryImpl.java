@@ -22,8 +22,8 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.stereotype.Repository;
 
-import fr.sii.nosql.shared.MovieFilter;
-import fr.sii.nosql.shared.buisiness.Actor;
+import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
@@ -89,10 +89,10 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 		}
 		movieTemplate.opsForValue().set(movieKey, movie);
 
-		for (Actor actor : movie.getActors()) {
-			String actorKey = KeyUtils.actor(actor.getPerson().getId());
+		for (CastMember castMember : movie.getCastMembers()) {
+			String actorKey = KeyUtils.actor(castMember.getPerson().getId());
 			movieTemplate.opsForSet().add(actorKey, movie);
-			String actorName = KeyUtils.actorName(actor.getPerson().getName());
+			String actorName = KeyUtils.actorName(castMember.getPerson().getName());
 			movieTemplate.opsForSet().add(actorName, movie);
 		}
 
@@ -122,8 +122,8 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 		String key = KeyUtils.movie(movie.getId());
 		movieTemplate.opsForValue().getOperations().delete(key);
 		// TODO check movie exists and then decrement KeyUtils.moviesCount()
-		for (Actor actor : movie.getActors()) {
-			String actorKey = KeyUtils.actor(actor.getPerson().getId());
+		for (CastMember castMember : movie.getCastMembers()) {
+			String actorKey = KeyUtils.actor(castMember.getPerson().getId());
 			movieTemplate.opsForHash().getOperations().delete(actorKey);
 		}
 		for (Person person : movie.getDirectors()) {
@@ -239,10 +239,10 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	@Override
 	public List<Movie> findByActor(final String name) {
 		return findByKeyOrdered(KeyUtils.actorName(name));
-		// return findInAllMovies(new Predicate<Movie>() {
+		// return findInAllMovies(new Predicate<AlloCineMovie>() {
 		// @Override
-		// public boolean apply(Movie t) {
-		// for (Actor a : t.getActors())
+		// public boolean apply(AlloCineMovie t) {
+		// for (AlloCineCastMember a : t.getActors())
 		// if (name.equals(a.getPerson().getName()))
 		// return true;
 		// return false;
@@ -272,10 +272,10 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	@Override
 	public List<Movie> findByDirector(final String name) {
 		return findByKeyOrdered(KeyUtils.directorName(name));
-		// return findInAllMovies(new Predicate<Movie>() {
+		// return findInAllMovies(new Predicate<AlloCineMovie>() {
 		// @Override
-		// public boolean apply(Movie t) {
-		// for (Person p : t.getDirectors())
+		// public boolean apply(AlloCineMovie t) {
+		// for (AlloCinePerson p : t.getDirectors())
 		// if (name.equals(p.getName()))
 		// return true;
 		// return false;
@@ -287,9 +287,9 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	public List<Movie> findByKind(final MovieFilter movieFilter) {
 		return findByKeyOrdered(KeyUtils.kind(movieFilter.getKind().getLabel()));
 		// FIXME : sorts only on kinds ?
-		// return findInAllMovies(new Predicate<Movie>() {
+		// return findInAllMovies(new Predicate<AlloCineMovie>() {
 		// @Override
-		// public boolean apply(Movie t) {
+		// public boolean apply(AlloCineMovie t) {
 		// return t.getKinds().contains(movieFilter.getKind());
 		// }
 		// });

@@ -33,7 +33,7 @@ public class HBaseMovieServiceTest {
 		long nbMovies = fileRepository.count();
 		System.out.println("nb movies  : " + nbMovies);
 		/*
-		 * int index = 0; for (Movie movie : fileRepository.all()) { System.out.println("=> " + index++ + " : movie : "
+		 * int index = 0; for (AlloCineMovie movie : fileRepository.all()) { System.out.println("=> " + index++ + " : movie : "
 		 * + movie.getTitle()); hbaseMovieService.save(movie); }
 		 */
 	}
