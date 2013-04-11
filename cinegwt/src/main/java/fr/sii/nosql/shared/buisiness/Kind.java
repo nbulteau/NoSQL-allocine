@@ -1,6 +1,5 @@
 package fr.sii.nosql.shared.buisiness;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
@@ -9,7 +8,6 @@ import javax.persistence.Id;
  * @author nbulteau
  * 
  */
-@Entity
 public enum Kind {
 
 	Action, Animation, Arts_Martiaux("Arts Martiaux"), Aventure, Biopic, Bollywood, Classique, Comedie("Comédie"), Comedie_dramatique("Comédie dramatique"), Comedie_musicale(

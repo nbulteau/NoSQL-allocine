@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
@@ -71,10 +70,9 @@ public class RedisMovieRepositoryTest {
 
 	@Test
 	public void countMoviesByKindRedis() {
-		MovieFilter movieFilter = new MovieFilter(null, Kind.Action, null);
 		long deb = System.currentTimeMillis();
 
-		long count = redisMovieRepository.countMoviesWithQuery(movieFilter);
+		long count = redisMovieRepository.countMoviesWithQuery(Kind.Action);
 		Assert.assertEquals(ACTION_MOVIES_COUNT, count);
 
 		long end = System.currentTimeMillis();

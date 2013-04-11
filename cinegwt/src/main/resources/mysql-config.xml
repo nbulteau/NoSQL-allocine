@@ -10,16 +10,16 @@
 			http://www.springframework.org/schema/tx 
 			http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 			http://www.springframework.org/schema/data/jpa
-   			http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+   			http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd">
 
 	<context:property-placeholder location="classpath:application.properties" />
 
 	<beans profile="jpa">
 
 		<tx:annotation-driven transaction-manager="transactionManager" />
-
+	
 		<jpa:repositories base-package="fr.sii.nosql.server.repository.jpa" />
-
+ 	
 		<bean id="entityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 			<property name="persistenceUnitName" value="cinema" />
@@ -46,22 +46,5 @@
 			<property name="entityManagerFactory" ref="entityManagerFactory" />
 		</bean>
 
-		<!-- Mappers -->
-		<bean id='filmMapper' class='fr.sii.nosql.server.service.mapper.FilmMapperImpl'>
-			<property name='dozerMapper' ref='dozerMapper' />
-		</bean>
-
-		<bean id='personneMapper' class='fr.sii.nosql.server.service.mapper.PersonneMapperImpl'>
-			<property name='dozerMapper' ref='dozerMapper' />
-		</bean>
-
-		<!-- Config du mapper Dozer -->
-		<bean id='dozerMapper' class='org.dozer.DozerBeanMapper'>
-			<property name='mappingFiles'>
-				<list>
-					<value>dozer-mappings.xml</value>
-				</list>
-			</property>
-		</bean>
 	</beans>
 </beans>

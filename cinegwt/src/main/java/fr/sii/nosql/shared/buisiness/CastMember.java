@@ -2,11 +2,12 @@ package fr.sii.nosql.shared.buisiness;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CastMember implements Serializable {
@@ -19,6 +20,7 @@ public class CastMember implements Serializable {
 
 	private String role;
 
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
 	private Person person;
 
 	public CastMember() {

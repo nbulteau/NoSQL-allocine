@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Entity
 public class Photo extends Picture {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8650443351356806340L;
 
 	public Photo() {
 		super();

@@ -44,16 +44,18 @@ public class JPAMovieServiceImplTest {
 	private AlloCineService alloCineService;
 
 	@Test
-	// @Ignore
 	public void populate() throws MovieServiceException {
 
 		String fileName = "D:\\Users\\Nicolas\\Documents\\My Dropbox\\vu.txt";
 		List<Movie> movies = alloCineService.retrieveMovies(fileName);
+		for (Movie movie : movies) {
+			filmService.save(movie);
+		}
 	}
 
-	@Autowired
-	@Qualifier("mongoDBMovieService")
-	MovieService movieService;
+	// @Autowired
+	// @Qualifier("mongoDBMovieService")
+	// MovieService movieService;
 	//
 	// @Test
 	// @Ignore

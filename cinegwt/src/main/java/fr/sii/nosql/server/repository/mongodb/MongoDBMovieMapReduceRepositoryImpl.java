@@ -17,7 +17,6 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
@@ -87,14 +86,14 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	}
 
 	@Override
-	public long countWithQuery(MovieFilter movieFilter) {
-		Query query = generateQuery(movieFilter);
+	public long countWithQuery(Kind kind) {
+		Query query = generateQuery(kind);
 		return mongoOperations.count(query, Movie.class);
 	}
 
 	@Override
-	public long countWithQueryMR(MovieFilter movieFilter) {
-		Query query = generateQuery(movieFilter);
+	public long countWithQueryMR(Kind kind) {
+		Query query = generateQuery(kind);
 
 		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_COUNT, REDUCE_COUNT, Movie.class);
 
@@ -105,8 +104,8 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	}
 
 	@Override
-	public int averageDurationWithQueryMR(MovieFilter movieFilter) {
-		Query query = generateQuery(movieFilter);
+	public int averageDurationWithQueryMR(Kind kind) {
+		Query query = generateQuery(kind);
 
 		MapReduceOptions options = MapReduceOptions.options().outputTypeInline();
 		MapReduceResults<ValueObject> results = mongoOperations.mapReduce(query, "movies", MAP_DURATION, REDUCE_DURATION, options, ValueObject.class);
@@ -122,8 +121,8 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	}
 
 	@Override
-	public int averageDuration(MovieFilter movieFilter) {
-		List<Movie> moviesList = findByKind(movieFilter);
+	public int averageDuration(Kind kind) {
+		List<Movie> moviesList = findByKind(kind);
 		int sum = 0;
 		int index = 0;
 		for (Movie movie : moviesList) {
@@ -137,9 +136,9 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	}
 
 	@Override
-	public List<Movie> findByKindMR(MovieFilter movieFilter) {
+	public List<Movie> findByKindMR(Kind kind) {
 		List<Movie> movies = new ArrayList<Movie>();
-		Query query = generateQuery(movieFilter);
+		Query query = generateQuery(kind);
 		// query.with(new Sort(Direction.ASC, "title"));
 
 		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_ALL, REDUCE_ALL, Movie.class);
@@ -153,19 +152,15 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	}
 
 	@Override
-	public List<Movie> findByKind(MovieFilter movieFilter) {
-		Query query = generateQuery(movieFilter);
+	public List<Movie> findByKind(Kind kind) {
+		Query query = generateQuery(kind);
 		// query.with(new Sort(Direction.ASC, "title"));
 
 		return mongoOperations.find(query, Movie.class);
 	}
 
-	private Query generateQuery(MovieFilter movieFilter) {
+	private Query generateQuery(Kind kind) {
 		Query query;
-		Kind kind = null;
-		if (movieFilter != null) {
-			kind = movieFilter.getKind();
-		}
 		if (kind == null) {
 			query = new Query();
 		} else {

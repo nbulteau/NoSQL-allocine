@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Profile("redis")
@@ -148,13 +148,7 @@ public class RedisMovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<Movie> fetchMovies(int start, int length, MovieFilter movieFilter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public long getMoviesCount(MovieFilter movieFilter) {
+	public long countByKind(Kind kind) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

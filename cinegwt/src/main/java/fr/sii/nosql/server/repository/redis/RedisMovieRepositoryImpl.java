@@ -22,7 +22,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.stereotype.Repository;
 
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
@@ -183,12 +182,8 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	}
 
 	@Override
-	public long countMoviesWithQuery(MovieFilter movieFilter) {
-		if (movieFilter.getTitle() == null && movieFilter.getViewed() == null) {
-			String kindKey = KeyUtils.kind(movieFilter.getKind().getLabel());
-			return getConnection().sCard(kindKey.getBytes());
-		}
-		return findByKind(movieFilter).size();
+	public long countMoviesWithQuery(Kind kind) {
+		return findByKind(kind).size();
 	}
 
 	@Override
@@ -284,8 +279,8 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	}
 
 	@Override
-	public List<Movie> findByKind(final MovieFilter movieFilter) {
-		return findByKeyOrdered(KeyUtils.kind(movieFilter.getKind().getLabel()));
+	public List<Movie> findByKind(final Kind kind) {
+		return findByKeyOrdered(KeyUtils.kind(kind.getLabel()));
 		// FIXME : sorts only on kinds ?
 		// return findInAllMovies(new Predicate<AlloCineMovie>() {
 		// @Override

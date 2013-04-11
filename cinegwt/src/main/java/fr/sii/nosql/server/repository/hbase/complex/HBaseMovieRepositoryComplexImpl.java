@@ -23,7 +23,7 @@ import dataaccess.hbase.simple.serializers.JacksonJsonHBaseSerializer;
 import dataaccess.hbase.simple.serializers.LongKeySerializer;
 import dataaccess.hbase.simple.serializers.String8Serializer;
 import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
-import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Profile("hbase")
@@ -55,8 +55,7 @@ public class HBaseMovieRepositoryComplexImpl implements HBaseMovieRepository {
 		moviesById = new HBaseTable<Long, Movie>(template, "Movies", Long.class, Movie.class);
 		moviesByTitle = new HBaseTable1N.SL<Movie>(template, "MoviesByTitle", Movie.class);
 		moviesByTitleLike = new HBaseTable1N.SL<Movie>(template, "MoviesByTitleLike", Movie.class);
-		moviesByTitleLike.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(new String8Serializer(),
-				new LongKeySerializer()));
+		moviesByTitleLike.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(new String8Serializer(), new LongKeySerializer()));
 		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById, moviesByTitle, moviesByTitleLike })
 			t.setValueSerializer(ser);
 	}
@@ -155,12 +154,12 @@ public class HBaseMovieRepositoryComplexImpl implements HBaseMovieRepository {
 	}
 
 	@Override
-	public List<Movie> findByKind(MovieFilter movieFilter) {
-		return kindRepo.getMovies(movieFilter.getKind().name());
+	public List<Movie> findByKind(Kind kind) {
+		return kindRepo.getMovies(kind.name());
 	}
 
 	@Override
-	public long countByKind(MovieFilter movieFilter) {
-		return kindRepo.count(movieFilter.getKind().name());
+	public long countByKind(Kind kind) {
+		return kindRepo.count(kind.name());
 	}
 }

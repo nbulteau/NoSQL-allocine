@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,7 +21,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * AlloCineMovie
+ * Movie
  * 
  * @author nbulteau
  * 
@@ -48,14 +50,14 @@ public class Movie implements Serializable {
 	private int duration;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
-	@JoinTable(name = "moviedirector", joinColumns = @JoinColumn(name = "directorId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "directorFk", referencedColumnName = "id"))
+	@JoinTable(name = "movie_director", joinColumns = @JoinColumn(name = "directorId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "personId", referencedColumnName = "id"))
 	private Set<Person> directors = new HashSet<>();
 
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.REMOVE })
 	private Set<CastMember> castMembers = new HashSet<>();
 
-	@ManyToMany
-	@JoinTable(name = "moviekind", joinColumns = @JoinColumn(name = "kindId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "kindFk", referencedColumnName = "label"))
+	@ElementCollection
+	@CollectionTable(name = "movie_kind")
 	private Set<Kind> kinds = new HashSet<>();
 
 	@Column(length = 2000)

@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Transactional
@@ -13,6 +14,8 @@ public interface MongoDBMovieRepository extends MongoRepository<Movie, Long> {
 	List<Movie> findByTitle(String title);
 
 	List<Movie> findByTitleLike(String string);
+
+	List<Movie> findByKind(Kind kind);
 
 	@Query(value = "{'actors.person._id':?0}.sort({title:1}")
 	List<Movie> findByActor(long id);

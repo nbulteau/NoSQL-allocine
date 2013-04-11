@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieMapReduceRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
@@ -185,10 +184,9 @@ public class MongodbMovieRepositoryTest {
 
 	@Test
 	public void averageDurationByKindMongoDBWithMapReduce() {
-		MovieFilter movieFilter = new MovieFilter(null, Kind.Action, null);
 		long deb = System.currentTimeMillis();
 
-		int duration = mapReduceRepository.averageDurationWithQueryMR(movieFilter);
+		int duration = mapReduceRepository.averageDurationWithQueryMR(Kind.Action);
 		Assert.assertEquals(AVERAGE_ACTION_MOVIES_DURATION, duration);
 
 		long end = System.currentTimeMillis();
@@ -219,10 +217,9 @@ public class MongodbMovieRepositoryTest {
 
 	@Test
 	public void countMoviesByKindMongoDB() {
-		MovieFilter movieFilter = new MovieFilter(null, Kind.Action, null);
 		long deb = System.currentTimeMillis();
 
-		long count = mapReduceRepository.countWithQuery(movieFilter);
+		long count = mapReduceRepository.countWithQuery(Kind.Action);
 		Assert.assertEquals(ACTION_MOVIES_COUNT, count);
 
 		long end = System.currentTimeMillis();

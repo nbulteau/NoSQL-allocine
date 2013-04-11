@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface RedisMovieRepository {
@@ -29,7 +29,7 @@ public interface RedisMovieRepository {
 
 	long countKinds();
 
-	long countMoviesWithQuery(MovieFilter movieFilter);
+	long countMoviesWithQuery(Kind kind);
 
 	void delete(Long id);
 
@@ -47,5 +47,5 @@ public interface RedisMovieRepository {
 
 	List<Movie> findByDirector(String name);
 
-	List<Movie> findByKind(MovieFilter movieFilter);
+	List<Movie> findByKind(Kind kind);
 }

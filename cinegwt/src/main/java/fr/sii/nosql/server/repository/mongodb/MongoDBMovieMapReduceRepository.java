@@ -2,22 +2,22 @@ package fr.sii.nosql.server.repository.mongodb;
 
 import java.util.List;
 
-import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface MongoDBMovieMapReduceRepository {
 
-	long countWithQuery(MovieFilter movieFilter);
+	long countWithQuery(Kind kind);
 
-	long countWithQueryMR(MovieFilter movieFilter);
+	long countWithQueryMR(Kind kind);
 
-	int averageDurationWithQueryMR(MovieFilter movieFilter);
+	int averageDurationWithQueryMR(Kind kind);
 
-	int averageDuration(MovieFilter movieFilter);
+	int averageDuration(Kind kind);
 
-	List<Movie> findByKindMR(MovieFilter movieFilter);
+	List<Movie> findByKindMR(Kind kind);
 
-	List<Movie> findByKind(MovieFilter movieFilter);
+	List<Movie> findByKind(Kind kind);
 
 	List<Movie> findByActorMR(long id);
 

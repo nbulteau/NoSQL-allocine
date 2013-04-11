@@ -1,6 +1,5 @@
 package fr.sii.nosql.server.service.jpa;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,21 +9,14 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.sii.nosql.server.MovieHelper;
+import com.google.common.collect.Lists;
+
 import fr.sii.nosql.server.allocine.service.AlloCineService;
-import fr.sii.nosql.server.repository.jpa.Film;
-import fr.sii.nosql.server.repository.jpa.FilmDAO;
-import fr.sii.nosql.server.repository.jpa.Genre;
-import fr.sii.nosql.server.repository.jpa.GenreDAO;
-import fr.sii.nosql.server.repository.jpa.Personne;
-import fr.sii.nosql.server.repository.jpa.PersonneDAO;
-import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.server.repository.jpa.JpaMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.server.service.mapper.FilmMapper;
-import fr.sii.nosql.shared.buisiness.CastMember;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
-import fr.sii.nosql.shared.buisiness.Person;
 
 @Profile("jpa")
 @Service("jpaMovieService")
@@ -32,92 +24,67 @@ public class JPAMovieServiceImpl implements MovieService {
 
 	private final static Logger LOGGER = LoggerFactory.getLogger(JPAMovieServiceImpl.class);
 
-	private final FilmDAO filmDAO;
-
-	private final GenreDAO genreDAO;
-
-	private final PersonneDAO personneDAO;
-
-	private final FilmMapper filmMapper;
+	private final JpaMovieRepository jpaMovieRepository;
 
 	private final AlloCineService alloCineService;
 
 	@Autowired(required = true)
-	public JPAMovieServiceImpl(FilmDAO filmDAO, GenreDAO genreDAO, PersonneDAO personneDAO, FilmMapper filmMapper, AlloCineService alloCineService) {
+	public JPAMovieServiceImpl(JpaMovieRepository jpaMovieRepository, AlloCineService alloCineService) {
 		super();
-		this.filmDAO = filmDAO;
-		this.genreDAO = genreDAO;
-		this.filmMapper = filmMapper;
+		this.jpaMovieRepository = jpaMovieRepository;
 		this.alloCineService = alloCineService;
-		this.personneDAO = personneDAO;
 	}
 
 	@Override
 	public boolean exists(long id) {
-		return filmDAO.loadById(id) == null ? false : true;
+		return jpaMovieRepository.exists(id);
 	};
 
 	@Override
 	@Transactional(readOnly = true)
 	public Movie findById(long id) {
-		Film film = filmDAO.loadById(id);
-
-		return filmMapper.toDto(film);
+		return jpaMovieRepository.findOne(id);
 	}
 
 	@Override
 	public List<Movie> findAll() {
-		List<Film> films = filmDAO.loadAll();
-
-		return filmMapper.toDto(films);
+		return Lists.newArrayList(jpaMovieRepository.findAll());
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Movie> findByTitle(String title) {
-		List<Film> films = filmDAO.rechercherFilmsParLeTitre(title);
-
-		return filmMapper.toDto(films);
+		return jpaMovieRepository.findByTitle(title);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Movie> findByTitleLike(String title) {
-		List<Film> films = filmDAO.rechercherFilmsDontLeTitreCommencePar(title);
-
-		return filmMapper.toDto(films);
+		return jpaMovieRepository.findByTitleLike(title);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Movie> findByActor(long id) {
-		List<Film> films = filmDAO.rechercherFilmsDansLequelPersonneEstActeur(id);
-
-		return filmMapper.toDto(films);
+		return jpaMovieRepository.findByActor(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Movie> findByActor(String name) {
-		List<Film> films = filmDAO.rechercherFilmsDansLequelPersonneEstActeur(name);
-
-		return filmMapper.toDto(films);
+		return jpaMovieRepository.findByActor(name);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Movie> findByDirector(long id) {
-		List<Film> films = filmDAO.rechercherFilmsDansLequelPersonneEstRealisateur(id);
-
-		return filmMapper.toDto(films);
+		return jpaMovieRepository.findByDirector(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Movie> findByDirector(String name) {
-		List<Film> films = filmDAO.rechercherFilmsDansLequelPersonneEstRealisateur(name);
-
-		return filmMapper.toDto(films);
+		return jpaMovieRepository.findByDirector(name);
 	}
 
 	@Override
@@ -125,38 +92,38 @@ public class JPAMovieServiceImpl implements MovieService {
 	public void save(Movie movie) throws MovieServiceException {
 		LOGGER.info("saveMovie : {}", movie.getTitle());
 
-		Film film = filmMapper.toModel(movie);
-
-		List<Genre> allGenres = genreDAO.loadAll();
-		for (Genre g : film.getGenres())
-			if (!allGenres.contains(g))
-				genreDAO.persist(g);
-
-		// poster
-		try {
-			if (movie.getPosterHref() != null) {
-				byte[] poster = MovieHelper.downloadPicture(movie.getPosterHref());
-				film.setAffiche(poster);
-			}
-		} catch (IOException e) {
-			LOGGER.error("Unable to retrieve poster for {} : {}", movie.getTitle(), e.getMessage());
-		}
-		// actors picture
-		for (CastMember castMember : movie.getCastMembers()) {
-			Person person = castMember.getPerson();
-			Long personId = person.getId();
-			Personne personne = personneDAO.loadById(personId);
-			if (personne != null && person.getPictureHref() != null) {
-				try {
-					byte[] photo = MovieHelper.downloadPicture(person.getPictureHref());
-					personne.setPhoto(photo);
-				} catch (IOException e) {
-					LOGGER.error("Unable to retrieve photo for {} : {}", person.getName(), e.getMessage());
-				}
-			}
+		if (movie.getId() == 0) {
+			throw new MovieServiceException("movie id == 0");
 		}
 
-		filmDAO.update(film);
+		// TODO : poster
+		// try {
+		// if (movie.getPosterHref() != null) {
+		// byte[] poster = MovieHelper.downloadPicture(movie.getPosterHref());
+		// // TODO
+		// }
+		// } catch (IOException e) {
+		// LOGGER.error("Unable to retrieve poster for {} : {}",
+		// movie.getTitle(), e.getMessage());
+		// }
+
+		// TODO : actors picture
+		// for (CastMember castMember : movie.getCastMembers()) {
+		// Person person = castMember.getPerson();
+		// Long personId = person.getId();
+		// Personne personne = personneDAO.loadById(personId);
+		// if (personne != null && person.getPictureHref() != null) {
+		// try {
+		// byte[] photo = MovieHelper.downloadPicture(person.getPictureHref());
+		// personne.setPhoto(photo);
+		// } catch (IOException e) {
+		// LOGGER.error("Unable to retrieve picture for {} : {}",
+		// person.getName(), e.getMessage());
+		// }
+		// }
+		// }
+
+		jpaMovieRepository.save(movie);
 	}
 
 	@Override
@@ -173,28 +140,9 @@ public class JPAMovieServiceImpl implements MovieService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Movie> fetchMovies(int start, int length, MovieFilter movieFilter) {
-		LOGGER.debug("fetchMovies({}, {}, {})", new Object[] { start, length, movieFilter });
-
-		String genreLabel = null;
-		if (movieFilter.getKind() != null) {
-			genreLabel = movieFilter.getKind().getLabel();
-		}
-
-		List<Film> films = filmDAO.findAllSorted(start, length, movieFilter.isViewed(), genreLabel, movieFilter.getTitle());
-
-		return filmMapper.toDto(films);
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public long getMoviesCount(MovieFilter movieFilter) {
-		String genreLabel = null;
-		if (movieFilter.getKind() != null) {
-			genreLabel = movieFilter.getKind().getLabel();
-		}
-
-		return filmDAO.count(movieFilter.isViewed(), genreLabel, movieFilter.getTitle());
+	public long countByKind(Kind kind) {
+		// TODO : implements getMoviesCount with filter
+		return jpaMovieRepository.count();
 	}
 
 }

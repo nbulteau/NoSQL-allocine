@@ -23,7 +23,6 @@ import dataaccess.hbase.simple.serializers.HBaseSerializer;
 import dataaccess.hbase.simple.serializers.JacksonJsonHBaseSerializer;
 import dataaccess.hbase.simple.serializers.LongKeySerializer;
 import dataaccess.hbase.simple.serializers.String8Serializer;
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
@@ -185,12 +184,12 @@ public class HBaseMovieRepositoryImpl implements HBaseMovieRepository {
 	}
 
 	@Override
-	public List<Movie> findByKind(MovieFilter movieFilter) {
-		return moviesByKind.getList(movieFilter.getKind().name());
+	public List<Movie> findByKind(Kind kind) {
+		return moviesByKind.getList(kind.name());
 	}
 
 	@Override
-	public long countByKind(MovieFilter movieFilter) {
-		return findByKind(movieFilter).size();
+	public long countByKind(Kind kind) {
+		return findByKind(kind).size();
 	}
 }

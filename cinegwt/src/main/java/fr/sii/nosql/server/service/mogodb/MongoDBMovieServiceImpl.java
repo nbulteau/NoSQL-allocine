@@ -8,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +16,10 @@ import fr.sii.nosql.server.allocine.service.AlloCineService;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBPhotoRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBPosterRepository;
-import fr.sii.nosql.server.service.MovieFilter;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.CastMember;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 import fr.sii.nosql.shared.buisiness.Photo;
@@ -158,16 +156,7 @@ public class MongoDBMovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<Movie> fetchMovies(int start, int length, MovieFilter movieFilter) {
-		// TODO : implements fetchMovies with filter
-
-		Page<Movie> page = mongoDBMovieRepository.findAll(new PageRequest(start, length));
-
-		return new ArrayList<Movie>(page.getContent());
-	}
-
-	@Override
-	public long getMoviesCount(MovieFilter movieFilter) {
+	public long countByKind(Kind kind) {
 		// TODO : implements getMoviesCount with filter
 		return mongoDBMovieRepository.count();
 	}

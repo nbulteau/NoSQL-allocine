@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import fr.sii.nosql.server.service.MovieFilter;
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface HBaseMovieRepository {
@@ -43,7 +43,7 @@ public interface HBaseMovieRepository {
 
 	List<Movie> findByDirector(String name);
 
-	List<Movie> findByKind(MovieFilter movieFilter);
+	List<Movie> findByKind(Kind kind);
 
-	long countByKind(MovieFilter movieFilter);
+	long countByKind(Kind kind);
 }

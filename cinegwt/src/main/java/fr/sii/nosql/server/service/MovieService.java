@@ -2,6 +2,7 @@ package fr.sii.nosql.server.service;
 
 import java.util.List;
 
+import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface MovieService {
@@ -26,10 +27,7 @@ public interface MovieService {
 
 	void save(Movie movie) throws MovieServiceException;
 
-	Movie retrieveAndSave(long alloCineMovieId, boolean viewed)
-			throws MovieServiceException;
+	Movie retrieveAndSave(long alloCineMovieId, boolean viewed) throws MovieServiceException;
 
-	List<Movie> fetchMovies(int start, int length, MovieFilter movieFilter);
-
-	long getMoviesCount(MovieFilter movieFilter);
+	long countByKind(Kind kind);
 }
