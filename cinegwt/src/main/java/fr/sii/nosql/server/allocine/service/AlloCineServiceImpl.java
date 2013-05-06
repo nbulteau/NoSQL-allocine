@@ -56,7 +56,7 @@ public class AlloCineServiceImpl implements AlloCineService {
 		List<Movie> movies = new ArrayList<>();
 		try {
 			List<AlloCineMovie> alloCineMovies = alloCineRepository.retrieveMovielist();
-
+			LOGGER.debug("Retrieve movielist {} fims ", alloCineMovies.size());
 			Movie movie = null;
 			for (AlloCineMovie alloCineMovie : alloCineMovies) {
 				movie = retrieveMovie(alloCineMovie.getCode());
