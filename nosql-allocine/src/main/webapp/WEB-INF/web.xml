@@ -9,9 +9,7 @@
 	</context-param>
 
 	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<!-- Servlets -->
@@ -20,10 +18,27 @@
 		<servlet-class>fr.sii.nosql.server.PictureServlet</servlet-class>
 	</servlet>
 
+	<!-- Define the Spring Dispatcher Servlet for the REST services. The 'contextConfiguration' 
+		param with an empty value means that the Spring Context won't try to load 
+		a default file called restservices-servlet.xml -->
+	<servlet>
+		<servlet-name>restservices</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>pictureServlet</servlet-name>
 		<url-pattern>/movieServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>restservices</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>

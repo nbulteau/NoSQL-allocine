@@ -75,20 +75,6 @@ public class FileMovieRepositoryImpl implements FileMovieRepository {
 		return files.size();
 	}
 
-	public Movie load(File f, boolean cache) throws IOException, ConvertException {
-		try {
-			MovieResult alloMovie = objectMapper.readValue(f, MovieResult.class);
-			Movie movie = getMovieMapperService().convertToBuisinessObject(alloMovie.getMovie());
-			if (cache) {
-				movies.put(movie.getId(), movie);
-			}
-			return movie;
-		} catch (Exception e) {
-			LOG.info("was loading " + f.getName(), e);
-			return null;
-		}
-	}
-
 	@Override
 	public Iterable<Movie> all() {
 		final List<File> files = new ArrayList<>();
@@ -134,12 +120,17 @@ public class FileMovieRepositoryImpl implements FileMovieRepository {
 
 	@Override
 	public Movie findOne(Long id) {
-		return movies.get(id);
+		Movie movie = null;
+		File file = getFile(id);
+		if (file != null) {
+			movie = load(file, false);
+		}
+		return movie;
 	}
 
 	@Override
 	public void add(long id, String body) {
-		File file = new File(getRepositoryPath() + File.separator + (id / 100000) + File.separator + id + JSON_SUFFIX);
+		File file = getFile(id);
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 			bw.write(body);
@@ -155,13 +146,31 @@ public class FileMovieRepositoryImpl implements FileMovieRepository {
 	@Override
 	public void add(long id, MovieResult movie) {
 
-		File file = new File(getRepositoryPath() + File.separator + (id / 100000) + File.separator + id + JSON_SUFFIX);
+		File file = getFile(id);
 		try {
 			objectMapper.writeValue(file, movie);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	private File getFile(Long id) {
+		return new File(getRepositoryPath() + File.separator + (id / 100000) + File.separator + id + JSON_SUFFIX);
+	}
+
+	private Movie load(File f, boolean cache) {
+		try {
+			MovieResult alloMovie = objectMapper.readValue(f, MovieResult.class);
+			Movie movie = getMovieMapperService().convertToBuisinessObject(alloMovie.getMovie());
+			if (cache) {
+				movies.put(movie.getId(), movie);
+			}
+			return movie;
+		} catch (Exception e) {
+			LOG.info("was loading " + f.getName(), e);
+			return null;
 		}
 	}
 
