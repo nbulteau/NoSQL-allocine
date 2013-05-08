@@ -33,10 +33,10 @@
 			<groupId>jdk.tools</groupId>
 			<artifactId>jdk.tools</artifactId>
 			<scope>system</scope>
-			<version>1.7</version>
+			<version>${jdkVersion}</version>
 			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 		</dependency>
-
+ 
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
@@ -250,7 +250,7 @@
 			<artifactId>hbase-support</artifactId>
 			<version>1.0.0</version>
 			<scope>system</scope>
-			<systemPath>D:/workspace/cinegwt/lib/hbase-support-1.0.0.jar</systemPath>
+			<systemPath>${project.basedir}/lib/hbase-support-1.0.0.jar</systemPath>
 			<exclusions>
 				<exclusion>
 					<artifactId>jsp-2.1-jetty</artifactId>

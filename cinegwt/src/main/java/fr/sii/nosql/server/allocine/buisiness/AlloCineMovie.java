@@ -60,6 +60,38 @@ public class AlloCineMovie {
 	private List<AlloCineCode> language;
 
 	private String budget;
+	
+	private String trailerEmbed;
+	
+	@JsonIgnore
+	private List<Media> media;
+	
+	@JsonIgnore
+	private List<BoxOffice> boxOffice;
+
+	public List<BoxOffice> getBoxOffice() {
+		return boxOffice;
+	}
+
+	public void setBoxOffice(List<BoxOffice> boxOffice) {
+		this.boxOffice = boxOffice;
+	}
+
+	public List<Media> getMedia() {
+		return media;
+	}
+
+	public void setMedia(List<Media> media) {
+		this.media = media;
+	}
+
+	public String getTrailerEmbed() {
+		return trailerEmbed;
+	}
+
+	public void setTrailerEmbed(String trailerEmbed) {
+		this.trailerEmbed = trailerEmbed;
+	}
 
 	public List<AlloCineCastMember> getCastMember() {
 		return this.alloCineCastMember;

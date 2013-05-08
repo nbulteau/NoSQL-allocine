@@ -48,6 +48,15 @@ public class AlloCineServiceImplTest {
 	}
 
 	@Test
+	public void testRetrieveOblivion() {
+		// Oblivion id
+		long idMovie = 27405;
+
+		Movie movie = alloCineService.retrieveMovie(idMovie);
+		Assert.assertEquals(idMovie, movie.getId());
+	}
+
+	@Test
 	@Ignore
 	public void populate() throws MovieServiceException {
 
@@ -57,6 +66,7 @@ public class AlloCineServiceImplTest {
 	}
 
 	@Test
+	@Ignore
 	public void retrieveMovieList() {
 		List<Movie> movies = alloCineService.retrieveMovieList();
 		System.out.println(movies.size());

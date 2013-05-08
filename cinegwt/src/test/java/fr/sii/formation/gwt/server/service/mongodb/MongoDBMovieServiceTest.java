@@ -3,7 +3,7 @@ package fr.sii.formation.gwt.server.service.mongodb;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.Ignore;
 import org.junit.Test;

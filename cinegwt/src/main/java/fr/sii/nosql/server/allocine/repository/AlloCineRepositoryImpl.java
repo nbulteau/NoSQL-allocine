@@ -1,8 +1,17 @@
 package fr.sii.nosql.server.allocine.repository;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,26 +23,48 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import fr.sii.nosql.server.allocine.buisiness.MovieResult;
-import fr.sii.nosql.server.allocine.buisiness.MovieListResult;
 import fr.sii.nosql.server.allocine.buisiness.AlloCineMovie;
+import fr.sii.nosql.server.allocine.buisiness.MovieListResult;
+import fr.sii.nosql.server.allocine.buisiness.MovieResult;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 
 @Repository
 public class AlloCineRepositoryImpl implements AlloCineRepository {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(AlloCineRepositoryImpl.class);
+	/**
+	 * Lower case Hex Digits.
+	 */
+	private static final String HEX_DIGITS = "0123456789abcdef";
 
-	private static final String MOVIE_QUERY = "http://api.allocine.fr/rest/v3/movie?partner=YW5kcm9pZC12M3M&profile=medium&format=json&filter=movie,person&striptags=synopsis,synopsisshort&code=";
+	private final static Logger LOGGER = LoggerFactory
+			.getLogger(AlloCineRepositoryImpl.class);
 
-	private static final String MOVIELIST_QUERY = "http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&filter=nowshowing&profile=small&order=datedesc&format=json";
+	private static final String API_URL = "http://api.allocine.fr/rest/v3";
+
+	private static final String ALLOCINE_PARTNER_KEY = "100043982026";
+
+	private static final String ALLOCINE_SECRET_KEY = "29d185d98c984a359e6e6f26a0474269";
+
+	private static final String USER_AGENT = "Dalvik/1.6.0 (Linux; U; Android 4.2.2; Nexus 4 Build/JDQ39E)";
+
+	private static final String MOVIE_QUERY_PARAMS = "&profile=medium&filter=movie,person&striptags=synopsis%2Csynopsisshort&format=json";
+
+	//private static final String MOVIE_QUERY_PARAMS2 = "&profile=large&filter=movie&striptags=synopsis%2Csynopsisshort&format=json";
+
+	private static final String MOVIELIST_QUERY_PARAMS = "partner="
+			+ ALLOCINE_PARTNER_KEY
+			+ "&filter=nowshowing&profile=small&order=datedesc&format=json";
 
 	private final RestTemplate restTemplate;
 
 	private final FileMovieRepository fileRepository;
 
+	private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+			"YYYYMMdd");
+
 	@Autowired
-	public AlloCineRepositoryImpl(RestTemplate restTemplate, @Qualifier("fileMovieRepository") FileMovieRepository fileRepository) {
+	public AlloCineRepositoryImpl(RestTemplate restTemplate,
+			@Qualifier("fileMovieRepository") FileMovieRepository fileRepository) {
 		super();
 		this.restTemplate = restTemplate;
 		this.fileRepository = fileRepository;
@@ -41,13 +72,26 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 
 	@Override
 	public AlloCineMovie retrieveMovie(long idMovie) throws RetrieveException {
-		String query = MOVIE_QUERY + idMovie;
+		String query = API_URL + "/movie?";
 
-		LOGGER.debug("Query : {}", query);
+		String params = "partner=" + ALLOCINE_PARTNER_KEY;
+		params += "&code=" + idMovie;
+		params += MOVIE_QUERY_PARAMS + "&sed=";
+		params += simpleDateFormat.format(new Date());
 
 		MovieResult movieResult = null;
+
 		try {
-			ResponseEntity<MovieResult> response = restTemplate.exchange(query, HttpMethod.GET, getHttpEntity(), MovieResult.class);
+			String sig = buildAlloCineSignature(params);
+
+			query += params + sig;
+			
+			LOGGER.debug("Query : {}", query);
+
+			URI uri = URI.create(query);
+			
+			ResponseEntity<MovieResult> response = restTemplate.exchange(uri,
+					HttpMethod.GET, getHttpEntity(), MovieResult.class);
 
 			movieResult = response.getBody();
 
@@ -56,7 +100,9 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 			}
 
 		} catch (Exception e) {
-			throw new RetrieveException("Retrieve problem for movie id : " + idMovie, e);
+			LOGGER.error("Exception : {}", e.getMessage());
+			throw new RetrieveException("Retrieve problem for movie id : "
+					+ idMovie, e);
 		}
 
 		return movieResult.getMovie();
@@ -72,11 +118,27 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 		int page = 1;
 
 		while (count * page < totalResults) {
-			String query = MOVIELIST_QUERY + "&count=" + count + "&page=" + page;
-			LOGGER.info("Query : {}", query);
+			String query = API_URL + "/movielist?";
+
+			String params = "partner=" + ALLOCINE_PARTNER_KEY;
+			params += MOVIELIST_QUERY_PARAMS;
+			params += "&count=" + count + "&page=" + page;
+			params += "&sed=" + simpleDateFormat.format(new Date());
 
 			try {
-				ResponseEntity<MovieListResult> response = restTemplate.exchange(query, HttpMethod.GET, getHttpEntity(), MovieListResult.class);
+				String sig = buildAlloCineSignature(params);
+
+				query += params + sig;
+
+				query = URLEncoder.encode(query, "UTF-8");
+
+				LOGGER.info("Query : {}", query);
+
+				URI uri = URI.create(query);
+
+				ResponseEntity<MovieListResult> response = restTemplate
+						.exchange(uri, HttpMethod.GET, getHttpEntity(),
+								MovieListResult.class);
 
 				MovieListResult movieListResult = response.getBody();
 				alloCineMovies.addAll(movieListResult.getFeed().getMovie());
@@ -94,9 +156,42 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 
 	private HttpEntity<String> getHttpEntity() {
 		HttpHeaders headers = new HttpHeaders();
-		headers.set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75 Safari/535.7");
+		headers.set("User-Agent", USER_AGENT);
 		HttpEntity<String> httpEntity = new HttpEntity<String>(headers);
 		return httpEntity;
 	}
 
+	private String buildAlloCineSignature(String params)
+			throws UnsupportedEncodingException {
+		LOGGER.debug("Params : {}", params);
+
+		String sha1params = computeSha1OfString(ALLOCINE_SECRET_KEY + params);
+		return "&sig=" + URLEncoder.encode(sha1params, "UTF-8");
+	}
+
+	/**
+	 * Compute a SHA-1 hash of a String argument
+	 * 
+	 * @param arg
+	 *            the UTF-8 String to encode
+	 * @return the sha1 hash as a string.
+	 */
+	public static String computeSha1OfString(String arg) {
+		try {
+			return computeSha1OfByteArray(arg.getBytes(("UTF-8")));
+		} catch (UnsupportedEncodingException ex) {
+			throw new UnsupportedOperationException(ex);
+		}
+	}
+
+	private static String computeSha1OfByteArray(byte[] arg) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-1");
+			md.update(arg);
+			byte[] res = md.digest();			
+			return new String(Base64.encodeBase64(res));
+		} catch (NoSuchAlgorithmException ex) {
+			throw new UnsupportedOperationException(ex);
+		}
+	}
 }
