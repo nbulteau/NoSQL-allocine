@@ -1,6 +1,5 @@
 package fr.sii.nosql.shared.buisiness;
 
-import javax.persistence.Id;
 
 /**
  * Kind of the movies
@@ -15,8 +14,9 @@ public enum Kind {
 			"AlloCineMovie night"), Musical, Opera, Péplum, Policier, Romance, Science_fiction("Science fiction"), Show, Sport_event("Sport event"), Thriller, Western, Non_definie(
 			"Non définie");
 
-	@Id
+	@javax.persistence.Id
 	private String label;
+
 
 	Kind() {
 		this.label = this.name();
@@ -28,6 +28,10 @@ public enum Kind {
 
 	public String getLabel() {
 		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
 	/**

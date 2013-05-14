@@ -3,16 +3,24 @@ package fr.sii.nosql.shared.buisiness;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
+import org.hibernate.annotations.Index;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "persons")
 @Entity
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@org.springframework.data.annotation.Id
+	@javax.persistence.Id
 	private long id;
 
+	@Indexed(direction = IndexDirection.ASCENDING)
+	@Index(name = "nameIndex")
 	private String name;
 
 	private String pictureHref;

@@ -69,29 +69,29 @@ public class MongoDBMovieServiceImpl implements MovieService {
 		}
 
 		List<Photo> photoListToSave = new ArrayList<Photo>();
-		// actors picture
-		for (CastMember castMember : movie.getCastMembers()) {
-			Person person = castMember.getPerson();
-			Long pictureId = person.getId();
-			if (!mongoDBPhotoRepository.exists(pictureId) && person.getPictureHref() != null) {
-				try {
-					photoListToSave.add(new Photo(pictureId, MovieHelper.downloadPicture(person.getPictureHref())));
-				} catch (IOException e) {
-					LOGGER.error("Unable to retrieve photo for {} : {}", person.getName(), e.getMessage());
-				}
-			}
-		}
-		// directors picture
-		for (Person director : movie.getDirectors()) {
-			long pictureId = director.getId();
-			if (!mongoDBPhotoRepository.exists(pictureId) && director.getPictureHref() != null) {
-				try {
-					photoListToSave.add(new Photo(pictureId, MovieHelper.downloadPicture(director.getPictureHref())));
-				} catch (IOException e) {
-					LOGGER.error("Unable to retrieve photo for {} : {}", director.getName(), e.getMessage());
-				}
-			}
-		}
+//		// actors picture
+//		for (CastMember castMember : movie.getCastMembers()) {
+//			Person person = castMember.getPerson();
+//			Long pictureId = person.getId();
+//			if (!mongoDBPhotoRepository.exists(pictureId) && person.getPictureHref() != null) {
+//				try {
+//					photoListToSave.add(new Photo(pictureId, MovieHelper.downloadPicture(person.getPictureHref())));
+//				} catch (IOException e) {
+//					LOGGER.error("Unable to retrieve photo for {} : {}", person.getName(), e.getMessage());
+//				}
+//			}
+//		}
+//		// directors picture
+//		for (Person director : movie.getDirectors()) {
+//			long pictureId = director.getId();
+//			if (!mongoDBPhotoRepository.exists(pictureId) && director.getPictureHref() != null) {
+//				try {
+//					photoListToSave.add(new Photo(pictureId, MovieHelper.downloadPicture(director.getPictureHref())));
+//				} catch (IOException e) {
+//					LOGGER.error("Unable to retrieve photo for {} : {}", director.getName(), e.getMessage());
+//				}
+//			}
+//		}
 		// insert pictures into db
 		mongoDBPhotoRepository.save(photoListToSave);
 

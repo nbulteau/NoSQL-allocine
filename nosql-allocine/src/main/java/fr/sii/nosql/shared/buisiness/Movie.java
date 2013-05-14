@@ -122,9 +122,12 @@ public class Movie implements Serializable {
 		return true;
 	}
 
-	// getter - setter
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -163,8 +166,24 @@ public class Movie implements Serializable {
 		return directors;
 	}
 
+	public void setDirectors(Set<Person> directors) {
+		this.directors = directors;
+	}
+
 	public Set<CastMember> getCastMembers() {
 		return castMembers;
+	}
+
+	public void setCastMembers(Set<CastMember> castMembers) {
+		this.castMembers = castMembers;
+	}
+
+	public Set<Kind> getKinds() {
+		return kinds;
+	}
+
+	public void setKinds(Set<Kind> kinds) {
+		this.kinds = kinds;
 	}
 
 	public String getSynopsis() {
@@ -173,18 +192,6 @@ public class Movie implements Serializable {
 
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
-	}
-
-	public Set<Kind> getKinds() {
-		return kinds;
-	}
-
-	public boolean isViewed() {
-		return viewed;
-	}
-
-	public void setViewed(boolean viewed) {
-		this.viewed = viewed;
 	}
 
 	public float getPressRating() {
@@ -203,6 +210,14 @@ public class Movie implements Serializable {
 		this.userRating = userRating;
 	}
 
+	public boolean isViewed() {
+		return viewed;
+	}
+
+	public void setViewed(boolean viewed) {
+		this.viewed = viewed;
+	}
+
 	public String getPosterHref() {
 		return posterHref;
 	}
@@ -211,19 +226,6 @@ public class Movie implements Serializable {
 		this.posterHref = posterHref;
 	}
 
-	public void setDirectors(Set<Person> directors) {
-		this.directors = directors;
-	}
+	// getter - setter
 
-	public void setCastMembers(Set<CastMember> castMembers) {
-		this.castMembers = castMembers;
-	}
-
-	public void setKinds(Set<Kind> kinds) {
-		this.kinds = kinds;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 }

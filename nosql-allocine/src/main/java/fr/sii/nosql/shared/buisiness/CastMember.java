@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,7 +13,7 @@ public class CastMember implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -36,6 +35,14 @@ public class CastMember implements Serializable {
 	@Override
 	public String toString() {
 		return "CastMember [role=" + role + ", person=" + person + "]";
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getRole() {

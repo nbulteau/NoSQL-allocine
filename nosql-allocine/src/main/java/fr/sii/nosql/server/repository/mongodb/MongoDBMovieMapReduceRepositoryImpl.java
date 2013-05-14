@@ -110,14 +110,14 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 		MapReduceOptions options = MapReduceOptions.options().outputTypeInline();
 		MapReduceResults<ValueObject> results = mongoOperations.mapReduce(query, "movies", MAP_DURATION, REDUCE_DURATION, options, ValueObject.class);
 
-		int result = 0;
+		long result = 0;
 		for (Iterator<ValueObject> iterator = results.iterator(); iterator.hasNext();) {
 			ValueObject valueObject = iterator.next();
-			int nb = results.getCounts().getEmitCount();
-			result = valueObject.getValue() / nb;
+			long nb = results.getCounts().getEmitCount();
+			result = (valueObject.getValue() / nb);
 		}
 
-		return result;
+		return (int) result;
 	}
 
 	@Override
