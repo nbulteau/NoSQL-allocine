@@ -6,21 +6,22 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Transactional
-public interface MongoDBMovieRepository extends MongoRepository<Movie, Long> {
+public interface MongoDBMovieRepository extends MongoRepository<Movie, Long>, MovieRepository {
 	List<Movie> findByTitle(String title);
 
 	List<Movie> findByTitleLike(String string);
 
     List<Movie> findByKinds(Kind kind);
 
-	@Query(value = "{'actors.person._id':?0}.sort({title:1}")
+	@Query(value = "{'castMembers.person._id':?0}.sort({title:1}")
 	List<Movie> findByActor(long id);
 
-	@Query(value = "{'actors.person.name':?0}.sort({title:1}")
+	@Query(value = "{'castMembers.person.name':?0}.sort({title:1}")
 	List<Movie> findByActor(String name);
 
 	@Query(value = "{'directors._id':?0}.sort({title:1}")

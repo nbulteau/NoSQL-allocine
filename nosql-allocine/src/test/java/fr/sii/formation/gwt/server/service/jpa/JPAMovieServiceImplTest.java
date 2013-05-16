@@ -19,7 +19,6 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
-// @ActiveProfiles({ "jpa", "mongodb" })
 @ActiveProfiles({ "jpa" })
 public class JPAMovieServiceImplTest {
 
@@ -47,7 +46,7 @@ public class JPAMovieServiceImplTest {
 		String fileName = "D:\\Users\\Nicolas\\Documents\\My Dropbox\\vu.txt";
 		List<Movie> movies = alloCineService.retrieveMovies(fileName);
 		for (Movie movie : movies) {
-			filmService.save(movie);
+			filmService.save(movie, true);
 		}
 	}
 }

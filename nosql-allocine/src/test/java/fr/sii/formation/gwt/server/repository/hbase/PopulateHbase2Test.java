@@ -10,8 +10,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
-import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Movie;
 
@@ -25,7 +25,7 @@ public class PopulateHbase2Test {
 
 	@Autowired
 	@Qualifier("hbaseMovieRepository2")
-	HBaseMovieRepository movieRepo;
+	MovieRepository movieRepo;
 
 	@Test
 	public void updateMovies() throws IOException, MovieServiceException {

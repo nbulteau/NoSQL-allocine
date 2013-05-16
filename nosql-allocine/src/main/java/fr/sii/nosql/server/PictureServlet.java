@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import fr.sii.nosql.server.service.PhotoService;
-import fr.sii.nosql.server.service.PosterService;
+import fr.sii.nosql.server.repository.file.FilePhotoRepository;
+import fr.sii.nosql.server.repository.file.FilePosterRepository;
 
 public class PictureServlet extends HttpServlet {
 	private static final long serialVersionUID = -1L;
@@ -37,11 +37,11 @@ public class PictureServlet extends HttpServlet {
 		if (id != null && type != null) {
 			byte[] picture = null;
 			if (type.equals("poster")) {
-				PosterService posterService = (PosterService) getWebApplicationContext().getBean("posterService");
-				picture = posterService.getPoster(Long.parseLong(id));
+				FilePosterRepository posterRepository = (FilePosterRepository) getWebApplicationContext().getBean("posterRepository");
+				picture = posterRepository.getPoster(Long.parseLong(id));
 			} else if (type.equals("photo")) {
-				PhotoService photoService = (PhotoService) getWebApplicationContext().getBean("photoService");
-				picture = photoService.getPhoto(Long.parseLong(id));
+				FilePhotoRepository photoRepository = (FilePhotoRepository) getWebApplicationContext().getBean("photoRepository");
+				picture = photoRepository.getPhoto(Long.parseLong(id));
 			}
 
 			if (picture != null) {

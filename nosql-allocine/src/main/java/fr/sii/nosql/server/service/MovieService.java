@@ -11,8 +11,6 @@ public interface MovieService {
 
 	Movie findById(long id);
 
-	List<Movie> findAll();
-
 	List<Movie> findByTitle(String title);
 
 	List<Movie> findByTitleLike(String string);
@@ -25,7 +23,7 @@ public interface MovieService {
 
 	List<Movie> findByDirector(String name);
 
-	void save(Movie movie) throws MovieServiceException;
+	void save(Movie movie, boolean isDownloadPictures) throws MovieServiceException;
 
 	Movie retrieveAndSave(long alloCineMovieId, boolean viewed) throws MovieServiceException;
 

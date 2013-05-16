@@ -1,20 +1,14 @@
 package fr.sii.nosql.server.repository.file;
 
-import java.util.Collection;
-
 import fr.sii.nosql.server.allocine.buisiness.MovieResult;
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.shared.buisiness.Movie;
 
-public interface FileMovieRepository {
-	Collection<Movie> findAll();
+public interface FileMovieRepository extends MovieRepository {
 
-	Movie findOne(Long id);
+//	void save(long id, String body);
 
-	long count();
+	void save(long id, MovieResult movie);
 
 	Iterable<Movie> all();
-
-	void add(long id, String body);
-
-	void add(long id, MovieResult movie);
 }

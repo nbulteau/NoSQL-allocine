@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Transactional
-public interface JpaMovieRepository extends JpaRepository<Movie, Long> {
+public interface JpaMovieRepository extends JpaRepository<Movie, Long>, MovieRepository {
 	List<Movie> findByTitle(String title);
 
 	List<Movie> findByTitleLike(String string);

@@ -42,7 +42,6 @@ public class AlloCineServiceImplTest {
 	}
 
 	@Test
-	@Ignore
 	public void testRetrieveOblivion() {
 		// Oblivion id
 		long idMovie = 27405;
@@ -61,6 +60,7 @@ public class AlloCineServiceImplTest {
 	}
 
 	@Test
+	@Ignore
 	public void retrieveMovieList() {
 		List<Movie> movies = alloCineService.retrieveMovieList();
 		System.out.println(movies.size());

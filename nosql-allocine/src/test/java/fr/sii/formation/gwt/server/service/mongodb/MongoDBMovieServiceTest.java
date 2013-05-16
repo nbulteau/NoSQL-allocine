@@ -21,7 +21,6 @@ import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
 @ActiveProfiles("mongodb")
@@ -32,11 +31,11 @@ public class MongoDBMovieServiceTest {
 	@Autowired
 	@Qualifier("mongoDBMovieService")
 	MovieService movieService;
-	
+
 	public MongoDBMovieServiceTest() {
 		super();
 	}
-	
+
 	@Test
 	public void saveMovie() throws MovieServiceException {
 		String movieTitle = "movieTitle";
@@ -52,18 +51,18 @@ public class MongoDBMovieServiceTest {
 		castMembers.add(actor1);
 		CastMember actor2 = new CastMember(person3, "role2");
 		castMembers.add(actor2);
-//		movie.getCastMembers().addAll(castMembers);
+		movie.getCastMembers().addAll(castMembers);
 
 		List<Person> directors = new ArrayList<Person>();
 		directors.add(person2);
-//		movie.getDirectors().addAll(directors);
+		movie.getDirectors().addAll(directors);
 
 		List<Kind> kinds = new ArrayList<Kind>();
 		kinds.add(Kind.Action);
 		kinds.add(Kind.Arts_Martiaux);
-//		movie.getKinds().addAll(kinds);
+		movie.getKinds().addAll(kinds);
 
-		movieService.save(movie);
+		movieService.save(movie, false);
 		movie = movieService.findById(movie.getId());
 
 		// oracle
@@ -106,7 +105,8 @@ public class MongoDBMovieServiceTest {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
-		List<Movie> films1 = movieService.findByTitle("Alien, le huitième passager");
+		List<Movie> films1 = movieService
+				.findByTitle("Alien, le huitième passager");
 		for (Movie movie : films1) {
 			System.out.println(movie);
 		}
@@ -143,22 +143,8 @@ public class MongoDBMovieServiceTest {
 		Assert.assertEquals(6, films2.size());
 
 		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesDontLeTitreCommencePar : " + (end - deb));
-	}
-
-	@Test
-	@Ignore
-	public void testLoadAll() {
-		long deb = System.currentTimeMillis();
-
-		// 'La Guerre des boutons'
-		List<Movie> films = movieService.findAll();
-		for (Movie movie : films) {
-			System.out.println(movie);
-		}
-
-		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesDontLeTitreCommencePar : " + (end - deb));
+		System.out.println("rechercherMoviesDontLeTitreCommencePar : "
+				+ (end - deb));
 	}
 
 	@Test

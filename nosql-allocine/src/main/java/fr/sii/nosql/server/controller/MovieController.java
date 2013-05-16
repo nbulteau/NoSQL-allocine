@@ -1,7 +1,6 @@
 package fr.sii.nosql.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import fr.sii.nosql.shared.buisiness.Movie;
 public class MovieController {
 
 	@Autowired
-	@Qualifier("fileMovieService")
 	MovieService movieService;
 
 	@RequestMapping(value = { "/movie/{id}" }, method = { RequestMethod.GET })

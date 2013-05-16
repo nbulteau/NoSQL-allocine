@@ -22,13 +22,13 @@ import dataaccess.hbase.simple.serializers.HBaseSerializer;
 import dataaccess.hbase.simple.serializers.JacksonJsonHBaseSerializer;
 import dataaccess.hbase.simple.serializers.LongKeySerializer;
 import dataaccess.hbase.simple.serializers.String8Serializer;
-import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Profile("hbase")
 @Repository("hbaseMovieRepository2")
-public class HBaseMovieRepositoryComplexImpl implements HBaseMovieRepository {
+public class HBaseMovieRepositoryComplexImpl implements MovieRepository {
 
 	@Autowired
 	private Configuration configuration;
@@ -61,7 +61,7 @@ public class HBaseMovieRepositoryComplexImpl implements HBaseMovieRepository {
 	}
 
 	@Override
-	public void save(Movie movie) {
+	public Movie save(Movie movie) {
 		// Long id = movie.getId();
 		// moviesById.put(id, movie);
 		// moviesByTitle.add(movie.getTitle(), id, movie);
@@ -71,16 +71,13 @@ public class HBaseMovieRepositoryComplexImpl implements HBaseMovieRepository {
 		directorRepo.addMovie(movie);
 		directorNameRepo.addMovie(movie);
 		kindRepo.addMovie(movie);
+		
+		return movie;
 	}
 
 	@Override
 	public void delete(Movie movie) {
 		throw new UnsupportedOperationException("not needed");
-	}
-
-	@Override
-	public List<Movie> findAll() {
-		throw new UnsupportedOperationException("too many movies");
 	}
 
 	@Override

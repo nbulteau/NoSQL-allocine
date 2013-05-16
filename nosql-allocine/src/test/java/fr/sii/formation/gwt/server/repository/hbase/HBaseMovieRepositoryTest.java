@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.nosql.server.repository.hbase.HBaseMovieRepository;
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
@@ -28,7 +28,7 @@ import fr.sii.nosql.shared.buisiness.Person;
 public class HBaseMovieRepositoryTest {
 
 	@Autowired
-	HBaseMovieRepository movieRepository;
+	MovieRepository movieRepository;
 
 	// copy/paste from redis
 	@Test
@@ -74,17 +74,6 @@ public class HBaseMovieRepositoryTest {
 		Assert.assertNotNull(movieRepository.findOne(movie.getId()));
 		movieRepository.delete(movie);
 		Assert.assertNull(movieRepository.findOne(movie.getId()));
-	}
-
-	@Test
-	@Ignore
-	public void testSynopsisLength() {
-		int max = -1;
-		for (Movie m : movieRepository.findAll())
-			max = Math.max(max, m.getSynopsis() == null ? 0 : m.getSynopsis().length());
-
-		System.out.println("testSynopsisLength : " + max);
-		Assert.assertTrue("Max SynopsisLength < 2000", max < 2000);
 	}
 
 	@Test
