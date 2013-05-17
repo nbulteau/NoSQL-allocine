@@ -1,13 +1,5 @@
 package fr.sii.formation.gwt.server.repository.file;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,98 +8,37 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.nosql.server.allocine.repository.AlloCineRepository;
-import fr.sii.nosql.server.allocine.service.AlloCineService;
+import fr.sii.nosql.server.repository.file.FileMovieRepository;
+import fr.sii.nosql.server.service.MovieService;
+import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
-@ActiveProfiles("file")
+@ActiveProfiles("mongodb")
 public class FileMovieRepositoryTest {
 
+	
 	@Autowired
-	AlloCineRepository alloCineRepository;
+	private FileMovieRepository fileMovieRepository;
 
 	@Autowired
-	AlloCineService alloCineService;
+	private MovieService movieService;
 
 	@Test
-	public void myTest() {
-		Movie movie = alloCineService.retrieveMovie(140881l);
-		Assert.assertEquals("Under the Sea", movie.getTitle());
-	}
+	public void populate() throws InterruptedException, MovieServiceException {
 
-	@Test
-	@Ignore
-	public void populate() throws InterruptedException {
+		Iterable<Movie> iterable = fileMovieRepository.all();
 
-		Movie movie = null;
-
+		long index = 0;
 		long deb = System.currentTimeMillis();
-
-		List<String> ids = listMissingMovies();
-
+		for (Movie movie : iterable) {
+			movieService.save(movie, false);
+			index++;
+		}
+		
 		long end = System.currentTimeMillis();
-		System.out.println("listMissingMovies : " + (end - deb));
-
-		// L'ordre d'itération des éléments est aléatoire dans un hashset
-		Set<String> hashSet = new HashSet<>();
-		for (String id : ids) {
-			hashSet.add(id);
-		}
-		for (Iterator<String> iterator = hashSet.iterator(); iterator.hasNext();) {
-			String string = iterator.next();
-
-			movie = alloCineService.retrieveMovie(Long.parseLong(string));
-			if (movie != null) {
-				System.out.println(movie.getTitle());
-			}
-			Thread.sleep(2000);
-		}
-
-	}
-
-	private List<String> listMissingMovies() {
-		String allocinePath = "D:/allocine/jsons/";
-		File jsonFile = null;
-		String fileName;
-		List<String> ids = new ArrayList<>();
-
-		for (int j = 1; j < 100000; j++) {
-			fileName = allocinePath + 0 + "/" + j + ".json";
-			jsonFile = new File(fileName);
-			if (!jsonFile.exists()) {
-				ids.add("" + j);
-			}
-		}
-		for (int i = 1; i < 3; i++) {
-			int deb = i * 100000;
-			int end = (i + 1) * 100000;
-			for (int j = deb; j < end; j++) {
-				fileName = allocinePath + i + "/" + j + ".json";
-				jsonFile = new File(fileName);
-				if (!jsonFile.exists()) {
-
-					ids.add("" + j);
-				}
-			}
-		}
-		return ids;
-	}
-
-	private String getFileExtension(String nomFichier) {
-		int posPoint = nomFichier.lastIndexOf('.');
-		if (0 < posPoint && posPoint <= nomFichier.length() - 2) {
-			return nomFichier.substring(posPoint + 1);
-		}
-		return "";
-	}
-
-	private String getFileName(String nomFichier) {
-		int posPoint = nomFichier.lastIndexOf('.');
-		if (0 < posPoint && posPoint <= nomFichier.length() - 2) {
-			return nomFichier.substring(0, posPoint);
-		}
-		return nomFichier;
+		
+		System.out.println("populate " + index + " movies in "+ (end - deb) + " ms");
 	}
 }

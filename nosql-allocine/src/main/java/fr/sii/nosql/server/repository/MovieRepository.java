@@ -10,6 +10,7 @@ import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface MovieRepository {
+
 	Movie save(Movie movie);
 
 	void delete(Movie movie);
@@ -40,8 +41,8 @@ public interface MovieRepository {
 
 	List<Movie> findByDirector(String name);
 
-	List<Movie> findByKind(Kind kind);
+	List<Movie> findByKinds(Kind kind);
 
-	long countByKind(Kind kind);
+//	long countByKinds(Kind kind);
 
 }

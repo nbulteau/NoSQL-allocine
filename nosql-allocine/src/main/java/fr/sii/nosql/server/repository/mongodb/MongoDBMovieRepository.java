@@ -12,6 +12,7 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 @Transactional
 public interface MongoDBMovieRepository extends MongoRepository<Movie, Long>, MovieRepository {
+	
 	List<Movie> findByTitle(String title);
 
 	List<Movie> findByTitleLike(String string);
@@ -29,5 +30,4 @@ public interface MongoDBMovieRepository extends MongoRepository<Movie, Long>, Mo
 
 	@Query(value = "{'directors.name':?0}.sort({title:1}")
 	List<Movie> findByDirector(String name);
-
 }

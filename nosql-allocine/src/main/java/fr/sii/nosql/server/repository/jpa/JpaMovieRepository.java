@@ -33,6 +33,6 @@ public interface JpaMovieRepository extends JpaRepository<Movie, Long>, MovieRep
 	List<Movie> findByKind(@Param("kind") Kind kind);
 
 	@Query(value = "SELECT COUNT(movie.id) FROM Movie movie JOIN movie.kinds kind WHERE kind = :kind")
-	long countByKind(@Param("kind") Kind kind);
+	long countByKinds(@Param("kind") Kind kind);
 
 }

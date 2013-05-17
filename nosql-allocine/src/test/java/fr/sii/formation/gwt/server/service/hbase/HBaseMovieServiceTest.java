@@ -30,11 +30,11 @@ public class HBaseMovieServiceTest {
 
 	@Test
 	public void updateMovies() throws IOException, MovieServiceException {
-		long nbMovies = fileRepository.count();
-		System.out.println("nb movies  : " + nbMovies);
-		/*
-		 * int index = 0; for (AlloCineMovie movie : fileRepository.all()) { System.out.println("=> " + index++ + " : movie : "
-		 * + movie.getTitle()); hbaseMovieService.save(movie); }
-		 */
+//		long nbMovies = fileRepository.count();
+//		System.out.println("nb movies  : " + nbMovies);
+//		/*
+//		 * int index = 0; for (AlloCineMovie movie : fileRepository.all()) { System.out.println("=> " + index++ + " : movie : "
+//		 * + movie.getTitle()); hbaseMovieService.save(movie); }
+//		 */
 	}
 }

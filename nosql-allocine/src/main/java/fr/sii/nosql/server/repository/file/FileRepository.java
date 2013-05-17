@@ -55,7 +55,7 @@ public abstract class FileRepository<T> {
 	public Iterable<T> all() {
 		final List<File> files = new ArrayList<>();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 8; i++) {
 			File dir = new File(repositoryPath + File.separator + i);
 			files.addAll(Arrays.asList(dir.listFiles()));
 		}

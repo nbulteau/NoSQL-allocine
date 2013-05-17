@@ -32,10 +32,14 @@ import fr.sii.nosql.shared.buisiness.Person;
 @Profile("hbase")
 @Repository("hbaseMovieRepository")
 public class HBaseMovieRepositoryImpl implements MovieRepository {
+	
 	private HBaseTemplate template;
+	
 	private HBaseTable<Long, Movie> moviesById;
+	
 	private HBaseTable1N.SL<Movie> moviesByTitle, moviesByTitleLike,
 			moviesByActorName, moviesByDirectorName, moviesByKind;
+	
 	private HBaseTable1N.L2<Movie> moviesByActor, moviesByDirector;
 	
 	@Autowired
@@ -198,12 +202,11 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 	}
 
 	@Override
-	public List<Movie> findByKind(Kind kind) {
+	public List<Movie> findByKinds(Kind kind) {
 		return moviesByKind.getList(kind.name());
 	}
 
-	@Override
-	public long countByKind(Kind kind) {
-		return findByKind(kind).size();
+	public long countByKinds(Kind kind) {
+		return findByKinds(kind).size();
 	}
 }

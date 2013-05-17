@@ -29,12 +29,14 @@ public class PopulateHbase2Test {
 
 	@Test
 	public void updateMovies() throws IOException, MovieServiceException {
-		long nbMovies = fileRepository.count();
-		System.out.println("nb movies  : " + nbMovies);
+		long deb = System.currentTimeMillis();
 		int index = 0;
 		for (Movie movie : fileRepository.all()) {
 			System.out.println("=> " + index++ + " : movie : " + movie.getTitle());
 			movieRepo.save(movie);
 		}
+
+		long end = System.currentTimeMillis();
+		System.out.println("updateMovies : " + (end - deb) + " for " + index + " movies");
 	}
 }

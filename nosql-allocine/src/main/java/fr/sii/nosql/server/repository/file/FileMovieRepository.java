@@ -6,9 +6,11 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface FileMovieRepository extends MovieRepository {
 
-//	void save(long id, String body);
-
 	void save(long id, MovieResult movie);
 
 	Iterable<Movie> all();
+
+	void delete(Long id);
+
+	Movie findOne(long l);
 }

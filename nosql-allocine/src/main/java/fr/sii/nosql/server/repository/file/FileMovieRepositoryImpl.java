@@ -39,20 +39,6 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 		this.movieMapperService = movieMapperService;
 	}
 
-	// @Override
-	// public void save(long id, String body) {
-	// File file = getFile(id);
-	// try {
-	// BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-	// bw.write(body);
-	// bw.close();
-	// } catch (FileNotFoundException e) {
-	// e.printStackTrace();
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// }
-	// }
-
 	@Override
 	public void save(long id, MovieResult movie) {
 
@@ -81,6 +67,21 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	}
 
 	@Override
+	public Movie findOne(long id) {
+		File file = getFile(id);
+
+		return load(file);
+	}
+
+	@Override
+	public void delete(Long id) {
+		File file = getFile(id);
+		file.delete();
+	}
+
+	// MovieRepository
+	
+	@Override
 	public Movie save(Movie movie) {
 		// TODO Auto-generated method stub
 		return null;
@@ -89,6 +90,7 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	@Override
 	public void delete(Movie movie) {
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -104,13 +106,9 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	}
 
 	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -150,14 +148,9 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	}
 
 	@Override
-	public List<Movie> findByKind(Kind kind) {
+	public List<Movie> findByKinds(Kind kind) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public long countByKind(Kind kind) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

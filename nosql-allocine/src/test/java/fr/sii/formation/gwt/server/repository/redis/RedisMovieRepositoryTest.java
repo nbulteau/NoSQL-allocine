@@ -45,16 +45,15 @@ public class RedisMovieRepositoryTest {
 	@Test
 	public void updateMoviesRedis() throws IOException, MovieServiceException {
 		long deb = System.currentTimeMillis();
-
-		long nbMovies = fileRepository.count();
+		Iterable<Movie> all = fileRepository.all();
 		int index = 0;
-		for (Movie movie : fileRepository.all()) {
+		for (Movie movie : all) {
 			System.out.println("=> " + index++ + " " + (System.currentTimeMillis() - deb) / 1000 + " s : movie : " + movie.getTitle());
 			redisMovieRepository.save(movie);
 		}
 
 		long end = System.currentTimeMillis();
-		System.out.println("updateMoviesRedis : " + (end - deb) + " for " + nbMovies + " movies");
+		System.out.println("updateMoviesRedis : " + (end - deb) + " for " + index + " movies");
 	}
 
 	@Test

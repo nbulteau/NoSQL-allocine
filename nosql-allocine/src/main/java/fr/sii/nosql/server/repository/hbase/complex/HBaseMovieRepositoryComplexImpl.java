@@ -151,12 +151,11 @@ public class HBaseMovieRepositoryComplexImpl implements MovieRepository {
 	}
 
 	@Override
-	public List<Movie> findByKind(Kind kind) {
+	public List<Movie> findByKinds(Kind kind) {
 		return kindRepo.getMovies(kind.name());
 	}
 
-	@Override
-	public long countByKind(Kind kind) {
+	public long countByKinds(Kind kind) {
 		return kindRepo.count(kind.name());
 	}
 }
