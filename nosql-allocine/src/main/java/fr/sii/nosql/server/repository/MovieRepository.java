@@ -11,6 +11,8 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 public interface MovieRepository {
 
+	Movie findById(Long id);
+
 	Movie save(Movie movie);
 
 	void delete(Movie movie);
@@ -18,8 +20,6 @@ public interface MovieRepository {
 	List<Movie> findAll(Sort sort);
 
 	Page<Movie> findAll(Pageable pageable);
-
-	Movie findOne(Long id);
 
 	boolean exists(Long id);
 
@@ -43,6 +43,6 @@ public interface MovieRepository {
 
 	List<Movie> findByKinds(Kind kind);
 
-//	long countByKinds(Kind kind);
+	// long countByKinds(Kind kind);
 
 }

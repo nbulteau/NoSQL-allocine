@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Value;
 
 public abstract class FileRepository<T> {
 
+	private static final int NB_SLICES = 6;
+
 	protected String repositoryPath;
 
 	protected final String suffix;
 
-	public FileRepository(
-			@Value("${filemoviesrepo.path}") String repositoryPath,
-			String suffix) {
+	public FileRepository(@Value("${filemoviesrepo.path}") String repositoryPath, String suffix) {
 		super();
 		this.repositoryPath = repositoryPath;
 		this.suffix = suffix;
@@ -37,28 +37,18 @@ public abstract class FileRepository<T> {
 		T one = null;
 		File file = getFile(id);
 		if (file != null) {
-			one = (T) load(file);
+			one = load(file);
 		}
 		return one;
 	}
 
 	public long count() {
-		List<File> files = new ArrayList<>();
-
-		for (int i = 0; i < 10; i++) {
-			File dir = new File(repositoryPath + File.separator + i);
-			files.addAll(Arrays.asList(dir.listFiles()));
-		}
+		final List<File> files = getAllFiles();
 		return files.size();
 	}
 
 	public Iterable<T> all() {
-		final List<File> files = new ArrayList<>();
-
-		for (int i = 0; i < 8; i++) {
-			File dir = new File(repositoryPath + File.separator + i);
-			files.addAll(Arrays.asList(dir.listFiles()));
-		}
+		final List<File> files = getAllFiles();
 
 		return new Iterable<T>() {
 			@Override
@@ -89,13 +79,22 @@ public abstract class FileRepository<T> {
 		};
 	}
 
+	private List<File> getAllFiles() {
+		final List<File> files = new ArrayList<>();
+
+		for (int i = 0; i < NB_SLICES; i++) {
+			File dir = new File(repositoryPath + File.separator + i);
+			files.addAll(Arrays.asList(dir.listFiles()));
+		}
+		return files;
+	}
+
 	public boolean exists(Long id) {
 		File file = getFile(id);
 		return file.exists();
 	}
 
 	protected File getFile(Long id) {
-		return new File(repositoryPath + File.separator + (id / 100000)
-				+ File.separator + id + suffix);
+		return new File(repositoryPath + File.separator + (id / 100000) + File.separator + id + suffix);
 	}
 }

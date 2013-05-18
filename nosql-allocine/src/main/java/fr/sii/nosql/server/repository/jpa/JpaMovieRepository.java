@@ -13,19 +13,25 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 @Transactional
 public interface JpaMovieRepository extends JpaRepository<Movie, Long>, MovieRepository {
+	@Override
 	List<Movie> findByTitle(String title);
 
+	@Override
 	List<Movie> findByTitleLike(String string);
 
+	@Override
 	@Query(value = "SELECT movie FROM Movie movie JOIN movie.castMembers castMember JOIN castMember.person person WHERE person.id = :id")
 	List<Movie> findByActor(@Param("id") long id);
 
+	@Override
 	@Query(value = "SELECT movie FROM Movie movie JOIN movie.castMembers castMember JOIN castMember.person person WHERE person.name = :name")
 	List<Movie> findByActor(@Param("name") String name);
 
+	@Override
 	@Query(value = "SELECT movie FROM Movie movie JOIN movie.directors director WHERE director.id = :id")
 	List<Movie> findByDirector(@Param("id") long id);
 
+	@Override
 	@Query(value = "SELECT movie FROM Movie movie JOIN movie.directors director WHERE director.name = :name")
 	List<Movie> findByDirector(@Param("name") String name);
 

@@ -17,30 +17,29 @@ import org.springframework.stereotype.Repository;
 
 import fr.sii.nosql.server.allocine.buisiness.MovieResult;
 import fr.sii.nosql.server.allocine.service.MovieMapperService;
+import fr.sii.nosql.server.repository.RepositoryType;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Repository("fileMovieRepository")
-public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
-		FileMovieRepository {
+@RepositoryType("file")
+public class FileMovieRepositoryImpl extends FileRepository<Movie> implements FileMovieRepository {
 
-	private final static Logger LOG = LoggerFactory
-			.getLogger(FileMovieRepositoryImpl.class);
+	private final static Logger LOG = LoggerFactory.getLogger(FileMovieRepositoryImpl.class);
 
-	private MovieMapperService movieMapperService;
+	private final MovieMapperService movieMapperService;
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 
 	@Autowired
-	public FileMovieRepositoryImpl(MovieMapperService movieMapperService,
-			@Value("${filemovies.path}") String repositoryPath,
+	public FileMovieRepositoryImpl(MovieMapperService movieMapperService, @Value("${filemovies.path}") String repositoryPath,
 			@Value("${filemovies.suffix}") String suffix) {
 		super(repositoryPath, suffix);
 		this.movieMapperService = movieMapperService;
 	}
 
 	@Override
-	public void save(long id, MovieResult movie) {
+	public void save(Long id, MovieResult movie) {
 
 		File file = getFile(id);
 		try {
@@ -55,10 +54,8 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	@Override
 	protected Movie load(File f) {
 		try {
-			MovieResult alloMovie = objectMapper
-					.readValue(f, MovieResult.class);
-			Movie movie = movieMapperService.convertToBuisinessObject(alloMovie
-					.getMovie());
+			MovieResult alloMovie = objectMapper.readValue(f, MovieResult.class);
+			Movie movie = movieMapperService.convertToBuisinessObject(alloMovie.getMovie());
 			return movie;
 		} catch (Exception e) {
 			LOG.info("was loading " + f.getName(), e);
@@ -67,7 +64,7 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	}
 
 	@Override
-	public Movie findOne(long id) {
+	public Movie findById(Long id) {
 		File file = getFile(id);
 
 		return load(file);
@@ -80,7 +77,7 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	}
 
 	// MovieRepository
-	
+
 	@Override
 	public Movie save(Movie movie) {
 		// TODO Auto-generated method stub
@@ -90,7 +87,7 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	@Override
 	public void delete(Movie movie) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -108,7 +105,7 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

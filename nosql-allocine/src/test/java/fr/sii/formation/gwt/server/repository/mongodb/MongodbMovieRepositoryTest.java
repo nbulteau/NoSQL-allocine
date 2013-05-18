@@ -41,20 +41,17 @@ public class MongodbMovieRepositoryTest {
 	@Qualifier("fileMovieRepository")
 	FileMovieRepository fileRepository;
 
-	
-	
-
 	@Ignore
 	@Test
 	public void testFindById() {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
-		Movie film1 = movieRepository.findOne(62l);
+		Movie film1 = movieRepository.findById(62l);
 		Assert.assertNotNull(film1);
 
 		// 'La Guerre des boutons'
-		Movie film2 = movieRepository.findOne(188649l);
+		Movie film2 = movieRepository.findById(188649l);
 		Assert.assertNotNull(film2);
 
 		long end = System.currentTimeMillis();

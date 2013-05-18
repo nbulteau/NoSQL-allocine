@@ -71,7 +71,7 @@ public class HBaseMovieRepositoryComplexImpl implements MovieRepository {
 		directorRepo.addMovie(movie);
 		directorNameRepo.addMovie(movie);
 		kindRepo.addMovie(movie);
-		
+
 		return movie;
 	}
 
@@ -91,7 +91,7 @@ public class HBaseMovieRepositoryComplexImpl implements MovieRepository {
 	}
 
 	@Override
-	public Movie findOne(Long id) {
+	public Movie findById(Long id) {
 		return moviesById.get(id);
 	}
 

@@ -60,7 +60,6 @@ public class AlloCineServiceImplTest {
 	}
 
 	@Test
-	@Ignore
 	public void retrieveMovieList() {
 		List<Movie> movies = alloCineService.retrieveMovieList();
 		System.out.println(movies.size());

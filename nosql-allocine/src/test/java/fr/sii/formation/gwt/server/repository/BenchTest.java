@@ -12,10 +12,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.shared.buisiness.Movie;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
-//@ActiveProfiles({ "" })
+// @ActiveProfiles({ "" })
 public class BenchTest {
 
 	private static final String ALIEN_LE_HUITIEME = "Alien, le huitième";
@@ -37,7 +36,7 @@ public class BenchTest {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
-		Movie movie = movieRepository.findOne(ALIEN);
+		Movie movie = movieRepository.findById(ALIEN);
 		Assert.assertNotNull(movie);
 
 		long end = System.currentTimeMillis();

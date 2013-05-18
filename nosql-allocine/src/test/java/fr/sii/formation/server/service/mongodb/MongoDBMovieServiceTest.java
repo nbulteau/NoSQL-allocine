@@ -1,9 +1,10 @@
-package fr.sii.formation.gwt.server.service.mongodb;
+package fr.sii.formation.server.service.mongodb;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,14 +41,19 @@ public class MongoDBMovieServiceTest {
 		super();
 	}
 
+	@Before
+	public void before() {
+		movieService.setMovieRepository(fileRepository);
+	}
+
 	@Test
 	public void insertMovie() throws MovieServiceException {
-		Movie movie = fileRepository.findOne(62l);
+		Movie movie = fileRepository.findById(62l);
 		movieService.save(movie, true);
 	}
 
 	@Test
-	public void populate() throws InterruptedException, MovieServiceException {
+	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
 
 		Iterable<Movie> iterable = fileRepository.all();
 
@@ -57,13 +63,12 @@ public class MongoDBMovieServiceTest {
 			movieService.save(movie, true);
 			index++;
 		}
-		
+
 		long end = System.currentTimeMillis();
-		
-		System.out.println("populate " + index + " movies in "+ (end - deb) + " ms");
+
+		System.out.println("populate " + index + " movies in " + (end - deb) + " ms");
 	}
 
-	
 	@Test
 	@Ignore
 	public void saveMovie() throws MovieServiceException {
@@ -134,8 +139,7 @@ public class MongoDBMovieServiceTest {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
-		List<Movie> films1 = movieService
-				.findByTitle("Alien, le huitième passager");
+		List<Movie> films1 = movieService.findByTitle("Alien, le huitième passager");
 		for (Movie movie : films1) {
 			System.out.println(movie);
 		}
@@ -172,8 +176,7 @@ public class MongoDBMovieServiceTest {
 		Assert.assertEquals(6, films2.size());
 
 		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesDontLeTitreCommencePar : "
-				+ (end - deb));
+		System.out.println("rechercherMoviesDontLeTitreCommencePar : " + (end - deb));
 	}
 
 	@Test

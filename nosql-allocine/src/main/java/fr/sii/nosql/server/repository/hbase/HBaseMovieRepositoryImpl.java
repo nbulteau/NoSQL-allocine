@@ -32,16 +32,15 @@ import fr.sii.nosql.shared.buisiness.Person;
 @Profile("hbase")
 @Repository("hbaseMovieRepository")
 public class HBaseMovieRepositoryImpl implements MovieRepository {
-	
+
 	private HBaseTemplate template;
-	
+
 	private HBaseTable<Long, Movie> moviesById;
-	
-	private HBaseTable1N.SL<Movie> moviesByTitle, moviesByTitleLike,
-			moviesByActorName, moviesByDirectorName, moviesByKind;
-	
+
+	private HBaseTable1N.SL<Movie> moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName, moviesByKind;
+
 	private HBaseTable1N.L2<Movie> moviesByActor, moviesByDirector;
-	
+
 	@Autowired
 	private Configuration configuration;
 
@@ -50,32 +49,19 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 	public void init() throws IOException {
 		template = new HBaseTemplate(configuration);
 
-		moviesById = new HBaseTable<Long, Movie>(template, "Movies",
-				Long.class, Movie.class);
-		moviesByTitle = new HBaseTable1N.SL<Movie>(template, "MoviesByTitle",
-				Movie.class);
-		moviesByTitleLike = new HBaseTable1N.SL<Movie>(template,
-				"MoviesByTitleLike", Movie.class);
-		moviesByTitleLike
-				.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(
-						new String8Serializer(), new LongKeySerializer()));
-		moviesByActorName = new HBaseTable1N.SL<Movie>(template,
-				"MoviesByActorName", Movie.class);
-		moviesByDirectorName = new HBaseTable1N.SL<Movie>(template,
-				"MoviesByDirectorName", Movie.class);
-		moviesByActor = new HBaseTable1N.L2<Movie>(template, "MoviesByActor",
-				Movie.class);
-		moviesByDirector = new HBaseTable1N.L2<Movie>(template,
-				"MoviesByDirector", Movie.class);
-		moviesByKind = new HBaseTable1N.SL<Movie>(template, "MoviesByKind",
-				Movie.class);
-		HBaseSerializer<Movie> ser = new JacksonJsonHBaseSerializer<Movie>(
-				Movie.class);
+		moviesById = new HBaseTable<Long, Movie>(template, "Movies", Long.class, Movie.class);
+		moviesByTitle = new HBaseTable1N.SL<Movie>(template, "MoviesByTitle", Movie.class);
+		moviesByTitleLike = new HBaseTable1N.SL<Movie>(template, "MoviesByTitleLike", Movie.class);
+		moviesByTitleLike.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(new String8Serializer(), new LongKeySerializer()));
+		moviesByActorName = new HBaseTable1N.SL<Movie>(template, "MoviesByActorName", Movie.class);
+		moviesByDirectorName = new HBaseTable1N.SL<Movie>(template, "MoviesByDirectorName", Movie.class);
+		moviesByActor = new HBaseTable1N.L2<Movie>(template, "MoviesByActor", Movie.class);
+		moviesByDirector = new HBaseTable1N.L2<Movie>(template, "MoviesByDirector", Movie.class);
+		moviesByKind = new HBaseTable1N.SL<Movie>(template, "MoviesByKind", Movie.class);
+		HBaseSerializer<Movie> ser = new JacksonJsonHBaseSerializer<Movie>(Movie.class);
 		// ser = new MovieSerializer();
-		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById,
-				moviesByTitle, moviesByTitleLike, moviesByActorName,
-				moviesByDirectorName, moviesByActor, moviesByDirector,
-				moviesByKind })
+		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById, moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName, moviesByActor,
+				moviesByDirector, moviesByKind })
 			t.setValueSerializer(ser);
 	}
 
@@ -87,8 +73,7 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 		}
 
 		@Override
-		public Movie deserialize(byte[] bytes)
-				throws HBaseSerializationException {
+		public Movie deserialize(byte[] bytes) throws HBaseSerializationException {
 			return new Movie();
 		}
 	}
@@ -109,7 +94,7 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 		}
 		for (Kind k : movie.getKinds())
 			moviesByKind.add(k.name(), id, movie);
-		
+
 		return movie;
 	}
 
@@ -131,7 +116,7 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 	}
 
 	@Override
-	public Movie findOne(Long id) {
+	public Movie findById(Long id) {
 		return moviesById.get(id);
 	}
 
@@ -147,7 +132,7 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 
 	@Override
 	public void delete(Long id) {
-		Movie movie = findOne(id);
+		Movie movie = findById(id);
 		moviesById.delete(id);
 		moviesByTitle.remove(movie.getTitle(), id);
 		for (CastMember castMember : movie.getCastMembers()) {
@@ -209,4 +194,5 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 	public long countByKinds(Kind kind) {
 		return findByKinds(kind).size();
 	}
+
 }

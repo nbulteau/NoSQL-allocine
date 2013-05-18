@@ -71,9 +71,9 @@ public class HBaseMovieRepositoryTest {
 		long end = System.currentTimeMillis();
 		System.out.println("saveHBase : " + (end - deb));
 
-		Assert.assertNotNull(movieRepository.findOne(movie.getId()));
+		Assert.assertNotNull(movieRepository.findById(movie.getId()));
 		movieRepository.delete(movie);
-		Assert.assertNull(movieRepository.findOne(movie.getId()));
+		Assert.assertNull(movieRepository.findById(movie.getId()));
 	}
 
 	@Test
