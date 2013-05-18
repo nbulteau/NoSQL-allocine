@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.repository.hbase;
+package fr.sii.formation.server.repository.hbase;
 
 import java.io.IOException;
 import java.util.Date;

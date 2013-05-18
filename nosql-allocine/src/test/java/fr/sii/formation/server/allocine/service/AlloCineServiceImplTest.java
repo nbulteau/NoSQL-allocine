@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.allocine.service;
+package fr.sii.formation.server.allocine.service;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.service.redis;
+package fr.sii.formation.server.service.redis;
 
 import org.junit.Ignore;
 import org.junit.runner.RunWith;

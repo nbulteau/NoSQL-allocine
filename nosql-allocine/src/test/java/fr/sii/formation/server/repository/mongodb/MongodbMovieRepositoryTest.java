@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.repository.mongodb;
+package fr.sii.formation.server.repository.mongodb;
 
 import java.util.List;
 

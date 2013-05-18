@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.repository.redis;
+package fr.sii.formation.server.repository.redis;
 
 import java.io.IOException;
 import java.util.Date;

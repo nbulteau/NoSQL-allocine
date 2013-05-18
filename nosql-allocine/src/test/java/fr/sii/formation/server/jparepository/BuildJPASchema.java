@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.jparepository;
+package fr.sii.formation.server.jparepository;
 
 import static org.junit.Assert.fail;
 

@@ -1,4 +1,4 @@
-package fr.sii.formation.gwt.server.repository;
+package fr.sii.formation.server.repository;
 
 import java.util.List;
 
