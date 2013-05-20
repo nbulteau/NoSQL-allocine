@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.sii.nosql.server.service.MovieService;
+import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Controller("movieController")
@@ -16,7 +17,7 @@ public class MovieController {
 	MovieService movieService;
 
 	@RequestMapping(value = { "/movie/{id}" }, method = { RequestMethod.GET })
-	Movie findById(@PathVariable long id) {
+	Movie findById(@PathVariable long id) throws MovieServiceException {
 		return movieService.findById(id);
 	}
 }

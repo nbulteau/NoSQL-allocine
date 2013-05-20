@@ -17,12 +17,10 @@ import org.springframework.stereotype.Repository;
 
 import fr.sii.nosql.server.allocine.buisiness.MovieResult;
 import fr.sii.nosql.server.allocine.service.MovieMapperService;
-import fr.sii.nosql.server.repository.RepositoryType;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @Repository("fileMovieRepository")
-@RepositoryType("file")
 public class FileMovieRepositoryImpl extends FileRepository<Movie> implements FileMovieRepository {
 
 	private final static Logger LOG = LoggerFactory.getLogger(FileMovieRepositoryImpl.class);

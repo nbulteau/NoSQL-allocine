@@ -55,7 +55,9 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	@Transactional
 	public void save(Movie movie, boolean isDownloadPictures) throws MovieServiceException {
-		LOGGER.info("saveMovie : {}", movie.getTitle());
+		LOGGER.info("save : {}", movie.getTitle());
+
+		invariant();
 
 		if (movie.getId() == 0) {
 			throw new MovieServiceException("movie id == 0");
@@ -111,42 +113,50 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public boolean exists(long id) {
+	public boolean exists(long id) throws MovieServiceException {
+		invariant();
 		return movieRepository.exists(id);
 	}
 
 	@Override
-	public Movie findById(long id) {
+	public Movie findById(long id) throws MovieServiceException {
+		invariant();
 		return movieRepository.findById(id);
 	}
 
 	@Override
-	public List<Movie> findByTitle(String title) {
+	public List<Movie> findByTitle(String title) throws MovieServiceException {
+		invariant();
 		return movieRepository.findByTitle(title);
 	}
 
 	@Override
-	public List<Movie> findByTitleLike(String title) {
+	public List<Movie> findByTitleLike(String title) throws MovieServiceException {
+		invariant();
 		return movieRepository.findByTitleLike(title);
 	}
 
 	@Override
-	public List<Movie> findByActor(long id) {
+	public List<Movie> findByActor(long id) throws MovieServiceException {
+		invariant();
 		return movieRepository.findByActor(id);
 	}
 
 	@Override
-	public List<Movie> findByActor(String name) {
+	public List<Movie> findByActor(String name) throws MovieServiceException {
+		invariant();
 		return movieRepository.findByActor(name);
 	}
 
 	@Override
-	public List<Movie> findByDirector(long id) {
+	public List<Movie> findByDirector(long id) throws MovieServiceException {
+		invariant();
 		return movieRepository.findByDirector(id);
 	}
 
 	@Override
-	public List<Movie> findByDirector(String name) {
+	public List<Movie> findByDirector(String name) throws MovieServiceException {
+		invariant();
 		return movieRepository.findByDirector(name);
 	}
 
@@ -162,9 +172,16 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public long countByKind(Kind kind) {
+	public long countByKind(Kind kind) throws MovieServiceException {
+		invariant();
 		// TODO : implements getMoviesCount with filter
 		return movieRepository.count();
+	}
+
+	private void invariant() throws MovieServiceException {
+		if (movieRepository == null) {
+			throw new MovieServiceException("movieRepository not initialised");
+		}
 	}
 
 }

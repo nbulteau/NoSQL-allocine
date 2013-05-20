@@ -13,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.allocine.service.AlloCineService;
-import fr.sii.nosql.server.repository.RepositoryType;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.repository.jpa.JpaMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
@@ -29,7 +28,6 @@ public class JPAMovieServiceImplTest {
 	private MovieService movieService;
 
 	@Autowired
-	@RepositoryType("file")
 	FileMovieRepository fileRepository;
 
 	@Autowired

@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
+import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.CastMember;
@@ -35,7 +36,11 @@ public class MongoDBMovieServiceTest {
 
 	@Autowired
 	@Qualifier("fileMovieRepository")
-	FileMovieRepository fileRepository;
+	FileMovieRepository fileMovieRepository;
+
+	@Autowired
+	@Qualifier("fileMovieRepository")
+	MongoDBMovieRepository mongoDBMovieRepository;
 
 	public MongoDBMovieServiceTest() {
 		super();
@@ -43,19 +48,19 @@ public class MongoDBMovieServiceTest {
 
 	@Before
 	public void before() {
-		movieService.setMovieRepository(fileRepository);
+		movieService.setMovieRepository(mongoDBMovieRepository);
 	}
 
 	@Test
 	public void insertMovie() throws MovieServiceException {
-		Movie movie = fileRepository.findById(62l);
+		Movie movie = mongoDBMovieRepository.findById(62l);
 		movieService.save(movie, true);
 	}
 
 	@Test
 	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
 
-		Iterable<Movie> iterable = fileRepository.all();
+		Iterable<Movie> iterable = fileMovieRepository.all();
 
 		long index = 0;
 		long deb = System.currentTimeMillis();
@@ -116,7 +121,7 @@ public class MongoDBMovieServiceTest {
 
 	@Test
 	@Ignore
-	public void testFindById() {
+	public void testFindById() throws MovieServiceException {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
@@ -135,7 +140,7 @@ public class MongoDBMovieServiceTest {
 
 	@Test
 	@Ignore
-	public void testFindByTitle() {
+	public void testFindByTitle() throws MovieServiceException {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
@@ -158,7 +163,7 @@ public class MongoDBMovieServiceTest {
 
 	@Test
 	@Ignore
-	public void testFindByTitleLike() {
+	public void testFindByTitleLike() throws MovieServiceException {
 		long deb = System.currentTimeMillis();
 
 		// 'Alien, le huitième passager'
@@ -181,7 +186,7 @@ public class MongoDBMovieServiceTest {
 
 	@Test
 	@Ignore
-	public void testFindByActorId() {
+	public void testFindByActorId() throws MovieServiceException {
 		// 'Meryl Streep'
 		long id = 9;
 		List<Movie> films = null;
@@ -200,7 +205,7 @@ public class MongoDBMovieServiceTest {
 
 	@Test
 	@Ignore
-	public void findByActorName() {
+	public void findByActorName() throws MovieServiceException {
 		long deb = System.currentTimeMillis();
 
 		// 'Meryl Streep'
@@ -225,7 +230,7 @@ public class MongoDBMovieServiceTest {
 
 	@Test
 	@Ignore
-	public void findByDirectorName() {
+	public void findByDirectorName() throws MovieServiceException {
 		long deb = System.currentTimeMillis();
 
 		// 'Meryl Streep'
