@@ -1,23 +1,24 @@
 package fr.sii.formation.server.repository.redis;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import fr.sii.nosql.server.allocine.service.AlloCineService;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
+import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
@@ -36,37 +37,77 @@ public class RedisMovieRepositoryTest {
 	private static final String MERYL_STREEP = "Meryl Streep";
 
 	@Autowired
-	@Qualifier("fileMovieRepository")
 	FileMovieRepository fileRepository;
 
 	@Autowired
 	RedisMovieRepository redisMovieRepository;
 
+	@Autowired
+	private MovieService movieService;
+
+	@Autowired
+	private AlloCineService alloCineService;
+
+	@Before
+	public void before() {
+		movieService.setMovieRepository(redisMovieRepository);
+	}
+
+	
 	@Test
-	public void updateMoviesRedis() throws IOException, MovieServiceException {
+	public void populateOne() throws MovieServiceException {
+		// "Alien, le huitième passager" id
+		long idMovie = 62;
+
+		Movie movie = fileRepository.findById(idMovie);
+
+		Assert.assertEquals(idMovie, movie.getId());
+
+		movieService.save(movie, false);
+	}
+
+	@Test
+	@Ignore
+	public void populate() throws MovieServiceException {
+
+		String fileName = "D:\\Users\\Nicolas\\Documents\\My Dropbox\\vu.txt";
+		List<Movie> movies = alloCineService.retrieveMovies(fileName);
+		for (Movie movie : movies) {
+			movieService.save(movie, true);
+		}
+	}
+
+	@Test
+	@Ignore
+	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
+
+		Iterable<Movie> iterable = fileRepository.all();
+
+		long index = 0;
 		long deb = System.currentTimeMillis();
-		Iterable<Movie> all = fileRepository.all();
-		int index = 0;
-		for (Movie movie : all) {
-			System.out.println("=> " + index++ + " " + (System.currentTimeMillis() - deb) / 1000 + " s : movie : " + movie.getTitle());
-			redisMovieRepository.save(movie);
+		for (Movie movie : iterable) {
+			movieService.save(movie, false);
+			index++;
 		}
 
 		long end = System.currentTimeMillis();
-		System.out.println("updateMoviesRedis : " + (end - deb) + " for " + index + " movies");
+
+		System.out.println("populate " + index + " movies in " + (end - deb) + " ms");
 	}
 
+	@Ignore
 	@Test
 	public void countMoviesRedis() {
 		long deb = System.currentTimeMillis();
 
-		long count = redisMovieRepository.countMovies();
+		long count = redisMovieRepository.count();
 		Assert.assertEquals(TOTAL_MOVIE_COUNT, count);
 
 		long end = System.currentTimeMillis();
 		System.out.println("countMoviesRedis : " + (end - deb));
 	}
 
+	@Ignore
 	@Test
 	public void countMoviesByKindRedis() {
 		long deb = System.currentTimeMillis();
@@ -78,6 +119,7 @@ public class RedisMovieRepositoryTest {
 		System.out.println("countMoviesByKindRedis : " + (end - deb));
 	}
 
+	@Ignore
 	@Test
 	public void countKindsRedis() {
 		long deb = System.currentTimeMillis();
@@ -89,6 +131,7 @@ public class RedisMovieRepositoryTest {
 		System.out.println("countKindsRedis : " + (end - deb));
 	}
 
+	@Ignore
 	@Test
 	public void findMoviesByActorRedis() {
 		long deb = System.currentTimeMillis();
@@ -100,6 +143,7 @@ public class RedisMovieRepositoryTest {
 		System.out.println("findByActorRedis : " + (end - deb));
 	}
 
+	@Ignore
 	@Test
 	public void findMoviesByActorNameRedis() {
 		long deb = System.currentTimeMillis();
@@ -111,7 +155,6 @@ public class RedisMovieRepositoryTest {
 		System.out.println("findMoviesByActorNameRedis : " + (end - deb));
 	}
 
-	@Ignore
 	@Test
 	public void testCRUD() {
 		Movie movie = new Movie();
@@ -151,9 +194,9 @@ public class RedisMovieRepositoryTest {
 		long end = System.currentTimeMillis();
 		System.out.println("saveRedis : " + (end - deb));
 
-		Assert.assertNotNull(redisMovieRepository.findOne(movie.getId()));
+		Assert.assertNotNull(redisMovieRepository.findById(movie.getId()));
 		redisMovieRepository.delete(movie);
-		Assert.assertNull(redisMovieRepository.findOne(movie.getId()));
+		Assert.assertNull(redisMovieRepository.findById(movie.getId()));
 	}
 
 }

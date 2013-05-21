@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -50,11 +51,13 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	@Autowired
 	private JedisConnectionFactory jedisConnectionFactory;
 
+	@Resource(name="redisTemplate")
 	RedisTemplate<String, Movie> movieTemplate = null;
 
 	@PostConstruct
 	protected void init() {
-		JacksonJsonRedisSerializer<Movie> jsonSerializer = new JacksonJsonRedisSerializer<Movie>(Movie.class);
+//		JacksonJsonRedisSerializer<Movie> jsonSerializer = new JacksonJsonRedisSerializer<Movie>(
+//				Movie.class);
 		RedisSerializer<String> serializer = new RedisSerializer<String>() {
 
 			@Override
@@ -63,21 +66,22 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 			}
 
 			@Override
-			public String deserialize(byte[] bytes) throws SerializationException {
+			public String deserialize(byte[] bytes)
+					throws SerializationException {
 				return new String(bytes);
 			}
 		};
 
-		movieTemplate = new RedisTemplate<String, Movie>();
-		movieTemplate.setConnectionFactory(jedisConnectionFactory);
-		movieTemplate.setValueSerializer(jsonSerializer);
+//		movieTemplate = new RedisTemplate<String, Movie>();
+//		movieTemplate.setConnectionFactory(jedisConnectionFactory);
+//		movieTemplate.setValueSerializer(jsonSerializer);
 		movieTemplate.setKeySerializer(serializer);
 		movieTemplate.setExposeConnection(true);
 		movieTemplate.afterPropertiesSet();
 	}
 
 	@Override
-	public void save(Movie movie) {
+	public Movie save(Movie movie) {
 		String movieKey = KeyUtils.movie(movie.getId());
 
 		// movieTemplate.multi();
@@ -88,30 +92,32 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 		}
 		movieTemplate.opsForValue().set(movieKey, movie);
 
-		for (CastMember castMember : movie.getCastMembers()) {
-			String actorKey = KeyUtils.actor(castMember.getPerson().getId());
-			movieTemplate.opsForSet().add(actorKey, movie);
-			String actorName = KeyUtils.actorName(castMember.getPerson().getName());
-			movieTemplate.opsForSet().add(actorName, movie);
-		}
-
-		for (Person person : movie.getDirectors()) {
-			String directorKey = KeyUtils.director(person.getId());
-			movieTemplate.opsForSet().add(directorKey, movie);
-			String directorName = KeyUtils.directorName(person.getName());
-			movieTemplate.opsForSet().add(directorName, movie);
-		}
-
-		for (Kind kind : movie.getKinds()) {
-			String kindKey = KeyUtils.kind(kind.getLabel());
-			movieTemplate.opsForSet().add(kindKey, movie);
-		}
+//		for (CastMember castMember : movie.getCastMembers()) {
+//			String actorKey = KeyUtils.actor(castMember.getPerson().getId());
+//			movieTemplate.opsForSet().add(actorKey, movie);
+//			String actorName = KeyUtils.actorName(castMember.getPerson()
+//					.getName());
+//			movieTemplate.opsForSet().add(actorName, movie);
+//		}
+//
+//		for (Person person : movie.getDirectors()) {
+//			String directorKey = KeyUtils.director(person.getId());
+//			movieTemplate.opsForSet().add(directorKey, movie);
+//			String directorName = KeyUtils.directorName(person.getName());
+//			movieTemplate.opsForSet().add(directorName, movie);
+//		}
+//
+//		for (Kind kind : movie.getKinds()) {
+//			String kindKey = KeyUtils.kind(kind.getLabel());
+//			movieTemplate.opsForSet().add(kindKey, movie);
+//		}
+		return movie;
 
 		// movieTemplate.exec();
 	}
 
 	@Override
-	public Movie findOne(Long id) {
+	public Movie findById(Long id) {
 		String key = KeyUtils.movie(id);
 		return movieTemplate.opsForValue().get(key);
 	}
@@ -120,6 +126,7 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	public void delete(Movie movie) {
 		String key = KeyUtils.movie(movie.getId());
 		movieTemplate.opsForValue().getOperations().delete(key);
+
 		// TODO check movie exists and then decrement KeyUtils.moviesCount()
 		for (CastMember castMember : movie.getCastMembers()) {
 			String actorKey = KeyUtils.actor(castMember.getPerson().getId());
@@ -136,9 +143,9 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 		}
 	}
 
-	@Override
-	public List<Movie> findAll() {
-		Collection<byte[]> keys = getConnection().keys(KeyUtils.MOVIE.getBytes());
+	private List<Movie> findAll() {
+		Collection<byte[]> keys = getConnection().keys(
+				KeyUtils.MOVIE.getBytes());
 		Collection<String> movieKeys = new ArrayList<String>();
 		for (byte[] key : keys) {
 			movieKeys.add(new String(key));
@@ -170,8 +177,9 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	}
 
 	@Override
-	public long countMovies() {
-		String result = new String(getConnection().get(KeyUtils.MOVIES_COUNT.getBytes()));
+	public long count() {
+		String result = new String(getConnection().get(
+				KeyUtils.MOVIES_COUNT.getBytes()));
 		return Long.parseLong(result);
 	}
 
@@ -183,7 +191,7 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 
 	@Override
 	public long countMoviesWithQuery(Kind kind) {
-		return findByKind(kind).size();
+		return findByKinds(kind).size();
 	}
 
 	@Override
@@ -226,7 +234,8 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	}
 
 	private List<Movie> findByKeyOrdered(String key) {
-		List<Movie> movies = new ArrayList<Movie>(movieTemplate.opsForSet().members(key));
+		List<Movie> movies = new ArrayList<Movie>(movieTemplate.opsForSet()
+				.members(key));
 		Collections.sort(movies, new MovieComparator());
 		return movies;
 	}
@@ -260,7 +269,8 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	@Override
 	public List<Movie> findByDirector(long id) {
 		String directorKey = KeyUtils.director(id);
-		Set<Movie> moviesOfDirector = movieTemplate.opsForSet().members(directorKey);
+		Set<Movie> moviesOfDirector = movieTemplate.opsForSet().members(
+				directorKey);
 		return new ArrayList<Movie>(moviesOfDirector);
 	}
 
@@ -279,7 +289,7 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 	}
 
 	@Override
-	public List<Movie> findByKind(final Kind kind) {
+	public List<Movie> findByKinds(final Kind kind) {
 		return findByKeyOrdered(KeyUtils.kind(kind.getLabel()));
 		// FIXME : sorts only on kinds ?
 		// return findInAllMovies(new Predicate<AlloCineMovie>() {
@@ -289,5 +299,4 @@ public class RedisMovieRepositoryImpl implements RedisMovieRepository {
 		// }
 		// });
 	}
-
 }
