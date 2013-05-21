@@ -39,7 +39,7 @@ public class MongoDBMovieServiceTest {
 	FileMovieRepository fileMovieRepository;
 
 	@Autowired
-	@Qualifier("fileMovieRepository")
+	@Qualifier("mongoDBMovieRepository")
 	MongoDBMovieRepository mongoDBMovieRepository;
 
 	public MongoDBMovieServiceTest() {

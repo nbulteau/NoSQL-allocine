@@ -7,7 +7,14 @@
 
 		<!-- hbase ConnectionFactory -->
 		<bean id="hbaseConfigurationFactory"
-			class="org.springframework.data.hadoop.hbase.HbaseConfigurationFactoryBean" />
+			class="org.springframework.data.hadoop.hbase.HbaseConfigurationFactoryBean">
+			<property name="properties">
+				<map>
+					<entry key="hbase.zookeeper.quorum" value="10.6.192.68" />
+					<entry key="property.clientPort" value="2181" />
+				</map>
+			</property>
+		</bean>
 	</beans>
 
 </beans>
