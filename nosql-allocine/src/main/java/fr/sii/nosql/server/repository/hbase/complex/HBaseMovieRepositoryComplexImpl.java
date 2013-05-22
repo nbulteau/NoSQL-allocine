@@ -71,9 +71,10 @@ public class HBaseMovieRepositoryComplexImpl implements MovieRepository {
 		directorRepo.addMovie(movie);
 		directorNameRepo.addMovie(movie);
 		kindRepo.addMovie(movie);
-
+		
 		return movie;
 	}
+
 
 	@Override
 	public void delete(Movie movie) {

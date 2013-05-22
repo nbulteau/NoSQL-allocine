@@ -50,5 +50,9 @@ res = db.runCommand({mapReduce : "movies", map : m, reduce : r, query : {kinds:'
 pour supprimer la sauvegarde asynchrone sur PC
 config set save ""
 
+#hbase
+Pour hbase il faut configurer la VM en bridge
+=> mofier le fichiers hosts des 2 machines
+exemple : 10.6.192.68 	nbulteau-VirtualBox
 
 

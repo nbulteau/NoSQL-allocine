@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -22,8 +24,11 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 @Repository
 @Profile("mongodb")
-public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduceRepository {
-	private final static Logger LOGGER = LoggerFactory.getLogger(MongoDBMovieMapReduceRepositoryImpl.class);
+public class MongoDBMovieMapReduceRepositoryImpl implements
+		MongoDBMovieMapReduceRepository {
+
+	private final static Logger LOGGER = LoggerFactory
+			.getLogger(MongoDBMovieMapReduceRepositoryImpl.class);
 
 	private final static String MAP_COUNT = "function(){emit(this._id, 1);}";
 
@@ -75,7 +80,8 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 		Query query = new Query(Criteria.where("actors.person._id").is(id));
 		query.with(new Sort(Direction.ASC, "title"));
 
-		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_ALL, REDUCE_ALL, Movie.class);
+		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
+				"movies", MAP_ALL, REDUCE_ALL, Movie.class);
 
 		logMapReduceResults(results);
 
@@ -95,7 +101,8 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	public long countWithQueryMR(Kind kind) {
 		Query query = generateQuery(kind);
 
-		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_COUNT, REDUCE_COUNT, Movie.class);
+		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
+				"movies", MAP_COUNT, REDUCE_COUNT, Movie.class);
 
 		logMapReduceResults(results);
 
@@ -107,11 +114,15 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	public int averageDurationWithQueryMR(Kind kind) {
 		Query query = generateQuery(kind);
 
-		MapReduceOptions options = MapReduceOptions.options().outputTypeInline();
-		MapReduceResults<ValueObject> results = mongoOperations.mapReduce(query, "movies", MAP_DURATION, REDUCE_DURATION, options, ValueObject.class);
+		MapReduceOptions options = MapReduceOptions.options()
+				.outputTypeInline();
+		MapReduceResults<ValueObject> results = mongoOperations.mapReduce(
+				query, "movies", MAP_DURATION, REDUCE_DURATION, options,
+				ValueObject.class);
 
 		long result = 0;
-		for (Iterator<ValueObject> iterator = results.iterator(); iterator.hasNext();) {
+		for (Iterator<ValueObject> iterator = results.iterator(); iterator
+				.hasNext();) {
 			ValueObject valueObject = iterator.next();
 			long nb = results.getCounts().getEmitCount();
 			result = (valueObject.getValue() / nb);
@@ -122,7 +133,7 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 
 	@Override
 	public int averageDuration(Kind kind) {
-		List<Movie> moviesList = findByKind(kind);
+		List<Movie> moviesList = findByKinds(kind);
 		int sum = 0;
 		int index = 0;
 		for (Movie movie : moviesList) {
@@ -141,7 +152,8 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 		Query query = generateQuery(kind);
 		// query.with(new Sort(Direction.ASC, "title"));
 
-		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_ALL, REDUCE_ALL, Movie.class);
+		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
+				"movies", MAP_ALL, REDUCE_ALL, Movie.class);
 
 		logMapReduceResults(results);
 
@@ -152,10 +164,9 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 	}
 
 	@Override
-	public List<Movie> findByKind(Kind kind) {
+	public List<Movie> findByKinds(Kind kind) {
 		Query query = generateQuery(kind);
 		// query.with(new Sort(Direction.ASC, "title"));
-
 		return mongoOperations.find(query, Movie.class);
 	}
 
@@ -174,9 +185,103 @@ public class MongoDBMovieMapReduceRepositoryImpl implements MongoDBMovieMapReduc
 		LOGGER.debug("Output count : {}", results.getCounts().getOutputCount());
 		LOGGER.debug("Emit count : {}", results.getCounts().getEmitCount());
 		LOGGER.debug("Output Collection : {}", results);
-		LOGGER.debug("Emit Loop Time : {}", results.getTiming().getEmitLoopTime());
+		LOGGER.debug("Emit Loop Time : {}", results.getTiming()
+				.getEmitLoopTime());
 		LOGGER.debug("Map Time : {}", results.getTiming().getMapTime());
 		LOGGER.debug("Total Time : {}", results.getTiming().getTotalTime());
+	}
+
+	@Override
+	public Movie findById(Long id) {
+		return mongoOperations.findById(id, Movie.class);
+	}
+
+	@Override
+	public Movie save(Movie movie) {
+		mongoOperations.save(movie);
+		return movie;
+	}
+
+	@Override
+	public List<Movie> save(List<Movie> movies) {
+		mongoOperations.insert(movies, Movie.class);
+		return movies;
+	}
+
+	@Override
+	public void delete(Movie movie) {
+		mongoOperations.remove(movie);
+	}
+
+	@Override
+	public List<Movie> findAll(Sort sort) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Movie> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean exists(Long id) {
+		return findById(id) != null;
+	}
+
+	@Override
+	public long count() {
+		return mongoOperations.count(null, Movie.class);
+	}
+
+	@Override
+	public void delete(Long id) {
+		Movie movie = findById(id);
+		if (movie != null) {
+			mongoOperations.remove(movie);
+		}
+	}
+
+	@Override
+	public void deleteAll() {
+		mongoOperations.dropCollection(Movie.class);
+	}
+
+	@Override
+	public List<Movie> findByTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Movie> findByTitleLike(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Movie> findByActor(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Movie> findByActor(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Movie> findByDirector(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Movie> findByDirector(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

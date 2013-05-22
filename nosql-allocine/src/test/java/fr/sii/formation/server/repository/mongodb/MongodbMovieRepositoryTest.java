@@ -14,8 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
-import fr.sii.nosql.server.repository.mongodb.MongoDBMovieMapReduceRepository;
-import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,9 +31,6 @@ public class MongodbMovieRepositoryTest {
 
 	@Autowired
 	MovieRepository movieRepository;
-
-	@Autowired
-	MongoDBMovieMapReduceRepository mapReduceRepository;
 
 	@Autowired
 	@Qualifier("fileMovieRepository")
@@ -156,48 +151,48 @@ public class MongodbMovieRepositoryTest {
 		System.out.println("countMoviesMongoDBWithoutMapReduce : " + (end - deb));
 	}
 
-	@Test
-	public void averageDurationByKindMongoDBWithMapReduce() {
-		long deb = System.currentTimeMillis();
-
-		int duration = mapReduceRepository.averageDurationWithQueryMR(Kind.Action);
-		Assert.assertEquals(AVERAGE_ACTION_MOVIES_DURATION, duration);
-
-		long end = System.currentTimeMillis();
-		System.out.println("averageDurationByKindMongoDBWithMapReduce : " + (end - deb));
-	}
-
-	@Test
-	public void averageDurationMongoDBWithMapReduce() {
-		long deb = System.currentTimeMillis();
-
-		int duration = mapReduceRepository.averageDurationWithQueryMR(null);
-		Assert.assertEquals(AVERAGE_MOVIES_DURATION, duration);
-
-		long end = System.currentTimeMillis();
-		System.out.println("averageDurationMongoDBWithMapReduce : " + (end - deb));
-	}
-
-	@Test
-	public void averageDurationMongoDB() {
-		long deb = System.currentTimeMillis();
-
-		int duration = mapReduceRepository.averageDuration(null);
-		Assert.assertEquals(AVERAGE_MOVIES_DURATION, duration);
-
-		long end = System.currentTimeMillis();
-		System.out.println("averageDurationByKindMongoDBWithMapReduce : " + (end - deb));
-	}
-
-	@Test
-	public void countMoviesByKindMongoDB() {
-		long deb = System.currentTimeMillis();
-
-		long count = mapReduceRepository.countWithQuery(Kind.Action);
-		Assert.assertEquals(ACTION_MOVIES_COUNT, count);
-
-		long end = System.currentTimeMillis();
-		System.out.println("countByKindMongoDB : " + (end - deb));
-	}
+//	@Test
+//	public void averageDurationByKindMongoDBWithMapReduce() {
+//		long deb = System.currentTimeMillis();
+//
+//		int duration = mapReduceRepository.averageDurationWithQueryMR(Kind.Action);
+//		Assert.assertEquals(AVERAGE_ACTION_MOVIES_DURATION, duration);
+//
+//		long end = System.currentTimeMillis();
+//		System.out.println("averageDurationByKindMongoDBWithMapReduce : " + (end - deb));
+//	}
+//
+//	@Test
+//	public void averageDurationMongoDBWithMapReduce() {
+//		long deb = System.currentTimeMillis();
+//
+//		int duration = mapReduceRepository.averageDurationWithQueryMR(null);
+//		Assert.assertEquals(AVERAGE_MOVIES_DURATION, duration);
+//
+//		long end = System.currentTimeMillis();
+//		System.out.println("averageDurationMongoDBWithMapReduce : " + (end - deb));
+//	}
+//
+//	@Test
+//	public void averageDurationMongoDB() {
+//		long deb = System.currentTimeMillis();
+//
+//		int duration = mapReduceRepository.averageDuration(null);
+//		Assert.assertEquals(AVERAGE_MOVIES_DURATION, duration);
+//
+//		long end = System.currentTimeMillis();
+//		System.out.println("averageDurationByKindMongoDBWithMapReduce : " + (end - deb));
+//	}
+//
+//	@Test
+//	public void countMoviesByKindMongoDB() {
+//		long deb = System.currentTimeMillis();
+//
+//		long count = mapReduceRepository.countWithQuery(Kind.Action);
+//		Assert.assertEquals(ACTION_MOVIES_COUNT, count);
+//
+//		long end = System.currentTimeMillis();
+//		System.out.println("countByKindMongoDB : " + (end - deb));
+//	}
 
 }

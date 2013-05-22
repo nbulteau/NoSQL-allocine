@@ -2,10 +2,11 @@ package fr.sii.nosql.server.repository.mongodb;
 
 import java.util.List;
 
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
-public interface MongoDBMovieMapReduceRepository {
+public interface MongoDBMovieMapReduceRepository extends MovieRepository {
 
 	long countWithQuery(Kind kind);
 
@@ -17,8 +18,8 @@ public interface MongoDBMovieMapReduceRepository {
 
 	List<Movie> findByKindMR(Kind kind);
 
-	List<Movie> findByKind(Kind kind);
-
 	List<Movie> findByActorMR(long id);
+
+	List<Movie> save(List<Movie> movies);
 
 }
