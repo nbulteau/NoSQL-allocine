@@ -77,7 +77,7 @@ public class CassandraMovieRepositoryImpl implements MovieRepository{
 			      "VALUES (?, ?, ?, ?, ?);");
 		
 		BoundStatement boundStatement = new BoundStatement(statement);
-		
+		getSession().execute(boundStatement.bind());
 		
 		
 		return null;
