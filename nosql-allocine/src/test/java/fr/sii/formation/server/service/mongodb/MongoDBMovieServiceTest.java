@@ -52,6 +52,7 @@ public class MongoDBMovieServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void insertMovie() throws MovieServiceException {
 		Movie movie = mongoDBMovieRepository.findById(62l);
 		movieService.save(movie, true);
@@ -65,7 +66,7 @@ public class MongoDBMovieServiceTest {
 		long index = 0;
 		long deb = System.currentTimeMillis();
 		for (Movie movie : iterable) {
-			movieService.save(movie, true);
+			movieService.save(movie, false);
 			index++;
 		}
 

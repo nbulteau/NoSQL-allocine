@@ -49,11 +49,11 @@ public class Movie implements Serializable {
 	 */
 	private int duration;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.MERGE })
 	@JoinTable(name = "movie_director", joinColumns = @JoinColumn(name = "directorId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "personId", referencedColumnName = "id"))
 	private Set<Person> directors = new HashSet<>();
 
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.REMOVE })
+	@OneToMany(cascade = { CascadeType.ALL })
 	private Set<CastMember> castMembers = new HashSet<>();
 
 	@ElementCollection

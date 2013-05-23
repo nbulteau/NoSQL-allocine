@@ -49,6 +49,11 @@ res = db.runCommand({mapReduce : "movies", map : m, reduce : r, query : {kinds:'
 #redis
 pour supprimer la sauvegarde asynchrone sur PC
 config set save ""
+db.movies.drop();
+
+
+dbsize
+flushall
 
 #hbase
 Pour hbase il faut configurer la VM en bridge

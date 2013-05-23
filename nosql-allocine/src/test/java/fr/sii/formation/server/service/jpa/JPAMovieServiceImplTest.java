@@ -28,7 +28,7 @@ public class JPAMovieServiceImplTest {
 	private MovieService movieService;
 
 	@Autowired
-	FileMovieRepository fileRepository;
+	FileMovieRepository fileMovieRepository;
 
 	@Autowired
 	JpaMovieRepository jpaRepository;
@@ -46,7 +46,7 @@ public class JPAMovieServiceImplTest {
 		// "Alien, le huitième passager" id
 		long idMovie = 62;
 
-		Movie movie = fileRepository.findById(idMovie);
+		Movie movie = fileMovieRepository.findById(idMovie);
 
 		Assert.assertEquals(idMovie, movie.getId());
 
@@ -65,10 +65,9 @@ public class JPAMovieServiceImplTest {
 	}
 
 	@Test
-	@Ignore
 	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
 
-		Iterable<Movie> iterable = fileRepository.all();
+		Iterable<Movie> iterable = fileMovieRepository.all();
 
 		long index = 0;
 		long deb = System.currentTimeMillis();

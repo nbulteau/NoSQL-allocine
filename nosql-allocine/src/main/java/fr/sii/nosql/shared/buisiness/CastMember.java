@@ -19,7 +19,7 @@ public class CastMember implements Serializable {
 
 	private String role;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE })
+	@OneToOne(cascade = { CascadeType.MERGE })
 	private Person person;
 
 	public CastMember() {
