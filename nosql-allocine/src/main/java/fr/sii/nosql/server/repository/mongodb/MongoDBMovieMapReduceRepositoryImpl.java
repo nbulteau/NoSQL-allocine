@@ -22,8 +22,8 @@ import org.springframework.stereotype.Repository;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 
-@Repository
 @Profile("mongodb")
+@Repository
 public class MongoDBMovieMapReduceRepositoryImpl implements
 		MongoDBMovieMapReduceRepository {
 

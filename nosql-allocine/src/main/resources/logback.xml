@@ -16,11 +16,12 @@
 	</appender>
 
 	<logger name="fr.sii.formation" level="DEBUG" />
-	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.hibernate.type" level="ALL" />
+	<logger name="org.hibernate" level="DEBUG" />
 
 	<root level="ERROR">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</root>
-	
+
 </configuration>

@@ -8,13 +8,14 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.allocine.service.AlloCineService;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
-import fr.sii.nosql.server.repository.jpa.JpaMovieRepository;
+import fr.sii.nosql.server.repository.jpa.complex.JpaMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Movie;
@@ -25,12 +26,15 @@ import fr.sii.nosql.shared.buisiness.Movie;
 public class JPAMovieServiceImplTest {
 
 	@Autowired
+	@Qualifier("jpaMovieService")
 	private MovieService movieService;
 
 	@Autowired
+	@Qualifier("fileMovieRepository")
 	FileMovieRepository fileMovieRepository;
 
 	@Autowired
+	@Qualifier("jpaMovieRepository")
 	JpaMovieRepository jpaRepository;
 
 	@Autowired
