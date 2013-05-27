@@ -47,8 +47,7 @@ public class SimpleJPAMovieServiceImplTest {
 
 	@Test
 	public void populateOne() throws MovieServiceException {
-		// "Alien, le huitième passager" id
-		long idMovie = 62;
+		long idMovie = 1146;
 
 		Movie movie = fileMovieRepository.findById(idMovie);
 

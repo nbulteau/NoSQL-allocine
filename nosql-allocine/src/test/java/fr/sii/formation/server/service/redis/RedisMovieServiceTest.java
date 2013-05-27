@@ -22,7 +22,7 @@ import fr.sii.nosql.shared.buisiness.Movie;
 public class RedisMovieServiceTest {
 
 	@Autowired
-	@Qualifier("movieService")
+	@Qualifier("nosqlMovieService")
 	MovieService movieService;
 
 	@Autowired

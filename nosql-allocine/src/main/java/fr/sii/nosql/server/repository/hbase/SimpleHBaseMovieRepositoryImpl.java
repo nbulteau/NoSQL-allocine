@@ -31,7 +31,7 @@ import fr.sii.nosql.shared.buisiness.Person;
 
 @Profile("hbase")
 @Repository("hbaseMovieRepository")
-public class HBaseMovieRepositoryImpl implements MovieRepository {
+public class SimpleHBaseMovieRepositoryImpl implements MovieRepository {
 
 	private HBaseTemplate template;
 
@@ -82,18 +82,19 @@ public class HBaseMovieRepositoryImpl implements MovieRepository {
 	public Movie save(Movie movie) {
 		Long id = movie.getId();
 		moviesById.put(id, movie);
-		moviesByTitle.add(movie.getTitle(), id, movie);
-		moviesByTitleLike.add(movie.getTitle(), id, movie);
-		for (CastMember castMember : movie.getCastMembers()) {
-			moviesByActorName.add(castMember.getPerson().getName(), id, movie);
-			moviesByActor.add(castMember.getPerson().getId(), id, movie);
-		}
-		for (Person person : movie.getDirectors()) {
-			moviesByDirectorName.add(person.getName(), id, movie);
-			moviesByDirector.add(person.getId(), id, movie);
-		}
-		for (Kind k : movie.getKinds())
-			moviesByKind.add(k.name(), id, movie);
+
+		// moviesByTitle.add(movie.getTitle(), id, movie);
+		// moviesByTitleLike.add(movie.getTitle(), id, movie);
+		// for (CastMember castMember : movie.getCastMembers()) {
+		// moviesByActorName.add(castMember.getPerson().getName(), id, movie);
+		// moviesByActor.add(castMember.getPerson().getId(), id, movie);
+		// }
+		// for (Person person : movie.getDirectors()) {
+		// moviesByDirectorName.add(person.getName(), id, movie);
+		// moviesByDirector.add(person.getId(), id, movie);
+		// }
+		// for (Kind k : movie.getKinds())
+		// moviesByKind.add(k.name(), id, movie);
 
 		return movie;
 	}

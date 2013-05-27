@@ -23,15 +23,14 @@ import fr.sii.nosql.shared.buisiness.Person;
 
 public abstract class MovieServiceImpl {
 
-	protected final static Logger LOGGER = LoggerFactory
-			.getLogger(MovieServiceImpl.class);
+	protected final static Logger LOGGER = LoggerFactory.getLogger(MovieServiceImpl.class);
 
 	protected MovieRepository movieRepository;
 
 	protected final FilePosterRepository filePosterRepository;
-	
+
 	protected final FilePhotoRepository filePhotoRepository;
-	
+
 	protected final AlloCineService alloCineService;
 
 	public void setMovieRepository(MovieRepository movieRepository) {
@@ -39,13 +38,9 @@ public abstract class MovieServiceImpl {
 	}
 
 	@Autowired
-	public MovieServiceImpl(AlloCineService alloCineService,
-			MovieRepository movieRepository,
-			FilePosterRepository filePosterRepository,
-			FilePhotoRepository filePhotoRepository) {
+	public MovieServiceImpl(AlloCineService alloCineService, FilePosterRepository filePosterRepository, FilePhotoRepository filePhotoRepository) {
 		super();
 		this.alloCineService = alloCineService;
-		this.movieRepository = movieRepository;
 		this.filePosterRepository = filePosterRepository;
 		this.filePhotoRepository = filePhotoRepository;
 	}
@@ -86,8 +81,7 @@ public abstract class MovieServiceImpl {
 		return movieRepository.findByTitle(title);
 	}
 
-	public List<Movie> findByTitleLike(String title)
-			throws MovieServiceException {
+	public List<Movie> findByTitleLike(String title) throws MovieServiceException {
 		invariant();
 		return movieRepository.findByTitleLike(title);
 	}
@@ -112,8 +106,7 @@ public abstract class MovieServiceImpl {
 		return movieRepository.findByDirector(name);
 	}
 
-	public Movie retrieveAndSave(long alloCineMovieId, boolean viewed)
-			throws MovieServiceException {
+	public Movie retrieveAndSave(long alloCineMovieId, boolean viewed) throws MovieServiceException {
 		Movie movie = alloCineService.retrieveMovie(alloCineMovieId);
 		if (movie != null) {
 			movie.setViewed(viewed);
@@ -135,15 +128,11 @@ public abstract class MovieServiceImpl {
 		for (CastMember castMember : movie.getCastMembers()) {
 			Person person = castMember.getPerson();
 			Long pictureId = person.getId();
-			if (!filePhotoRepository.exists(pictureId)
-					&& person.getPictureHref() != null) {
+			if (!filePhotoRepository.exists(pictureId) && person.getPictureHref() != null) {
 				try {
-					PictureListToSave.add(new Picture(pictureId,
-							MovieHelper.downloadPicture(person
-									.getPictureHref())));
+					PictureListToSave.add(new Picture(pictureId, MovieHelper.downloadPicture(person.getPictureHref())));
 				} catch (IOException e) {
-					LOGGER.error("Unable to retrieve Picture for {} : {}",
-							person.getName(), e.getMessage());
+					LOGGER.error("Unable to retrieve Picture for {} : {}", person.getName(), e.getMessage());
 				}
 			}
 		}
@@ -151,15 +140,11 @@ public abstract class MovieServiceImpl {
 		// directors picture
 		for (Person director : movie.getDirectors()) {
 			long pictureId = director.getId();
-			if (!filePhotoRepository.exists(pictureId)
-					&& director.getPictureHref() != null) {
+			if (!filePhotoRepository.exists(pictureId) && director.getPictureHref() != null) {
 				try {
-					PictureListToSave.add(new Picture(pictureId,
-							MovieHelper.downloadPicture(director
-									.getPictureHref())));
+					PictureListToSave.add(new Picture(pictureId, MovieHelper.downloadPicture(director.getPictureHref())));
 				} catch (IOException e) {
-					LOGGER.error("Unable to retrieve Picture for {} : {}",
-							director.getName(), e.getMessage());
+					LOGGER.error("Unable to retrieve Picture for {} : {}", director.getName(), e.getMessage());
 				}
 			}
 		}
@@ -171,15 +156,12 @@ public abstract class MovieServiceImpl {
 	protected void savePosters(Movie movie) {
 		try {
 			long posterId = movie.getId();
-			if (!filePosterRepository.exists(posterId)
-					&& movie.getPosterHref() != null) {
-				byte[] poster = MovieHelper.downloadPicture(movie
-						.getPosterHref());
+			if (!filePosterRepository.exists(posterId) && movie.getPosterHref() != null) {
+				byte[] poster = MovieHelper.downloadPicture(movie.getPosterHref());
 				filePosterRepository.save(new Picture(posterId, poster));
 			}
 		} catch (IOException e) {
-			LOGGER.error("Unable to retrieve poster for {} : {}",
-					movie.getTitle(), e.getMessage());
+			LOGGER.error("Unable to retrieve poster for {} : {}", movie.getTitle(), e.getMessage());
 		}
 	}
 

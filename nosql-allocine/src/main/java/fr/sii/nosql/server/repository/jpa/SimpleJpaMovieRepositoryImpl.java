@@ -1,12 +1,15 @@
 package fr.sii.nosql.server.repository.jpa;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,42 +22,57 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 @Profile("jpa")
 @Repository("simpleJpaMovieRepository")
-public class SimpleJpaMovieRepositoryImpls implements MovieRepository {
-	
+public class SimpleJpaMovieRepositoryImpl implements MovieRepository {
+
+	private final static Logger LOGGER = LoggerFactory.getLogger(SimpleJpaMovieRepositoryImpl.class);
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	private ObjectMapper mapper = new ObjectMapper();
+
+	private final ObjectMapper mapper = new ObjectMapper();
 
 	@Override
 	public Movie findById(Long id) {
 		Movie movie = null;
-		
+
 		ValueObject valueObject = entityManager.find(ValueObject.class, id);
-		if(valueObject != null) {
+		if (valueObject != null) {
 			try {
 				movie = mapper.readValue(valueObject.getJson(), Movie.class);
-			} catch ( IOException e) {
-					e.printStackTrace();
-			}			
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
+
 		return movie;
 	}
 
 	@Override
 	public Movie save(Movie movie) {
-		
-		String json = null;
+
+		byte[] json = null;
 		try {
-			json = mapper.writeValueAsString(movie);
-		} catch ( IOException e) {
+			json = mapper.writeValueAsBytes(movie);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		ValueObject valueObject = new ValueObject(movie.getId(), json);
-		entityManager.persist(valueObject);
-		
+
+		// StringWriter writer = new StringWriter();
+		// try {
+		// mapper.writeValue(writer, movie);
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
+		// json = writer.toString();
+
+		ValueObject valueObject;
+		try {
+			valueObject = new ValueObject(movie.getId(), new String(json, "UTF-8"));
+			entityManager.merge(valueObject);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
 		return movie;
 	}
 

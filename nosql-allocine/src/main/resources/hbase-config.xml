@@ -10,7 +10,7 @@
 			class="org.springframework.data.hadoop.hbase.HbaseConfigurationFactoryBean">
 			<property name="properties">
 				<map>
-					<entry key="hbase.zookeeper.quorum" value="10.6.192.68" />
+					<entry key="hbase.zookeeper.quorum" value="192.168.1.91" />
 					<entry key="property.clientPort" value="2181" />
 				</map>
 			</property>

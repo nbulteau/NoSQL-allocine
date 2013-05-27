@@ -9,7 +9,7 @@ VM Arguments : -Dhttp.proxyHost=proxy.rennes.sii.fr -Dhttp.proxyPort=3128
 
 mongod.exe --dbpath "D:\MongoDB Datafiles"
 use movies
-
+db.movies.drop();
 
 // Les films ou l'acteur id = 1515 jouent triés par ordre alpha 
 db.movies.find({'actors.person._id':1515}).sort({title:1})
@@ -49,7 +49,7 @@ res = db.runCommand({mapReduce : "movies", map : m, reduce : r, query : {kinds:'
 #redis
 pour supprimer la sauvegarde asynchrone sur PC
 config set save ""
-db.movies.drop();
+
 
 
 dbsize

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,28 +19,24 @@ import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 
+@Profile("jpa")
 @Service("jpaMovieService")
-public class JpaMovieServiceImpl extends MovieServiceImpl implements
-		MovieService {
+public class JpaMovieServiceImpl extends MovieServiceImpl implements MovieService {
 
-	private JpaPersonRepository personRepository;
+	private final JpaPersonRepository personRepository;
 
 	@Autowired
-	public JpaMovieServiceImpl(AlloCineService alloCineService,
-			JpaMovieRepository jpaMovieRepository,
-			JpaPersonRepository jpaPersonRepository,
-			FilePosterRepository filePosterRepository,
-			FilePhotoRepository filePhotoRepository) {
-		super(alloCineService, jpaMovieRepository, filePosterRepository,
-				filePhotoRepository);
+	public JpaMovieServiceImpl(AlloCineService alloCineService, JpaMovieRepository jpaMovieRepository, JpaPersonRepository jpaPersonRepository,
+			FilePosterRepository filePosterRepository, FilePhotoRepository filePhotoRepository) {
+		super(alloCineService, filePosterRepository, filePhotoRepository);
+		setMovieRepository(jpaMovieRepository);
 		this.personRepository = jpaPersonRepository;
 	}
 
 	@Override
 	@Transactional
-	public void save(Movie movie, boolean isDownloadPictures)
-			throws MovieServiceException {
-		LOGGER.info("save : {}", movie.getTitle());
+	public void save(Movie movie, boolean isDownloadPictures) throws MovieServiceException {
+		LOGGER.info("save : {} : {}", movie.getId(), movie.getTitle());
 
 		invariant();
 
