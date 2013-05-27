@@ -18,7 +18,7 @@ public interface MongoDBMovieRepository extends MovieRepository {
 
 	List<Movie> findByKindMR(Kind kind);
 
-	List<Movie> findByActorMR(long id);
+	List<Movie> findByActorMR(String name);
 
 	List<Movie> save(List<Movie> movies);
 

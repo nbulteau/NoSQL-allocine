@@ -15,19 +15,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import dataaccess.hbase.simple.HBaseTable;
-import dataaccess.hbase.simple.HBaseTable1N;
 import dataaccess.hbase.simple.HBaseTemplate;
-import dataaccess.hbase.simple.serializers.DefaultCompositeKeySerializer;
-import dataaccess.hbase.simple.serializers.HBaseSerializationException;
 import dataaccess.hbase.simple.serializers.HBaseSerializer;
 import dataaccess.hbase.simple.serializers.JacksonJsonHBaseSerializer;
-import dataaccess.hbase.simple.serializers.LongKeySerializer;
-import dataaccess.hbase.simple.serializers.String8Serializer;
 import fr.sii.nosql.server.repository.MovieRepository;
-import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
-import fr.sii.nosql.shared.buisiness.Person;
 
 @Profile("hbase")
 @Repository("simpleHBaseMovieRepository")

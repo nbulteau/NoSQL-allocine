@@ -73,10 +73,10 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 	private MongoOperations mongoOperations;
 
 	@Override
-	public List<Movie> findByActorMR(long id) {
+	public List<Movie> findByActorMR(String name) {
 		List<Movie> movies = new ArrayList<Movie>();
 
-		Query query = new Query(Criteria.where("actors.person._id").is(id));
+		Query query = new Query(Criteria.where("castMembers.person.name").is(name));
 		query.with(new Sort(Direction.ASC, "title"));
 
 		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
