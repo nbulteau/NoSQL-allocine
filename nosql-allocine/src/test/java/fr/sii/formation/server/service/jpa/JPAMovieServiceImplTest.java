@@ -85,4 +85,16 @@ public class JPAMovieServiceImplTest {
 		System.out.println("populate " + index + " movies in " + (end - deb) + " ms");
 	}
 
+	@Test
+	public void findByIdTest() throws MovieServiceException {
+		Long[] ids = { 5091l, 203l, 42729l, 50072l, 99876l, 139957l, 185220l, 197774l, 205895l, 221092l };
+		long deb = System.currentTimeMillis();
+		for (Long id : ids) {
+			movieService.findById(id);
+		}
+		long end = System.currentTimeMillis();
+
+		System.out.println("findById movies in " + (end - deb) / 10 + " ms");
+	}
+
 }
