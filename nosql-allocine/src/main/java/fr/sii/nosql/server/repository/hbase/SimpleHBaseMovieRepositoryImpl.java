@@ -30,16 +30,12 @@ import fr.sii.nosql.shared.buisiness.Movie;
 import fr.sii.nosql.shared.buisiness.Person;
 
 @Profile("hbase")
-@Repository("hbaseMovieRepository")
+@Repository("simpleHBaseMovieRepository")
 public class SimpleHBaseMovieRepositoryImpl implements MovieRepository {
 
 	private HBaseTemplate template;
 
 	private HBaseTable<Long, Movie> moviesById;
-
-	private HBaseTable1N.SL<Movie> moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName, moviesByKind;
-
-	private HBaseTable1N.L2<Movie> moviesByActor, moviesByDirector;
 
 	@Autowired
 	private Configuration configuration;
@@ -50,52 +46,16 @@ public class SimpleHBaseMovieRepositoryImpl implements MovieRepository {
 		template = new HBaseTemplate(configuration);
 
 		moviesById = new HBaseTable<Long, Movie>(template, "Movies", Long.class, Movie.class);
-		moviesByTitle = new HBaseTable1N.SL<Movie>(template, "MoviesByTitle", Movie.class);
-		moviesByTitleLike = new HBaseTable1N.SL<Movie>(template, "MoviesByTitleLike", Movie.class);
-		moviesByTitleLike.setKeySerializer(new DefaultCompositeKeySerializer<String, Long>(new String8Serializer(), new LongKeySerializer()));
-		moviesByActorName = new HBaseTable1N.SL<Movie>(template, "MoviesByActorName", Movie.class);
-		moviesByDirectorName = new HBaseTable1N.SL<Movie>(template, "MoviesByDirectorName", Movie.class);
-		moviesByActor = new HBaseTable1N.L2<Movie>(template, "MoviesByActor", Movie.class);
-		moviesByDirector = new HBaseTable1N.L2<Movie>(template, "MoviesByDirector", Movie.class);
-		moviesByKind = new HBaseTable1N.SL<Movie>(template, "MoviesByKind", Movie.class);
 		HBaseSerializer<Movie> ser = new JacksonJsonHBaseSerializer<Movie>(Movie.class);
 		// ser = new MovieSerializer();
-		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById, moviesByTitle, moviesByTitleLike, moviesByActorName, moviesByDirectorName, moviesByActor,
-				moviesByDirector, moviesByKind })
+		for (HBaseTable<?, Movie> t : new HBaseTable[] { moviesById })
 			t.setValueSerializer(ser);
-	}
-
-	// use this class to measure hbase performance without deserialisation speed
-	private static class MovieSerializer implements HBaseSerializer<Movie> {
-		@Override
-		public byte[] serialize(Movie t) throws HBaseSerializationException {
-			return new byte[0];
-		}
-
-		@Override
-		public Movie deserialize(byte[] bytes) throws HBaseSerializationException {
-			return new Movie();
-		}
 	}
 
 	@Override
 	public Movie save(Movie movie) {
 		Long id = movie.getId();
 		moviesById.put(id, movie);
-
-		// moviesByTitle.add(movie.getTitle(), id, movie);
-		// moviesByTitleLike.add(movie.getTitle(), id, movie);
-		// for (CastMember castMember : movie.getCastMembers()) {
-		// moviesByActorName.add(castMember.getPerson().getName(), id, movie);
-		// moviesByActor.add(castMember.getPerson().getId(), id, movie);
-		// }
-		// for (Person person : movie.getDirectors()) {
-		// moviesByDirectorName.add(person.getName(), id, movie);
-		// moviesByDirector.add(person.getId(), id, movie);
-		// }
-		// for (Kind k : movie.getKinds())
-		// moviesByKind.add(k.name(), id, movie);
-
 		return movie;
 	}
 
@@ -133,17 +93,7 @@ public class SimpleHBaseMovieRepositoryImpl implements MovieRepository {
 
 	@Override
 	public void delete(Long id) {
-		Movie movie = findById(id);
 		moviesById.delete(id);
-		moviesByTitle.remove(movie.getTitle(), id);
-		for (CastMember castMember : movie.getCastMembers()) {
-			moviesByActorName.remove(castMember.getPerson().getName(), id);
-			moviesByActor.remove(castMember.getPerson().getId(), id);
-		}
-		for (Person person : movie.getDirectors()) {
-			moviesByDirectorName.remove(person.getName(), id);
-			moviesByDirector.remove(person.getId(), id);
-		}
 	}
 
 	@Override
@@ -154,42 +104,45 @@ public class SimpleHBaseMovieRepositoryImpl implements MovieRepository {
 
 	@Override
 	public List<Movie> findByTitle(String title) {
-		return moviesByTitle.getList(title);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Movie> findByTitleLike(String string) {
-		List<Movie> list = moviesByTitleLike.getList(string);
+		// TODO Auto-generated method stub
 		List<Movie> result = new ArrayList<Movie>();
-		for (Movie m : list)
-			if (m.getTitle().startsWith(string))
-				result.add(m);
 		return result;
 	}
 
 	@Override
 	public List<Movie> findByActor(long id) {
-		return moviesByActor.getList(id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Movie> findByActor(String name) {
-		return moviesByActorName.getList(name);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Movie> findByDirector(long id) {
-		return moviesByDirector.getList(id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Movie> findByDirector(String name) {
-		return moviesByDirectorName.getList(name);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Movie> findByKinds(Kind kind) {
-		return moviesByKind.getList(kind.name());
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public long countByKinds(Kind kind) {
