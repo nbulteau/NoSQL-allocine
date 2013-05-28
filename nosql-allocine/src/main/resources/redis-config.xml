@@ -7,7 +7,7 @@
 
 		<bean id="jedisConnectionFactory"
 			class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-			p:use-pool="true" />
+			p:use-pool="true" p:timeout="4000"/>
 
 		<!-- redis template definition -->
 		<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"

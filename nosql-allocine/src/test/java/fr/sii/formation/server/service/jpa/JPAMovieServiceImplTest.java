@@ -94,7 +94,24 @@ public class JPAMovieServiceImplTest {
 		}
 		long end = System.currentTimeMillis();
 
-		System.out.println("findById movies in " + (end - deb) / 10 + " ms");
+		System.out.println("findById movies in " + (end - deb) / ids.length + " ms");
+	}
+
+	@Test
+	public void findByActor() throws MovieServiceException {
+		String[] names = { "Bérénice Bejo", "Orlando Bloom", "Emmanuelle Seigner", "Joaquin Phoenix", "Tom Hanks", "Liam Neeson", "Brad Pitt", "Al Pacino",
+				"Morgan Freeman", "Kevin Spacey", "Gary Oldman", "Emma Watson", "Harrison Ford", "Johnny Depp", "Winona Ryder" };
+		long deb = System.currentTimeMillis();
+		List<Movie> movies = null;
+		int sum = 0;
+		for (String name : names) {
+			movies = movieService.findByActor(name);
+			sum += movies.size();
+		}
+		long end = System.currentTimeMillis();
+		Assert.assertEquals(743, sum);
+
+		System.out.println("findByActor movies in " + (end - deb) / names.length + " ms");
 	}
 
 }

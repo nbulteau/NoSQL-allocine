@@ -1,8 +1,5 @@
 package fr.sii.formation.server.service.redis;
 
-import java.util.List;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -22,7 +19,7 @@ import fr.sii.nosql.shared.buisiness.Movie;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
 @ActiveProfiles("redis")
-public class RedisMovieServiceTest {
+public class SimpleRedisMovieServiceTest {
 
 	@Autowired
 	@Qualifier("nosqlMovieService")
@@ -32,10 +29,10 @@ public class RedisMovieServiceTest {
 	FileMovieRepository fileMovieRepository;
 
 	@Autowired
-	@Qualifier("redisMovieRepository")
+	@Qualifier("simpleRedisMovieRepository")
 	RedisMovieRepository redisMovieRepository;
 
-	public RedisMovieServiceTest() {
+	public SimpleRedisMovieServiceTest() {
 		super();
 	}
 
@@ -78,32 +75,6 @@ public class RedisMovieServiceTest {
 		long end = System.currentTimeMillis();
 
 		System.out.println("findById movies in " + (end - deb) / 10 + " ms");
-	}
-
-	@Test
-	public void findByActor() throws MovieServiceException {
-		String[] names = { "Bérénice Bejo", "Orlando Bloom", "Emmanuelle Seigner", "Joaquin Phoenix", "Tom Hanks", "Liam Neeson", "Brad Pitt", "Al Pacino",
-				"Morgan Freeman", "Kevin Spacey", "Gary Oldman", "Emma Watson", "Harrison Ford", "Johnny Depp", "Winona Ryder" };
-		long deb = System.currentTimeMillis();
-		List<Movie> movies = null;
-		int sum = 0;
-		for (String name : names) {
-			movies = movieService.findByActor(name);
-			sum += movies.size();
-		}
-		long end = System.currentTimeMillis();
-		Assert.assertEquals(743, sum);
-
-		System.out.println("findByActor movies in " + (end - deb) / names.length + " ms");
-	}
-
-	@Test
-	public void allTests4Times() throws InterruptedException, MovieServiceException {
-		for (int i = 0; i < 5; i++) {
-			populateFromFileRepository();
-			findByIdTest();
-			findByActor();
-		}
 	}
 
 }

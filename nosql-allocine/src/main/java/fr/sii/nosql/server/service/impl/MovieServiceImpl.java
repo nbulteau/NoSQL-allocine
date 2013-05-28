@@ -47,7 +47,7 @@ public abstract class MovieServiceImpl {
 
 	@Transactional
 	public void save(Movie movie, boolean isDownloadPictures) throws MovieServiceException {
-		LOGGER.info("save : {}", movie.getTitle());
+		LOGGER.info("save : {} : {}", movie.getId(), movie.getTitle());
 
 		invariant();
 
