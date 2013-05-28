@@ -9,8 +9,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sii.formation.server.service.MovieServiceTest;
-import fr.sii.formation.server.service.MovieServiceTestImpl;
+import fr.sii.formation.server.service.SimpleMovieServiceTest;
+import fr.sii.formation.server.service.SimpleMovieServiceTestImpl;
 import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
@@ -19,54 +19,44 @@ import fr.sii.nosql.server.service.MovieServiceException;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
 @ActiveProfiles("hbase")
-public class HBaseMovieServiceTest implements MovieServiceTest {
+public class SimpleHBaseMovieServiceTest implements SimpleMovieServiceTest {
 
 	@Autowired
 	FileMovieRepository fileMovieRepository;
 
 	@Autowired
-	MovieService movieService;
-
-	@Autowired
-	@Qualifier("hbaseMovieRepository")
+	@Qualifier("simpleHBaseMovieRepository")
 	MovieRepository movieRepository;
 
-	private MovieServiceTest movieServiceTest;
+	@Autowired
+	MovieService movieService;
+
+	private SimpleMovieServiceTest simpleMovieServiceTest;
 
 	@BeforeClass
 	public void before() {
 		movieService.setMovieRepository(movieRepository);
-		movieServiceTest = new MovieServiceTestImpl(
+		simpleMovieServiceTest = new SimpleMovieServiceTestImpl(
 				fileMovieRepository, movieService);
 	}
 
 	@Test
 	@Override
 	public void insertMovie() throws MovieServiceException {
-		movieServiceTest.insertMovie();
+		simpleMovieServiceTest.insertMovie();
 	}
 
 	@Test
 	@Override
 	public void populateFromFileRepository() throws InterruptedException,
 			MovieServiceException {
-		movieServiceTest.populateFromFileRepository();
+		simpleMovieServiceTest.populateFromFileRepository();
 	}
 
 	@Test
 	@Override
 	public void findByIdTest() throws MovieServiceException {
-		movieServiceTest.findByIdTest();
+		simpleMovieServiceTest.findByIdTest();
 	}
 
-	@Override
-	public void findByActor() throws MovieServiceException {
-		movieServiceTest.findByActor();		
-	}
-
-	@Override
-	public void allTests4Times() throws InterruptedException,
-			MovieServiceException {
-		movieServiceTest.allTests4Times();		
-	}
 }

@@ -26,11 +26,9 @@ import fr.sii.nosql.shared.buisiness.Movie;
 public class JPAMovieServiceImplTest {
 
 	@Autowired
-	@Qualifier("jpaMovieService")
 	private MovieService movieService;
 
 	@Autowired
-	@Qualifier("fileMovieRepository")
 	FileMovieRepository fileMovieRepository;
 
 	@Autowired

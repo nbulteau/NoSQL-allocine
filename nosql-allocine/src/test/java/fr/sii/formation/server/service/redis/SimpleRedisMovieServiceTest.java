@@ -10,8 +10,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import fr.sii.nosql.server.repository.MovieRepository;
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
-import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Movie;
@@ -22,7 +22,6 @@ import fr.sii.nosql.shared.buisiness.Movie;
 public class SimpleRedisMovieServiceTest {
 
 	@Autowired
-	@Qualifier("nosqlMovieService")
 	MovieService movieService;
 
 	@Autowired
@@ -30,7 +29,7 @@ public class SimpleRedisMovieServiceTest {
 
 	@Autowired
 	@Qualifier("simpleRedisMovieRepository")
-	RedisMovieRepository redisMovieRepository;
+	MovieRepository redisMovieRepository;
 
 	public SimpleRedisMovieServiceTest() {
 		super();
@@ -42,7 +41,6 @@ public class SimpleRedisMovieServiceTest {
 	}
 
 	@Test
-	@Ignore
 	public void insertMovie() throws MovieServiceException {
 		Movie movie = fileMovieRepository.findById(62l);
 		movieService.save(movie, true);

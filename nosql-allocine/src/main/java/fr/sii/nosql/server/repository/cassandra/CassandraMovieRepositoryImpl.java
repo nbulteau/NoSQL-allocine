@@ -1,5 +1,6 @@
 package fr.sii.nosql.server.repository.cassandra;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -11,6 +12,8 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Host;
 import com.datastax.driver.core.Metadata;
 import com.datastax.driver.core.PreparedStatement;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 
 import fr.sii.nosql.server.repository.MovieRepository;
@@ -65,7 +68,6 @@ public class CassandraMovieRepositoryImpl implements MovieRepository{
 
 	@Override
 	public Movie findById(Long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -77,8 +79,11 @@ public class CassandraMovieRepositoryImpl implements MovieRepository{
 			      "VALUES (?, ?, ?, ?, ?);");
 		
 		BoundStatement boundStatement = new BoundStatement(statement);
-		getSession().execute(boundStatement.bind());
-		
+		ResultSet results = getSession().execute(boundStatement.bind());
+		Iterator<Row> iterator = results.iterator();
+		while (iterator.hasNext()) {
+			
+		}
 		
 		return null;
 	}
