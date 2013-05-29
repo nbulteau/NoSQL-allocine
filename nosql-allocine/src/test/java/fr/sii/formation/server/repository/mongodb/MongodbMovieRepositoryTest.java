@@ -38,57 +38,6 @@ public class MongodbMovieRepositoryTest {
 
 	@Ignore
 	@Test
-	public void testFindById() {
-		long deb = System.currentTimeMillis();
-
-		// 'Alien, le huitième passager'
-		Movie film1 = movieRepository.findById(62l);
-		Assert.assertNotNull(film1);
-
-		// 'La Guerre des boutons'
-		Movie film2 = movieRepository.findById(188649l);
-		Assert.assertNotNull(film2);
-
-		long end = System.currentTimeMillis();
-		System.out.println("testFindById : " + (end - deb));
-	}
-
-	@Ignore
-	@Test
-	public void testFindByTitle() {
-		long deb = System.currentTimeMillis();
-
-		// 'Alien, le huitième passager'
-		List<Movie> films1 = movieRepository.findByTitle("Alien, le huitième passager");
-		Assert.assertEquals(1, films1.size());
-
-		// 'La Guerre des boutons'
-		List<Movie> films2 = movieRepository.findByTitle("La Guerre des boutons");
-		Assert.assertEquals(2, films2.size());
-
-		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesParLeTitre : " + (end - deb));
-	}
-
-	@Ignore
-	@Test
-	public void testFindByTitleLike() {
-		long deb = System.currentTimeMillis();
-
-		// 'Alien, le huitième passager'
-		List<Movie> films1 = movieRepository.findByTitleLike("Alien, le huitième");
-		Assert.assertEquals(1, films1.size());
-
-		// 'La Guerre des boutons'
-		List<Movie> films2 = movieRepository.findByTitleLike("La Guerre des");
-		Assert.assertEquals(43, films2.size());
-
-		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesDontLeTitreCommencePar : " + (end - deb));
-	}
-
-	@Ignore
-	@Test
 	public void testFindByActorId() {
 		// 'Meryl Streep'
 		long id = 9;
@@ -101,25 +50,6 @@ public class MongodbMovieRepositoryTest {
 
 		long end = System.currentTimeMillis();
 		System.out.println("findByActorId : " + (end - deb));
-	}
-
-	@Ignore
-	@Test
-	public void findByActorName() {
-		long deb = System.currentTimeMillis();
-
-		// 'Meryl Streep'
-		String name = "Meryl Streep";
-		List<Movie> films1 = movieRepository.findByActor(name);
-		Assert.assertEquals(59, films1.size());
-
-		// 'François Berland'
-		name = "François Berland";
-		List<Movie> films2 = movieRepository.findByActor(name);
-		Assert.assertEquals(8, films2.size());
-
-		long end = System.currentTimeMillis();
-		System.out.println("findByActor : " + (end - deb));
 	}
 
 	@Ignore

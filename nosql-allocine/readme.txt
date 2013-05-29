@@ -60,4 +60,7 @@ Pour hbase il faut configurer la VM en bridge
 => mofier le fichiers hosts des 2 machines
 exemple : 10.6.192.68 	nbulteau-VirtualBox
 
+disable 't1' drop
+
+
 

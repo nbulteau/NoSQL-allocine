@@ -16,7 +16,7 @@ import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
-public class AlloCineServiceImplTest {
+public class AlloCineServiceTest {
 
 	@Autowired
 	AlloCineService alloCineService;
