@@ -39,30 +39,42 @@ public class SimpleJPAMovieServiceImplTest implements SimpleMovieServiceTest {
 	@Autowired
 	private MovieService movieService;
 
-	private SimpleMovieServiceTest simpleMovieServiceTest;
+	private SimpleMovieServiceTest movieServiceTest;
 
 	@PostConstruct
 	public void before() {
 		movieService.setMovieRepository(movieRepository);
-		simpleMovieServiceTest = new SimpleMovieServiceTestImpl(fileMovieRepository, movieService);
+		movieServiceTest = new SimpleMovieServiceTestImpl(fileMovieRepository, movieService);
 	}
 
 	@Test
 	@Override
 	public void insertMovie() throws MovieServiceException {
-		simpleMovieServiceTest.insertMovie();
+		movieServiceTest.insertMovie();
 	}
 
 	@Test
 	@Override
 	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
-		simpleMovieServiceTest.populateFromFileRepository();
+		movieServiceTest.populateFromFileRepository();
 	}
 
 	@Test
 	@Override
-	public void findByIdTest() throws MovieServiceException {
-		simpleMovieServiceTest.findByIdTest();
+	public void findMovieById() throws MovieServiceException {
+		movieServiceTest.findMovieById();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByTitle() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitle();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByTitleLike() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitleLike();
 	}
 
 	@Test

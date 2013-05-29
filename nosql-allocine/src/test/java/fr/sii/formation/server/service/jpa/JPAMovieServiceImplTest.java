@@ -61,20 +61,32 @@ public class JPAMovieServiceImplTest implements MovieServiceTest {
 
 	@Test
 	@Override
-	public void findByIdTest() throws MovieServiceException {
-		movieServiceTest.findByIdTest();
+	public void findMovieById() throws MovieServiceException {
+		movieServiceTest.findMovieById();
 	}
 
 	@Test
 	@Override
-	public void findByActor() throws MovieServiceException {
-		movieServiceTest.findByActor();
+	public void findMoviesByActorName() throws MovieServiceException {
+		movieServiceTest.findMoviesByActorName();
 	}
 
 	@Test
 	@Override
-	public void findByKindTest() throws MovieServiceException {
-		movieServiceTest.findByKindTest();
+	public void findMoviesByKind() throws MovieServiceException {
+		movieServiceTest.findMoviesByKind();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByTitle() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitle();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByTitleLike() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitleLike();
 	}
 
 	@Test

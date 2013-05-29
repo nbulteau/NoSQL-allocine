@@ -1,5 +1,9 @@
 package fr.sii.formation.server.service;
 
+import java.util.List;
+
+import org.junit.Assert;
+
 import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
@@ -17,23 +21,12 @@ public class SimpleMovieServiceTestImpl implements SimpleMovieServiceTest {
 		this.movieService = movieService;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.sii.formation.server.service.SimpleMovieServiceTest#insertMovie()
-	 */
 	@Override
 	public void insertMovie() throws MovieServiceException {
 		Movie movie = fileMovieRepository.findById(62l);
 		movieService.save(movie, true);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.sii.formation.server.service.SimpleMovieServiceTest#
-	 * populateFromFileRepository()
-	 */
 	@Override
 	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
 		System.out.println("populateFromFileRepository");
@@ -52,14 +45,8 @@ public class SimpleMovieServiceTestImpl implements SimpleMovieServiceTest {
 		System.out.println(" => populate " + index + " movies in " + (end - deb) + " ms");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * fr.sii.formation.server.service.SimpleMovieServiceTest#findByIdTest()
-	 */
 	@Override
-	public void findByIdTest() throws MovieServiceException {
+	public void findMovieById() throws MovieServiceException {
 		System.out.println("findByIdTest");
 
 		Long[] ids = { 5091l, 203l, 42729l, 50072l, 99876l, 139957l, 185220l, 197774l, 205895l, 221092l };
@@ -70,6 +57,42 @@ public class SimpleMovieServiceTestImpl implements SimpleMovieServiceTest {
 		long end = System.currentTimeMillis();
 
 		System.out.println(" => findById movies in " + (end - deb) / ids.length + " ms");
+	}
+
+	@Override
+	public void findMoviesByTitle() throws MovieServiceException {
+		System.out.println("findByTitle");
+
+		String[] titles = { "Alien, le huitième passager", "La Guerre des boutons" };
+		long deb = System.currentTimeMillis();
+		List<Movie> movies = null;
+		int sum = 0;
+		for (String title : titles) {
+			movies = movieService.findByTitle(title);
+			sum += movies.size();
+		}
+		long end = System.currentTimeMillis();
+		Assert.assertEquals(743, sum);
+
+		System.out.println(" => findByTitle movies in " + (end - deb) / titles.length + " ms");
+	}
+
+	@Override
+	public void findMoviesByTitleLike() throws MovieServiceException {
+		System.out.println("findByTitleLike");
+
+		String[] titles = { "Alien, le huitième", "La Guerre des" };
+		long deb = System.currentTimeMillis();
+		List<Movie> movies = null;
+		int sum = 0;
+		for (String title : titles) {
+			movies = movieService.findByTitle(title);
+			sum += movies.size();
+		}
+		long end = System.currentTimeMillis();
+		Assert.assertEquals(743, sum);
+
+		System.out.println(" => findByTitleLike movies in " + (end - deb) / titles.length + " ms");
 	}
 
 }

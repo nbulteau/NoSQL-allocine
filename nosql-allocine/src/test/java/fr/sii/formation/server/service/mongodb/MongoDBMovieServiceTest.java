@@ -1,6 +1,5 @@
 package fr.sii.formation.server.service.mongodb;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,10 +20,7 @@ import fr.sii.nosql.server.repository.file.FileMovieRepository;
 import fr.sii.nosql.server.repository.mongodb.MongoDBMovieRepository;
 import fr.sii.nosql.server.service.MovieService;
 import fr.sii.nosql.server.service.MovieServiceException;
-import fr.sii.nosql.shared.buisiness.CastMember;
-import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
-import fr.sii.nosql.shared.buisiness.Person;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context.xml")
@@ -65,20 +61,32 @@ public class MongoDBMovieServiceTest implements MovieServiceTest {
 
 	@Test
 	@Override
-	public void findByIdTest() throws MovieServiceException {
-		movieServiceTest.findByIdTest();
+	public void findMovieById() throws MovieServiceException {
+		movieServiceTest.findMovieById();
 	}
 
 	@Test
 	@Override
-	public void findByActor() throws MovieServiceException {
-		movieServiceTest.findByActor();
+	public void findMoviesByActorName() throws MovieServiceException {
+		movieServiceTest.findMoviesByActorName();
 	}
 
 	@Test
 	@Override
-	public void findByKindTest() throws MovieServiceException {
-		movieServiceTest.findByKindTest();
+	public void findMoviesByKind() throws MovieServiceException {
+		movieServiceTest.findMoviesByKind();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByTitle() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitle();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByTitleLike() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitleLike();
 	}
 
 	@Test
@@ -88,113 +96,12 @@ public class MongoDBMovieServiceTest implements MovieServiceTest {
 	}
 
 	@Test
-	@Ignore
-	public void saveMovie() throws MovieServiceException {
-		String movieTitle = "movieTitle";
-
-		Person person1 = new Person(1, "P1");
-		Person person2 = new Person(2, "P2");
-		Person person3 = new Person(2, "P3");
-
-		Movie movie = new Movie(1, movieTitle, "");
-
-		List<CastMember> castMembers = new ArrayList<CastMember>();
-		CastMember actor1 = new CastMember(person1, "role1");
-		castMembers.add(actor1);
-		CastMember actor2 = new CastMember(person3, "role2");
-		castMembers.add(actor2);
-		movie.getCastMembers().addAll(castMembers);
-
-		List<Person> directors = new ArrayList<Person>();
-		directors.add(person2);
-		movie.getDirectors().addAll(directors);
-
-		List<Kind> kinds = new ArrayList<Kind>();
-		kinds.add(Kind.Action);
-		kinds.add(Kind.Arts_Martiaux);
-		movie.getKinds().addAll(kinds);
-
-		movieService.save(movie, false);
-		movie = movieService.findById(movie.getId());
-
-		// oracle
-		Assert.assertNotNull(movie);
-		Assert.assertEquals(movieTitle, movie.getTitle());
-	}
-
-	@Test
-	@Ignore
 	public void retrieveAndSaveTest() throws MovieServiceException {
 		long idMovie = 61282;
 
 		Movie movie = movieService.retrieveAndSave(idMovie, false);
 		Assert.assertEquals(idMovie, movie.getId());
 		Assert.assertEquals(AVATAR, movie.toString());
-	}
-
-	@Test
-	@Ignore
-	public void testFindById() throws MovieServiceException {
-		long deb = System.currentTimeMillis();
-
-		// 'Alien, le huitième passager'
-		Movie film1 = movieService.findById(62l);
-		System.out.println(film1);
-		Assert.assertNotNull(film1);
-
-		// 'La Guerre des boutons'
-		Movie film2 = movieService.findById(188649l);
-		System.out.println(film2);
-		Assert.assertNotNull(film2);
-
-		long end = System.currentTimeMillis();
-		System.out.println("testFindById : " + (end - deb));
-	}
-
-	@Test
-	@Ignore
-	public void testFindByTitle() throws MovieServiceException {
-		long deb = System.currentTimeMillis();
-
-		// 'Alien, le huitième passager'
-		List<Movie> films1 = movieService.findByTitle("Alien, le huitième passager");
-		for (Movie movie : films1) {
-			System.out.println(movie);
-		}
-		Assert.assertEquals(1, films1.size());
-
-		// 'La Guerre des boutons'
-		List<Movie> films2 = movieService.findByTitle("La Guerre des boutons");
-		for (Movie movie : films2) {
-			System.out.println(movie);
-		}
-		Assert.assertEquals(2, films2.size());
-
-		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesParLeTitre : " + (end - deb));
-	}
-
-	@Test
-	@Ignore
-	public void testFindByTitleLike() throws MovieServiceException {
-		long deb = System.currentTimeMillis();
-
-		// 'Alien, le huitième passager'
-		List<Movie> films1 = movieService.findByTitleLike("Alien, le huitième");
-		for (Movie movie : films1) {
-			System.out.println(movie);
-		}
-		Assert.assertEquals(1, films1.size());
-
-		// 'La Guerre des boutons'
-		List<Movie> films2 = movieService.findByTitleLike("La Guerre des");
-		for (Movie movie : films2) {
-			System.out.println(movie);
-		}
-		Assert.assertEquals(6, films2.size());
-
-		long end = System.currentTimeMillis();
-		System.out.println("rechercherMoviesDontLeTitreCommencePar : " + (end - deb));
 	}
 
 	@Test

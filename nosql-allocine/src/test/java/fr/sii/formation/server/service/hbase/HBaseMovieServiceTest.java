@@ -54,20 +54,31 @@ public class HBaseMovieServiceTest implements MovieServiceTest {
 
 	@Test
 	@Override
-	public void findByIdTest() throws MovieServiceException {
-		movieServiceTest.findByIdTest();
+	public void findMovieById() throws MovieServiceException {
+		movieServiceTest.findMovieById();
+	}
+
+	@Override
+	public void findMoviesByTitle() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitle();
 	}
 
 	@Test
 	@Override
-	public void findByActor() throws MovieServiceException {
-		movieServiceTest.findByActor();
+	public void findMoviesByTitleLike() throws MovieServiceException {
+		movieServiceTest.findMoviesByTitleLike();
 	}
 
 	@Test
 	@Override
-	public void findByKindTest() throws MovieServiceException {
-		movieServiceTest.findByKindTest();
+	public void findMoviesByActorName() throws MovieServiceException {
+		movieServiceTest.findMoviesByActorName();
+	}
+
+	@Test
+	@Override
+	public void findMoviesByKind() throws MovieServiceException {
+		movieServiceTest.findMoviesByKind();
 	}
 
 	@Test
@@ -75,5 +86,4 @@ public class HBaseMovieServiceTest implements MovieServiceTest {
 	public void allTests4Times() throws InterruptedException, MovieServiceException {
 		movieServiceTest.allTests4Times();
 	}
-
 }

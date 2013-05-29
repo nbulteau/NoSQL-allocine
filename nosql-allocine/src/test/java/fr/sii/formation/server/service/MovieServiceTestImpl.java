@@ -17,7 +17,7 @@ public class MovieServiceTestImpl extends SimpleMovieServiceTestImpl implements 
 	}
 
 	@Override
-	public void findByActor() throws MovieServiceException {
+	public void findMoviesByActorName() throws MovieServiceException {
 		System.out.println("findByActor");
 
 		String[] names = { "Bérénice Bejo", "Orlando Bloom", "Emmanuelle Seigner", "Joaquin Phoenix", "Tom Hanks", "Liam Neeson", "Brad Pitt", "Al Pacino",
@@ -36,7 +36,7 @@ public class MovieServiceTestImpl extends SimpleMovieServiceTestImpl implements 
 	}
 
 	@Override
-	public void findByKindTest() throws MovieServiceException {
+	public void findMoviesByKind() throws MovieServiceException {
 		System.out.println("findByKindTest");
 
 		Kind[] kinds = { Kind.Action, Kind.Fantastique, Kind.Thriller };
@@ -56,9 +56,12 @@ public class MovieServiceTestImpl extends SimpleMovieServiceTestImpl implements 
 	@Override
 	public void allTests4Times() throws InterruptedException, MovieServiceException {
 		for (int i = 0; i < 5; i++) {
-			populateFromFileRepository();
-			findByIdTest();
-			findByActor();
+			// populateFromFileRepository();
+			findMovieById();
+			findMoviesByTitle();
+			findMoviesByTitleLike();
+			findMoviesByKind();
+			findMoviesByActorName();
 		}
 	}
 
