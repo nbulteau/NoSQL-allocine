@@ -1,6 +1,7 @@
 package fr.sii.formation.server.service.hbase;
 
-import org.junit.BeforeClass;
+import javax.annotation.PostConstruct;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +23,21 @@ import fr.sii.nosql.server.service.MovieServiceException;
 public class HBaseMovieServiceTest implements MovieServiceTest {
 
 	@Autowired
+	@Qualifier("hbaseMovieRepository")
+	MovieRepository movieRepository;
+
+	@Autowired
 	FileMovieRepository fileMovieRepository;
 
 	@Autowired
 	MovieService movieService;
 
-	@Autowired
-	@Qualifier("hbaseMovieRepository")
-	MovieRepository movieRepository;
-
 	private MovieServiceTest movieServiceTest;
 
-	@BeforeClass
+	@PostConstruct
 	public void before() {
 		movieService.setMovieRepository(movieRepository);
-		movieServiceTest = new MovieServiceTestImpl(
-				fileMovieRepository, movieService);
+		movieServiceTest = new MovieServiceTestImpl(fileMovieRepository, movieService);
 	}
 
 	@Test
@@ -48,8 +48,7 @@ public class HBaseMovieServiceTest implements MovieServiceTest {
 
 	@Test
 	@Override
-	public void populateFromFileRepository() throws InterruptedException,
-			MovieServiceException {
+	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
 		movieServiceTest.populateFromFileRepository();
 	}
 
@@ -59,14 +58,22 @@ public class HBaseMovieServiceTest implements MovieServiceTest {
 		movieServiceTest.findByIdTest();
 	}
 
+	@Test
 	@Override
 	public void findByActor() throws MovieServiceException {
-		movieServiceTest.findByActor();		
+		movieServiceTest.findByActor();
 	}
 
+	@Test
 	@Override
-	public void allTests4Times() throws InterruptedException,
-			MovieServiceException {
-		movieServiceTest.allTests4Times();		
+	public void findByKindTest() throws MovieServiceException {
+		movieServiceTest.findByKindTest();
 	}
+
+	@Test
+	@Override
+	public void allTests4Times() throws InterruptedException, MovieServiceException {
+		movieServiceTest.allTests4Times();
+	}
+
 }

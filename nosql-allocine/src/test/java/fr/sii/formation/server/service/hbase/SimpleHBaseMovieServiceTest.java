@@ -1,6 +1,7 @@
 package fr.sii.formation.server.service.hbase;
 
-import org.junit.BeforeClass;
+import javax.annotation.PostConstruct;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +23,21 @@ import fr.sii.nosql.server.service.MovieServiceException;
 public class SimpleHBaseMovieServiceTest implements SimpleMovieServiceTest {
 
 	@Autowired
-	FileMovieRepository fileMovieRepository;
-
-	@Autowired
 	@Qualifier("simpleHBaseMovieRepository")
 	MovieRepository movieRepository;
+
+	@Autowired
+	FileMovieRepository fileMovieRepository;
 
 	@Autowired
 	MovieService movieService;
 
 	private SimpleMovieServiceTest simpleMovieServiceTest;
 
-	@BeforeClass
+	@PostConstruct
 	public void before() {
 		movieService.setMovieRepository(movieRepository);
-		simpleMovieServiceTest = new SimpleMovieServiceTestImpl(
-				fileMovieRepository, movieService);
+		simpleMovieServiceTest = new SimpleMovieServiceTestImpl(fileMovieRepository, movieService);
 	}
 
 	@Test
@@ -48,8 +48,7 @@ public class SimpleHBaseMovieServiceTest implements SimpleMovieServiceTest {
 
 	@Test
 	@Override
-	public void populateFromFileRepository() throws InterruptedException,
-			MovieServiceException {
+	public void populateFromFileRepository() throws InterruptedException, MovieServiceException {
 		simpleMovieServiceTest.populateFromFileRepository();
 	}
 

@@ -8,4 +8,6 @@ public interface MovieServiceTest extends SimpleMovieServiceTest {
 
 	void allTests4Times() throws InterruptedException, MovieServiceException;
 
+	void findByKindTest() throws MovieServiceException;
+
 }

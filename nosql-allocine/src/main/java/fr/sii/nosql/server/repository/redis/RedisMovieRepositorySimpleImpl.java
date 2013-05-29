@@ -21,6 +21,8 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.stereotype.Repository;
 
+import fr.sii.nosql.server.repository.KeyUtils;
+import fr.sii.nosql.server.repository.MovieComparator;
 import fr.sii.nosql.shared.buisiness.Kind;
 import fr.sii.nosql.shared.buisiness.Movie;
 

@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.jpa.complex;
+package fr.sii.nosql.server.repository.jpa.optimised;
 
 import java.util.List;
 

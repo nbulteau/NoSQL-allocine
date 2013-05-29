@@ -116,6 +116,11 @@ public abstract class MovieServiceImpl {
 		return movie;
 	}
 
+	public List<Movie> findByKinds(Kind kind) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public long countByKind(Kind kind) throws MovieServiceException {
 		invariant();
 		// TODO : implements getMoviesCount with filter

@@ -24,6 +24,8 @@ public interface MovieService {
 
 	List<Movie> findByDirector(String name) throws MovieServiceException;
 
+	List<Movie> findByKinds(Kind kind);
+
 	void save(Movie movie, boolean isDownloadPictures) throws MovieServiceException;
 
 	Movie retrieveAndSave(long alloCineMovieId, boolean viewed) throws MovieServiceException;

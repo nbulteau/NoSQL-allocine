@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.mongodb.complex;
+package fr.sii.nosql.server.repository.mongodb.optimised;
 
 import java.util.List;
 

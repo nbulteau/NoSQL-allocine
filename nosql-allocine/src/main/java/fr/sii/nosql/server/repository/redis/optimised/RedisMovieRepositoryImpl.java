@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.redis.complex;
+package fr.sii.nosql.server.repository.redis.optimised;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,8 +21,8 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.stereotype.Repository;
 
-import fr.sii.nosql.server.repository.redis.KeyUtils;
-import fr.sii.nosql.server.repository.redis.MovieComparator;
+import fr.sii.nosql.server.repository.KeyUtils;
+import fr.sii.nosql.server.repository.MovieComparator;
 import fr.sii.nosql.server.repository.redis.RedisMovieRepository;
 import fr.sii.nosql.shared.buisiness.CastMember;
 import fr.sii.nosql.shared.buisiness.Kind;

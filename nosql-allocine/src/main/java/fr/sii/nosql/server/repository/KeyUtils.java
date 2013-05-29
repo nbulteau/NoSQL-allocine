@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.redis;
+package fr.sii.nosql.server.repository;
 
 /**
  * Simple class keeping all the key patterns to avoid the proliferation of

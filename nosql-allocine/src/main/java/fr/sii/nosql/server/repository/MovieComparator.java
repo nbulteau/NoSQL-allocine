@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.redis;
+package fr.sii.nosql.server.repository;
 
 import java.util.Comparator;
 

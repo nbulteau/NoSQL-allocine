@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.mongodb.complex;
+package fr.sii.nosql.server.repository.mongodb.optimised;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,8 +26,7 @@ import fr.sii.nosql.shared.buisiness.Movie;
 @Repository
 public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 
-	private final static Logger LOGGER = LoggerFactory
-			.getLogger(MongoDBMovieRepositoryImpl.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(MongoDBMovieRepositoryImpl.class);
 
 	private final static String MAP_COUNT = "function(){emit(this._id, 1);}";
 
@@ -79,8 +78,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 		Query query = new Query(Criteria.where("castMembers.person.name").is(name));
 		query.with(new Sort(Direction.ASC, "title"));
 
-		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
-				"movies", MAP_ALL, REDUCE_ALL, Movie.class);
+		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_ALL, REDUCE_ALL, Movie.class);
 
 		logMapReduceResults(results);
 
@@ -100,8 +98,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 	public long countWithQueryMR(Kind kind) {
 		Query query = generateQuery(kind);
 
-		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
-				"movies", MAP_COUNT, REDUCE_COUNT, Movie.class);
+		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_COUNT, REDUCE_COUNT, Movie.class);
 
 		logMapReduceResults(results);
 
@@ -113,15 +110,11 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 	public int averageDurationWithQueryMR(Kind kind) {
 		Query query = generateQuery(kind);
 
-		MapReduceOptions options = MapReduceOptions.options()
-				.outputTypeInline();
-		MapReduceResults<ValueObject> results = mongoOperations.mapReduce(
-				query, "movies", MAP_DURATION, REDUCE_DURATION, options,
-				ValueObject.class);
+		MapReduceOptions options = MapReduceOptions.options().outputTypeInline();
+		MapReduceResults<ValueObject> results = mongoOperations.mapReduce(query, "movies", MAP_DURATION, REDUCE_DURATION, options, ValueObject.class);
 
 		long result = 0;
-		for (Iterator<ValueObject> iterator = results.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<ValueObject> iterator = results.iterator(); iterator.hasNext();) {
 			ValueObject valueObject = iterator.next();
 			long nb = results.getCounts().getEmitCount();
 			result = (valueObject.getValue() / nb);
@@ -151,8 +144,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 		Query query = generateQuery(kind);
 		// query.with(new Sort(Direction.ASC, "title"));
 
-		MapReduceResults<Movie> results = mongoOperations.mapReduce(query,
-				"movies", MAP_ALL, REDUCE_ALL, Movie.class);
+		MapReduceResults<Movie> results = mongoOperations.mapReduce(query, "movies", MAP_ALL, REDUCE_ALL, Movie.class);
 
 		logMapReduceResults(results);
 
@@ -184,8 +176,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 		LOGGER.debug("Output count : {}", results.getCounts().getOutputCount());
 		LOGGER.debug("Emit count : {}", results.getCounts().getEmitCount());
 		LOGGER.debug("Output Collection : {}", results);
-		LOGGER.debug("Emit Loop Time : {}", results.getTiming()
-				.getEmitLoopTime());
+		LOGGER.debug("Emit Loop Time : {}", results.getTiming().getEmitLoopTime());
 		LOGGER.debug("Map Time : {}", results.getTiming().getMapTime());
 		LOGGER.debug("Total Time : {}", results.getTiming().getTotalTime());
 	}
@@ -278,8 +269,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 
 	@Override
 	public List<Movie> findByActor(String name) {
-		Query query = new Query(Criteria.where("castMembers.person.name").is(
-				name));
+		Query query = new Query(Criteria.where("castMembers.person.name").is(name));
 		query.with(new Sort(Direction.ASC, "title"));
 
 		List<Movie> results = mongoOperations.find(query, Movie.class);

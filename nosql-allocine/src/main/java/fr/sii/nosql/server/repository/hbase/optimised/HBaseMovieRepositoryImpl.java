@@ -1,4 +1,4 @@
-package fr.sii.nosql.server.repository.hbase.complex;
+package fr.sii.nosql.server.repository.hbase.optimised;
 
 import java.io.IOException;
 import java.util.ArrayList;
