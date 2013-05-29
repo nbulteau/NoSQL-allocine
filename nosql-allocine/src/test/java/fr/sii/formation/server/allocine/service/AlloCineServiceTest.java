@@ -22,7 +22,6 @@ public class AlloCineServiceTest {
 	AlloCineService alloCineService;
 
 	@Test
-	@Ignore
 	public void testRetrieveAvatar() {
 		// Avatar id
 		long idMovie = 61282;
@@ -32,7 +31,6 @@ public class AlloCineServiceTest {
 	}
 
 	@Test
-	@Ignore
 	public void testRetrieveCondorman() {
 		// Condorman id
 		long idMovie = 61281;
@@ -51,7 +49,6 @@ public class AlloCineServiceTest {
 	}
 
 	@Test
-	@Ignore
 	public void populate() throws MovieServiceException {
 
 		String fileName = "D:\\Users\\Nicolas\\Documents\\My Dropbox\\vu.txt";

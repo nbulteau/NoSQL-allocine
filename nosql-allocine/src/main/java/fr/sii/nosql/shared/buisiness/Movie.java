@@ -17,8 +17,11 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Index;
 import org.springframework.data.mongodb.core.index.IndexDirection;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.neo4j.annotation.GraphId;
+import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
+import org.springframework.data.neo4j.support.index.IndexType;
 
 /**
  * Movie
@@ -28,16 +31,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection = "movies")
 @Entity
+@NodeEntity
 public class Movie implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@org.springframework.data.annotation.Id
 	@javax.persistence.Id
+	@GraphId
 	private long id;
 
-	@Indexed(direction = IndexDirection.ASCENDING)
+	@org.springframework.data.mongodb.core.index.Indexed(direction = IndexDirection.ASCENDING)
 	@Index(name = "titreIndex")
+	@org.springframework.data.neo4j.annotation.Indexed(indexType = IndexType.FULLTEXT, indexName = "titreIndex")
 	private String title;
 
 	private String originaltitle;
@@ -54,10 +60,12 @@ public class Movie implements Serializable {
 	private Set<Person> directors = new HashSet<>();
 
 	@OneToMany(cascade = { CascadeType.ALL })
+	@RelatedTo(type="castMember")
 	private Set<CastMember> castMembers = new HashSet<>();
 
 	@ElementCollection
 	@CollectionTable(name = "movie_kind")
+	@RelatedTo(type="movieKind")
 	private Set<Kind> kinds = new HashSet<>();
 
 	@Column(length = 2000)
@@ -84,8 +92,11 @@ public class Movie implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", originaltitle=" + originaltitle + ", releasedate=" + releasedate + ", duration=" + duration
-				+ ", directors=" + directors + ", castMembers=" + castMembers + ", kinds=" + kinds + ", synopsis=" + synopsis + "]";
+		return "Movie [id=" + id + ", title=" + title + ", originaltitle="
+				+ originaltitle + ", releasedate=" + releasedate
+				+ ", duration=" + duration + ", directors=" + directors
+				+ ", castMembers=" + castMembers + ", kinds=" + kinds
+				+ ", synopsis=" + synopsis + "]";
 	}
 
 	@Override
