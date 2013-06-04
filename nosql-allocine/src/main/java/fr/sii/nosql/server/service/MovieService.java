@@ -24,13 +24,13 @@ public interface MovieService {
 
 	List<Movie> findByDirector(String name) throws MovieServiceException;
 
-	List<Movie> findByKinds(Kind kind);
+	List<Movie> findByKinds(Kind kind) throws MovieServiceException;
 
 	void save(Movie movie, boolean isDownloadPictures) throws MovieServiceException;
 
 	Movie retrieveAndSave(long alloCineMovieId, boolean viewed) throws MovieServiceException;
 
-	long countByKind(Kind kind) throws MovieServiceException;
+	long countByKinds(Kind kind) throws MovieServiceException;
 
 	void setMovieRepository(MovieRepository jpaRepository);
 }

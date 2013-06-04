@@ -48,7 +48,7 @@ public class MovieServiceTestImpl extends SimpleMovieServiceTestImpl implements 
 			sum += movies.size();
 		}
 		long end = System.currentTimeMillis();
-		Assert.assertEquals(743, sum);
+		Assert.assertEquals(10767, sum);
 
 		System.out.println(" => findByKind movies in " + (end - deb) / kinds.length + " ms");
 	}

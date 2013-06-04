@@ -116,15 +116,14 @@ public abstract class MovieServiceImpl {
 		return movie;
 	}
 
-	public List<Movie> findByKinds(Kind kind) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Movie> findByKinds(Kind kind) throws MovieServiceException {
+		invariant();
+		return movieRepository.findByKinds(kind);
 	}
 
-	public long countByKind(Kind kind) throws MovieServiceException {
+	public long countByKinds(Kind kind) throws MovieServiceException {
 		invariant();
-		// TODO : implements getMoviesCount with filter
-		return movieRepository.count();
+		return movieRepository.findByKinds(kind).size();
 	}
 
 	protected void savePictures(Movie movie) {

@@ -72,7 +72,8 @@ public class SimpleMovieServiceTestImpl implements SimpleMovieServiceTest {
 			sum += movies.size();
 		}
 		long end = System.currentTimeMillis();
-		Assert.assertEquals(743, sum);
+		Assert.assertEquals(2, sum);
+		// Assert.assertEquals(3, sum);
 
 		System.out.println(" => findByTitle movies in " + (end - deb) / titles.length + " ms");
 	}
@@ -86,11 +87,13 @@ public class SimpleMovieServiceTestImpl implements SimpleMovieServiceTest {
 		List<Movie> movies = null;
 		int sum = 0;
 		for (String title : titles) {
-			movies = movieService.findByTitle(title);
+			movies = movieService.findByTitleLike(title);
 			sum += movies.size();
 		}
 		long end = System.currentTimeMillis();
-		Assert.assertEquals(743, sum);
+		// Assert.assertEquals(39, sum);
+		// Assert.assertEquals(43, sum);
+		Assert.assertEquals(44, sum);
 
 		System.out.println(" => findByTitleLike movies in " + (end - deb) / titles.length + " ms");
 	}

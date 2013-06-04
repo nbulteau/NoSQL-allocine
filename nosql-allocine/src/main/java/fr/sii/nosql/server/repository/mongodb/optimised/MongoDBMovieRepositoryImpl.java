@@ -166,7 +166,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 		if (kind == null) {
 			query = new Query();
 		} else {
-			query = new Query(Criteria.where("kinds").is(kind.getLabel()));
+			query = new Query(Criteria.where("kinds").is(kind));
 		}
 		return query;
 	}
@@ -189,6 +189,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 	@Override
 	public Movie save(Movie movie) {
 		mongoOperations.save(movie);
+
 		return movie;
 	}
 
@@ -249,7 +250,7 @@ public class MongoDBMovieRepositoryImpl implements MongoDBMovieRepository {
 
 	@Override
 	public List<Movie> findByTitleLike(String string) {
-		Query query = new Query(Criteria.where("title").is("/^" + string + "/"));
+		Query query = new Query(Criteria.where("title").regex(string));
 		query.with(new Sort(Direction.ASC, "title"));
 
 		List<Movie> results = mongoOperations.find(query, Movie.class);

@@ -15,7 +15,8 @@ public interface JpaMovieRepository extends JpaRepository<Movie, Long>, MovieRep
 	List<Movie> findByTitle(String title);
 
 	@Override
-	List<Movie> findByTitleLike(String string);
+	@Query(value = "SELECT movie FROM Movie movie WHERE movie.title like :string%")
+	List<Movie> findByTitleLike(@Param("string") String string);
 
 	@Override
 	@Query(value = "SELECT movie FROM Movie movie JOIN movie.castMembers castMember JOIN castMember.person person WHERE person.id = :id")

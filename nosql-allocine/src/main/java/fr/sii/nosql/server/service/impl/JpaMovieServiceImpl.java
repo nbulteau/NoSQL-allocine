@@ -74,5 +74,4 @@ public class JpaMovieServiceImpl extends MovieServiceImpl implements MovieServic
 		// insert movie into db
 		movieRepository.save(movie);
 	}
-
 }
