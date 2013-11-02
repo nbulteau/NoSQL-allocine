@@ -2,7 +2,7 @@ package fr.sii.nosql.server.allocine.buisiness;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("statistics")
 public class AlloCineStatistics {
@@ -44,6 +44,8 @@ public class AlloCineStatistics {
 	private int theaterCountOnRelease;
 
 	private int editorialRatingCount;
+
+	private int wantToSeeCount;
 
 	public float getPressRating() {
 		return pressRating;
@@ -155,6 +157,14 @@ public class AlloCineStatistics {
 
 	public void setEditorialRatingCount(int editorialRatingCount) {
 		this.editorialRatingCount = editorialRatingCount;
+	}
+
+	public int getWantToSeeCount() {
+		return wantToSeeCount;
+	}
+
+	public void setWantToSeeCount(int wantToSeeCount) {
+		this.wantToSeeCount = wantToSeeCount;
 	}
 
 }

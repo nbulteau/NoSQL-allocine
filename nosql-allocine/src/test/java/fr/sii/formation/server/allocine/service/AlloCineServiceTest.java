@@ -3,7 +3,6 @@ package fr.sii.formation.server.allocine.service;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sii.nosql.server.allocine.service.AlloCineService;
+import fr.sii.nosql.server.config.CoreConfig;
 import fr.sii.nosql.server.service.MovieServiceException;
 import fr.sii.nosql.shared.buisiness.Movie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:application-context.xml")
+// @WebAppConfiguration
+@ContextConfiguration(classes = { CoreConfig.class })
 public class AlloCineServiceTest {
 
 	@Autowired

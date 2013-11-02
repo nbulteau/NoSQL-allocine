@@ -2,7 +2,7 @@ package fr.sii.nosql.server.allocine.buisiness;
 
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("publication")
 public class AlloCinePublication {

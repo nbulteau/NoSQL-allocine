@@ -2,8 +2,8 @@ package fr.sii.nosql.server.allocine.buisiness;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("movie")
 public class AlloCineMovie {
@@ -51,7 +51,7 @@ public class AlloCineMovie {
 
 	private List<AlloCineTrivia> alloCineTrivia;
 
-	private AlloCineCode movieCertificate;
+	private AlloCineMovieCertificate alloCineMovieCertificate;
 
 	private AlloCineCode color;
 
@@ -60,14 +60,20 @@ public class AlloCineMovie {
 	private List<AlloCineCode> language;
 
 	private String budget;
-	
+
 	private String trailerEmbed;
-	
+
 	@JsonIgnore
 	private List<Media> media;
-	
+
 	@JsonIgnore
 	private List<BoxOffice> boxOffice;
+
+	private boolean hasBluRay;
+
+	private boolean hasDVD;
+
+	private boolean hasVOD;
 
 	public List<BoxOffice> getBoxOffice() {
 		return boxOffice;
@@ -276,13 +282,13 @@ public class AlloCineMovie {
 	}
 
 	@JsonIgnore
-	public AlloCineCode getMovieCertificate() {
-		return movieCertificate;
+	public AlloCineMovieCertificate getMovieCertificate() {
+		return alloCineMovieCertificate;
 	}
 
 	@JsonIgnore
-	public void setMovieCertificate(AlloCineCode movieCertificate) {
-		this.movieCertificate = movieCertificate;
+	public void setMovieCertificate(AlloCineMovieCertificate movieCertificate) {
+		this.alloCineMovieCertificate = movieCertificate;
 	}
 
 	public AlloCineCode getColor() {
@@ -315,5 +321,29 @@ public class AlloCineMovie {
 
 	public void setBudget(String budget) {
 		this.budget = budget;
+	}
+
+	public boolean isHasBluRay() {
+		return hasBluRay;
+	}
+
+	public void setHasBluRay(boolean hasBluRay) {
+		this.hasBluRay = hasBluRay;
+	}
+
+	public boolean isHasDVD() {
+		return hasDVD;
+	}
+
+	public void setHasDVD(boolean hasDVD) {
+		this.hasDVD = hasDVD;
+	}
+
+	public boolean isHasVOD() {
+		return hasVOD;
+	}
+
+	public void setHasVOD(boolean hasVOD) {
+		this.hasVOD = hasVOD;
 	}
 }

@@ -41,7 +41,7 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 	private static final String USER_AGENT = "Dalvik/1.6.0 (Linux; U; Android 4.2.2; Nexus 4 Build/JDQ39E)";
 
 	private static final String MOVIE_QUERY_PARAMS = "&format=json&profile=medium&filter=movie,person&striptags=synopsis%2Csynopsisshort";
-	
+
 	private static final String MOVIELIST_QUERY_PARAMS = "&filter=nowshowing&format=json";
 
 	private final RestTemplate restTemplate;
@@ -109,7 +109,7 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 			try {
 				String sig = buildAlloCineSignature(params);
 				query += params + sig;
-				LOGGER.info("Query : {}", query);
+				LOGGER.debug("Query : {}", query);
 
 				URI uri = URI.create(query);
 				ResponseEntity<MovieListResult> response = restTemplate.exchange(uri, HttpMethod.GET, getHttpEntity(), MovieListResult.class);

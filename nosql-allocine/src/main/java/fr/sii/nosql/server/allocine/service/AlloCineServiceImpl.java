@@ -53,10 +53,12 @@ public class AlloCineServiceImpl implements AlloCineService {
 
 	@Override
 	public List<Movie> retrieveMovieList() {
+		LOGGER.info("Retrieve movielist in progess");
+
 		List<Movie> movies = new ArrayList<>();
 		try {
 			List<AlloCineMovie> alloCineMovies = alloCineRepository.retrieveMovielist();
-			LOGGER.debug("Retrieve movielist {} fims ", alloCineMovies.size());
+			LOGGER.info(" => retrieving {} fims ", alloCineMovies.size());
 			Movie movie = null;
 			for (AlloCineMovie alloCineMovie : alloCineMovies) {
 				movie = retrieveMovie(alloCineMovie.getCode());
@@ -71,7 +73,10 @@ public class AlloCineServiceImpl implements AlloCineService {
 			}
 		} catch (RetrieveException e) {
 			LOGGER.error("Retrieve movielist problem");
+			LOGGER.error(e.getMessage());
 		}
+
+		LOGGER.info("Retrieve movielist done");
 
 		return movies;
 	}

@@ -1,6 +1,6 @@
 package fr.sii.nosql.server.allocine.buisiness;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("code")
 public class AlloCineCode {
@@ -23,5 +23,4 @@ public class AlloCineCode {
 	public void setCode(int code) {
 		this.code = code;
 	}
-
 }

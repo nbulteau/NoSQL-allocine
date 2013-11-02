@@ -17,7 +17,6 @@ public enum Kind {
 	@javax.persistence.Id
 	private String label;
 
-
 	Kind() {
 		this.label = this.name();
 	}

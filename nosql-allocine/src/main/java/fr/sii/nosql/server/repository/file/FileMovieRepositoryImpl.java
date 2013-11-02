@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.sii.nosql.server.allocine.buisiness.MovieResult;
 import fr.sii.nosql.server.allocine.service.MovieMapperService;
@@ -81,7 +82,7 @@ public class FileMovieRepositoryImpl extends FileRepository<Movie> implements Fi
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public void delete(Movie movie) {
 		// TODO Auto-generated method stub

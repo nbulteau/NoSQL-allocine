@@ -2,7 +2,7 @@ package fr.sii.nosql.server.allocine.buisiness;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("feature")
 public class AlloCineFeature {

@@ -60,12 +60,12 @@ public class Movie implements Serializable {
 	private Set<Person> directors = new HashSet<>();
 
 	@OneToMany(cascade = { CascadeType.ALL })
-	@RelatedTo(type="castMember")
+	@RelatedTo(type = "castMember")
 	private Set<CastMember> castMembers = new HashSet<>();
 
-	@ElementCollection
+	@ElementCollection()
 	@CollectionTable(name = "movie_kind")
-	@RelatedTo(type="movieKind")
+	@RelatedTo(type = "movieKind")
 	private Set<Kind> kinds = new HashSet<>();
 
 	@Column(length = 2000)
@@ -92,11 +92,8 @@ public class Movie implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", originaltitle="
-				+ originaltitle + ", releasedate=" + releasedate
-				+ ", duration=" + duration + ", directors=" + directors
-				+ ", castMembers=" + castMembers + ", kinds=" + kinds
-				+ ", synopsis=" + synopsis + "]";
+		return "Movie [id=" + id + ", title=" + title + ", originaltitle=" + originaltitle + ", releasedate=" + releasedate + ", duration=" + duration
+				+ ", directors=" + directors + ", castMembers=" + castMembers + ", kinds=" + kinds + ", synopsis=" + synopsis + "]";
 	}
 
 	@Override

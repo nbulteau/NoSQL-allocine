@@ -3,7 +3,7 @@ package fr.sii.nosql.server.allocine.buisiness;
 import java.util.Date;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("feed")
 public class AlloCineFeed {

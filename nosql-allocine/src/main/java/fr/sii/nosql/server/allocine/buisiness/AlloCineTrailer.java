@@ -1,6 +1,6 @@
 package fr.sii.nosql.server.allocine.buisiness;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("trailer")
 public class AlloCineTrailer extends AlloCinePoster {

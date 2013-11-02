@@ -15,7 +15,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="fr.sii.formation" level="DEBUG" />
+	<logger name="fr.sii.formation" level="INFO" />
 <!-- 
 	<logger name="org.hibernate.type" level="ALL" />
 	<logger name="org.hibernate" level="DEBUG" />
