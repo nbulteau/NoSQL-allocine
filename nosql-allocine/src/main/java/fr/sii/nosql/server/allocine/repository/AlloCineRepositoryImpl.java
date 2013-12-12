@@ -82,6 +82,7 @@ public class AlloCineRepositoryImpl implements AlloCineRepository {
 			}
 		} catch (Exception e) {
 			LOGGER.error("Exception : {}", e.getMessage());
+			LOGGER.error("=> query : {}", query);
 			throw new RetrieveException("Retrieve problem for movie id : " + idMovie, e);
 		}
 

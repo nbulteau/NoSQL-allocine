@@ -47,6 +47,8 @@ public class AlloCineStatistics {
 
 	private int wantToSeeCount;
 
+	private int triviaCount;
+
 	public float getPressRating() {
 		return pressRating;
 	}
@@ -165,6 +167,14 @@ public class AlloCineStatistics {
 
 	public void setWantToSeeCount(int wantToSeeCount) {
 		this.wantToSeeCount = wantToSeeCount;
+	}
+
+	public int getTriviaCount() {
+		return triviaCount;
+	}
+
+	public void setTriviaCount(int triviaCount) {
+		this.triviaCount = triviaCount;
 	}
 
 }

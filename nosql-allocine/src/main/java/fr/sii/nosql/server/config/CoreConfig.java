@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @ComponentScan(basePackages = { "fr.sii.nosql.server.allocine", "fr.sii.nosql.server.repository.file" })
-@PropertySource("application.properties")
+@PropertySource("classpath:application.properties")
 public class CoreConfig {
 
 	@Bean

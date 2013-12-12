@@ -24,7 +24,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		WebApplicationContext rootContext = createRootContext(servletContext);
 
 		configureSpringMvc(servletContext, rootContext);
-
 	}
 
 	private WebApplicationContext createRootContext(ServletContext servletContext) {

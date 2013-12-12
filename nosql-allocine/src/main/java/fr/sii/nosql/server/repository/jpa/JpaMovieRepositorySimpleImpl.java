@@ -34,6 +34,7 @@ public class JpaMovieRepositorySimpleImpl implements MovieRepository {
 
 	@Override
 	public Movie findById(Long id) {
+		LOGGER.trace("findById" + id);
 		Movie movie = null;
 
 		ValueObject valueObject = entityManager.find(ValueObject.class, id);
@@ -50,6 +51,7 @@ public class JpaMovieRepositorySimpleImpl implements MovieRepository {
 
 	@Override
 	public Movie save(Movie movie) {
+		LOGGER.trace("save" + movie.getTitle());
 
 		byte[] json = null;
 		try {

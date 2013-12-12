@@ -1,5 +1,6 @@
 package fr.sii.nosql.server.allocine.buisiness;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -71,9 +72,25 @@ public class AlloCineMovie {
 
 	private boolean hasBluRay;
 
+	private Date bluRayReleaseDate;
+
 	private boolean hasDVD;
 
+	private Date dvdReleaseDate;
+
 	private boolean hasVOD;
+
+	private boolean hasBroadcast;
+
+	private Date nextBroadcast;
+
+	private boolean hasShowtime;
+
+	@JsonIgnore
+	private List<AlloCineReview> helpfulPositiveReview;
+
+	@JsonIgnore
+	private List<AlloCineReview> helpfulNegativeReview;
 
 	public List<BoxOffice> getBoxOffice() {
 		return boxOffice;
@@ -345,5 +362,185 @@ public class AlloCineMovie {
 
 	public void setHasVOD(boolean hasVOD) {
 		this.hasVOD = hasVOD;
+	}
+
+	public boolean isHasBroadcast() {
+		return hasBroadcast;
+	}
+
+	public void setHasBroadcast(boolean hasBroadcast) {
+		this.hasBroadcast = hasBroadcast;
+	}
+
+	@JsonIgnore
+	public List<AlloCineReview> getHelpfulPositiveReview() {
+		return helpfulPositiveReview;
+	}
+
+	@JsonIgnore
+	public void setHelpfulPositiveReview(List<AlloCineReview> helpfulPositiveReview) {
+		this.helpfulPositiveReview = helpfulPositiveReview;
+	}
+
+	@JsonIgnore
+	public List<AlloCineReview> getHelpfulNegativeReview() {
+		return helpfulNegativeReview;
+	}
+
+	@JsonIgnore
+	public void setHelpfulNegativeReview(List<AlloCineReview> helpfulNegativeReview) {
+		this.helpfulNegativeReview = helpfulNegativeReview;
+	}
+
+	public boolean isHasShowtime() {
+		return hasShowtime;
+	}
+
+	public void setHasShowtime(boolean hasShowtime) {
+		this.hasShowtime = hasShowtime;
+	}
+
+	public Date getDvdReleaseDate() {
+		return dvdReleaseDate;
+	}
+
+	public void setDvdReleaseDate(Date dvdReleaseDate) {
+		this.dvdReleaseDate = dvdReleaseDate;
+	}
+
+	public List<AlloCineCastMember> getAlloCineCastMember() {
+		return alloCineCastMember;
+	}
+
+	public void setAlloCineCastMember(List<AlloCineCastMember> alloCineCastMember) {
+		this.alloCineCastMember = alloCineCastMember;
+	}
+
+	public AlloCineCastingShort getAlloCineCastingShort() {
+		return alloCineCastingShort;
+	}
+
+	public void setAlloCineCastingShort(AlloCineCastingShort alloCineCastingShort) {
+		this.alloCineCastingShort = alloCineCastingShort;
+	}
+
+	public List<AlloCineFeature> getAlloCineFeature() {
+		return alloCineFeature;
+	}
+
+	public void setAlloCineFeature(List<AlloCineFeature> alloCineFeature) {
+		this.alloCineFeature = alloCineFeature;
+	}
+
+	public List<AlloCineGenre> getAlloCineGenre() {
+		return alloCineGenre;
+	}
+
+	public void setAlloCineGenre(List<AlloCineGenre> alloCineGenre) {
+		this.alloCineGenre = alloCineGenre;
+	}
+
+	public List<AlloCineLink> getAlloCineLink() {
+		return alloCineLink;
+	}
+
+	public void setAlloCineLink(List<AlloCineLink> alloCineLink) {
+		this.alloCineLink = alloCineLink;
+	}
+
+	public AlloCineMovieType getAlloCineMovieType() {
+		return alloCineMovieType;
+	}
+
+	public void setAlloCineMovieType(AlloCineMovieType alloCineMovieType) {
+		this.alloCineMovieType = alloCineMovieType;
+	}
+
+	public List<AlloCineNationality> getAlloCineNationality() {
+		return alloCineNationality;
+	}
+
+	public void setAlloCineNationality(List<AlloCineNationality> alloCineNationality) {
+		this.alloCineNationality = alloCineNationality;
+	}
+
+	public List<AlloCineNews> getAlloCineNews() {
+		return alloCineNews;
+	}
+
+	public void setAlloCineNews(List<AlloCineNews> alloCineNews) {
+		this.alloCineNews = alloCineNews;
+	}
+
+	public AlloCinePoster getAlloCinePoster() {
+		return alloCinePoster;
+	}
+
+	public void setAlloCinePoster(AlloCinePoster alloCinePoster) {
+		this.alloCinePoster = alloCinePoster;
+	}
+
+	public AlloCineRelease getAlloCineRelease() {
+		return alloCineRelease;
+	}
+
+	public void setAlloCineRelease(AlloCineRelease alloCineRelease) {
+		this.alloCineRelease = alloCineRelease;
+	}
+
+	public AlloCineStatistics getAlloCineStatistics() {
+		return alloCineStatistics;
+	}
+
+	public void setAlloCineStatistics(AlloCineStatistics alloCineStatistics) {
+		this.alloCineStatistics = alloCineStatistics;
+	}
+
+	public AlloCineTrailer getAlloCineTrailer() {
+		return alloCineTrailer;
+	}
+
+	public void setAlloCineTrailer(AlloCineTrailer alloCineTrailer) {
+		this.alloCineTrailer = alloCineTrailer;
+	}
+
+	public List<AlloCineTrivia> getAlloCineTrivia() {
+		return alloCineTrivia;
+	}
+
+	public void setAlloCineTrivia(List<AlloCineTrivia> alloCineTrivia) {
+		this.alloCineTrivia = alloCineTrivia;
+	}
+
+	public AlloCineMovieCertificate getAlloCineMovieCertificate() {
+		return alloCineMovieCertificate;
+	}
+
+	public void setAlloCineMovieCertificate(AlloCineMovieCertificate alloCineMovieCertificate) {
+		this.alloCineMovieCertificate = alloCineMovieCertificate;
+	}
+
+	public AlloCineFormatList getAlloCineFormatList() {
+		return alloCineFormatList;
+	}
+
+	public void setAlloCineFormatList(AlloCineFormatList alloCineFormatList) {
+		this.alloCineFormatList = alloCineFormatList;
+	}
+
+	public Date getBluRayReleaseDate() {
+		return bluRayReleaseDate;
+	}
+
+	public void setBluRayReleaseDate(Date bluRayReleaseDate) {
+		this.bluRayReleaseDate = bluRayReleaseDate;
+	}
+
+	public Date getNextBroadcast() {
+		return nextBroadcast;
+	}
+
+	public void setNextBroadcast(Date nextBroadcast) {
+		this.nextBroadcast = nextBroadcast;
 	}
 }
