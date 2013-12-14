@@ -82,9 +82,12 @@ public class AlloCineMovie {
 
 	private boolean hasBroadcast;
 
+	@JsonIgnore
 	private Date nextBroadcast;
 
 	private boolean hasShowtime;
+
+	private boolean hasSVOD;
 
 	@JsonIgnore
 	private List<AlloCineReview> helpfulPositiveReview;
@@ -542,5 +545,13 @@ public class AlloCineMovie {
 
 	public void setNextBroadcast(Date nextBroadcast) {
 		this.nextBroadcast = nextBroadcast;
+	}
+
+	public boolean isHasSVOD() {
+		return hasSVOD;
+	}
+
+	public void setHasSVOD(boolean hasSVOD) {
+		this.hasSVOD = hasSVOD;
 	}
 }
