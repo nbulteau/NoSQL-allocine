@@ -49,6 +49,18 @@ public class AlloCineStatistics {
 
 	private int triviaCount;
 
+	private int rankTopMovie;
+
+	private int variationTopMovie;
+
+	private int admissionCount;
+
+	private int newsCount;
+
+	private int awardCount;
+
+	private int nominationCount;
+
 	public float getPressRating() {
 		return pressRating;
 	}
@@ -175,6 +187,62 @@ public class AlloCineStatistics {
 
 	public void setTriviaCount(int triviaCount) {
 		this.triviaCount = triviaCount;
+	}
+
+	public List<AlloCineRating> getAlloCineRating() {
+		return alloCineRating;
+	}
+
+	public void setAlloCineRating(List<AlloCineRating> alloCineRating) {
+		this.alloCineRating = alloCineRating;
+	}
+
+	public int getRankTopMovie() {
+		return rankTopMovie;
+	}
+
+	public void setRankTopMovie(int rankTopMovie) {
+		this.rankTopMovie = rankTopMovie;
+	}
+
+	public int getVariationTopMovie() {
+		return variationTopMovie;
+	}
+
+	public void setVariationTopMovie(int variationTopMovie) {
+		this.variationTopMovie = variationTopMovie;
+	}
+
+	public int getAdmissionCount() {
+		return admissionCount;
+	}
+
+	public void setAdmissionCount(int admissionCount) {
+		this.admissionCount = admissionCount;
+	}
+
+	public int getNewsCount() {
+		return newsCount;
+	}
+
+	public void setNewsCount(int newsCount) {
+		this.newsCount = newsCount;
+	}
+
+	public int getAwardCount() {
+		return awardCount;
+	}
+
+	public void setAwardCount(int awardCount) {
+		this.awardCount = awardCount;
+	}
+
+	public int getNominationCount() {
+		return nominationCount;
+	}
+
+	public void setNominationCount(int nominationCount) {
+		this.nominationCount = nominationCount;
 	}
 
 }
